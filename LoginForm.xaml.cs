@@ -29,5 +29,11 @@ namespace StoreManagement
         {
             Application.Current.Shutdown();
         }
+
+        private void BtnLogin_OnClick(object sender, RoutedEventArgs e){
+            var managerDashboard = new ManagerDashboard();
+            managerDashboard.Show();
+            this.Close();
+        }
     }
 }

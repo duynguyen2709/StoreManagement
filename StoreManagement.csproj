@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ManagerDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LoginForm.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -68,9 +72,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ManagerDashboard.xaml.cs">
+      <DependentUpon>ManagerDashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +111,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\closeButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\maximizeButton.png" />
+    <Resource Include="Resources\minimizeButton.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
