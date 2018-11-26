@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StoreManagement.Entities;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace StoreManagement
 {
@@ -30,10 +18,50 @@ namespace StoreManagement
             Application.Current.Shutdown();
         }
 
-        private void BtnLogin_OnClick(object sender, RoutedEventArgs e){
-            var managerDashboard = new ManagerDashboard();
-            managerDashboard.Show();
-            this.Close();
+        private void BtnLogin_OnClick(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
+
+            int role = validateAccount(username, password);
+
+            switch (role)
+            {
+                case 0:
+                    var managerDashboard = new ManagerDashboard();
+                    managerDashboard.Show();
+                    this.Close();
+                    break;
+
+                case 1:
+
+                    break;
+
+                case 2:
+
+                    break;
+
+                default:
+                    lblLoginError.Visibility = Visibility.Visible;
+                    break;
+            }
+        }
+
+        private int validateAccount(string username, string password)
+        {
+            if (username.Length == 0 || password.Length == 0)
+                return -1;
+
+            using (var context = new StoreManagementEntities())
+            {
+                foreach (var user in context.Users)
+                {
+                    if (user.Username == username && user.Password == password)
+                        return user.Role;
+                }
+            }
+
+            return -1;
         }
     }
 }

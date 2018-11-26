@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -79,6 +81,33 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Entities\BillDetail.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BillHistory.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Product.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StoreManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StoreManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StoreManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ManagerDashboard.xaml.cs">
       <DependentUpon>ManagerDashboard.xaml</DependentUpon>
     </Compile>
@@ -104,6 +133,13 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Entities\StoreManagementModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StoreManagementModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\StoreManagementModel.edmx.diagram">
+      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -125,6 +161,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\avatar.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Entities\StoreManagementModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
+      <LastGenOutput>StoreManagementModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\StoreManagementModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
+      <LastGenOutput>StoreManagementModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

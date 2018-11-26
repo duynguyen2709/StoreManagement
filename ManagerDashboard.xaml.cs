@@ -40,6 +40,35 @@ namespace StoreManagement
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int index = ListViewMenu.SelectedIndex;
+
+            GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
+
+            switch (index)
+            {
+                case 0:
+                    break;
+
+                case 1:
+                    break;
+
+                case 2:
+                    break;
+
+                case 3:
+                    break;
+
+                case 4:
+                    break;
+
+                case 5:
+                    var loginForm = new LoginForm();
+                    loginForm.Show();
+                    this.Close();
+                    break;
+
+                default: break;
+            }
         }
     }
 }
