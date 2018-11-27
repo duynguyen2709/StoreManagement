@@ -18,9 +18,9 @@ namespace StoreManagement
             BASE_STATE = this.WindowState;
 
             BaseDAO dao = BaseDAO.getInstance();
-            List<UserEntity> lstUserEntities = dao.getAll("UserEntity") as List<UserEntity>;
-            List<ProductEntity> lsdProductEntities = dao.getAll("ProductEntity") as List<ProductEntity>;
-            List<BillEntity> lsBillEntities = dao.getAll("BillEntity") as List<BillEntity>;
+            List<UserEntity> lstUserEntities = dao.getAll(typeof(UserEntity)) as List<UserEntity>;
+            List<ProductEntity> lsdProductEntities = dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
+            List<BillEntity> lsBillEntities = dao.getAll(typeof(BillEntity)) as List<BillEntity>;
 
             this.WindowState = BASE_STATE;
         }

@@ -7,7 +7,7 @@ namespace StoreManagement.DAO
 {
     internal class ProductDAO : BaseDAO
     {
-        public override Object get(int ID, string className = null)
+        public override Object get(int ID, Type type = null)
         {
             using (var context = new StoreManagementEntities())
             {
@@ -24,7 +24,7 @@ namespace StoreManagement.DAO
             return null;
         }
 
-        public override Object getAll(string className = null)
+        public override Object getAll(Type type = null)
         {
             List<ProductEntity> listProductEntities = new List<ProductEntity>();
 

@@ -14,17 +14,17 @@ namespace StoreManagement.DAO
             return instance;
         }
 
-        public virtual Object get(int ID, string className = null)
+        public virtual Object get(int ID, Type type = null)
         {
-            instance = GetDAO(className);
+            instance = GetDAO(type);
             Object obj = instance.get(ID);
 
             return obj;
         }
 
-        public virtual Object getAll(string className = null)
+        public virtual Object getAll(Type type = null)
         {
-            instance = GetDAO(className);
+            instance = GetDAO(type);
             Object obj = instance.getAll();
 
             return obj;
@@ -32,7 +32,7 @@ namespace StoreManagement.DAO
 
         public virtual void insert(Object obj)
         {
-            instance = GetDAO(obj);
+            instance = GetDAO(obj.GetType());
             instance.insert(obj);
         }
 
@@ -47,33 +47,9 @@ namespace StoreManagement.DAO
             return null;
         }
 
-        protected BaseDAO GetDAO(Object obj)
+        protected BaseDAO GetDAO(Type type)
         {
-            Type type = obj.GetType();
-
-            if (type == typeof(string))
-            {
-                string className = obj as String;
-
-                switch (className)
-                {
-                    case "UserEntity":
-                        instance = new UserDAO();
-                        break;
-
-                    case "ProductEntity":
-                        instance = new ProductDAO();
-                        break;
-
-                    case "BillEntity":
-                        instance = new BillDAO();
-                        break;
-
-                    default:
-                        throw new CustomException("Illegal Argument Type");
-                }
-            }
-            else if (type == typeof(UserEntity))
+            if (type == typeof(UserEntity))
                 instance = new UserDAO();
             else if (type == typeof(ProductEntity))
                 instance = new ProductDAO();

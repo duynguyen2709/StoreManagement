@@ -7,7 +7,7 @@ namespace StoreManagement.DAO
 {
     internal class BillDAO : BaseDAO
     {
-        public override Object get(int ID, string className = null)
+        public override Object get(int ID, Type type = null)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace StoreManagement.DAO
             return null;
         }
 
-        public override Object getAll(string className = null)
+        public override Object getAll(Type type = null)
         {
             List<BillEntity> listBillEntities = new List<BillEntity>();
 
