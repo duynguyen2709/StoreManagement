@@ -1,6 +1,7 @@
 ﻿using StoreManagement.Entities;
 using System;
 using System.Collections.Generic;
+using StoreManagement.Utilities;
 
 namespace StoreManagement.DAO
 {
@@ -8,32 +9,40 @@ namespace StoreManagement.DAO
     {
         public override Object get(int ID, string className = null)
         {
-            using (var context = new StoreManagementEntities())
+            try
             {
-                foreach (var bill in context.BillHistories)
+                using (var context = new StoreManagementEntities())
                 {
-                    if (bill.BillID == ID)
+                    foreach (var bill in context.BillHistories)
                     {
-                        Dictionary<int, int> lstProduct = new Dictionary<int, int>();
-                        foreach (var billDetail in context.BillDetails)
+                        if (bill.BillID == ID)
                         {
-                            if (billDetail.BillID == ID)
+                            Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+
+                            foreach (var billDetail in context.BillDetails)
                             {
-                                lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
+                                if (billDetail.BillID == ID)
+                                {
+                                    lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
+                                }
                             }
+
+                            Object obj = new
+                            {
+                                BillInfo = bill,
+                                ListProduct = lstProduct
+                            };
+
+                            BillEntity entity = convertToEntity(obj) as BillEntity;
+
+                            return entity;
                         }
-
-                        Object obj = new
-                        {
-                            BillInfo = bill,
-                            ListProduct = lstProduct
-                        };
-
-                        BillEntity entity = convertToEntity(obj) as BillEntity;
-
-                        return entity;
                     }
                 }
+            }
+            catch (Exception)
+            {
+                throw new CustomException(this.GetType() + " : Get Entity");
             }
 
             return null;
@@ -73,7 +82,7 @@ namespace StoreManagement.DAO
         public override void insert(Object obj)
         {
             if (obj == null)
-                throw new CustomSQLException(this.GetType() + " : Inserting Null Value");
+                throw new CustomException(this.GetType() + " : Inserting Null Value");
 
             BillEntity newBill = obj as BillEntity;
 
@@ -101,7 +110,7 @@ namespace StoreManagement.DAO
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
-                throw new CustomSQLException(this.GetType() + " : Converting to Entity Null Value");
+                throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
 
             Dictionary<int, int> listProduct =
                 obj?.GetType().GetProperty("ListProduct")?.GetValue(obj, null) as Dictionary<int, int>;
@@ -121,10 +130,11 @@ namespace StoreManagement.DAO
         private long CalculateTotalPrice(Dictionary<int, int> listProduct)
         {
             long sum = 0;
+            ProductDAO dao = new ProductDAO();
 
             foreach (KeyValuePair<int, int> product in listProduct)
             {
-                ProductEntity entity = instance.get(product.Key, "ProductEntity") as ProductEntity;
+                ProductEntity entity = dao.get(product.Key) as ProductEntity;
                 sum += entity.Price * product.Value;
             }
 

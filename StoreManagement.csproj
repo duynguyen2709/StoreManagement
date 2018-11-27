@@ -83,7 +83,7 @@
     </Compile>
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
-    <Compile Include="DAO\CustomSQLException.cs" />
+    <Compile Include="Utilities\CustomException.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Entities\BillEntity.cs" />

@@ -1,5 +1,6 @@
 ﻿using StoreManagement.Entities;
 using System;
+using StoreManagement.Utilities;
 
 namespace StoreManagement.DAO
 {
@@ -69,7 +70,7 @@ namespace StoreManagement.DAO
                         break;
 
                     default:
-                        throw new CustomSQLException("Illegal Argument Type");
+                        throw new CustomException("Illegal Argument Type");
                 }
             }
             else if (type == typeof(UserEntity))

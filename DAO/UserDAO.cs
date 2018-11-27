@@ -1,6 +1,7 @@
 ﻿using StoreManagement.Entities;
 using System;
 using System.Collections.Generic;
+using StoreManagement.Utilities;
 
 namespace StoreManagement.DAO
 {
@@ -42,7 +43,7 @@ namespace StoreManagement.DAO
         public override void insert(Object obj)
         {
             if (obj == null)
-                throw new CustomSQLException(this.GetType() + " : Inserting Null Value");
+                throw new CustomException(this.GetType() + " : Inserting Null Value");
 
             var newUser = obj as User;
 
@@ -56,7 +57,7 @@ namespace StoreManagement.DAO
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
-                throw new CustomSQLException(this.GetType() + " : Converting to Entity Null Value");
+                throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
 
             User user = obj as User;
 

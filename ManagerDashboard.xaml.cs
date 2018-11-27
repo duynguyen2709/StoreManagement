@@ -1,6 +1,7 @@
 ﻿using StoreManagement.DAO;
 using StoreManagement.Entities;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,17 +17,12 @@ namespace StoreManagement
             InitializeComponent();
             BASE_STATE = this.WindowState;
 
-            User user = new User();
-            user.Username = "newuser";
-            user.Password = "123";
-            user.FullName = "asdad saf";
-            user.Role = 1;
-            user.Address = "asdiaf asd";
-            user.Birthdate = DateTime.Now;
-            user.IDCardNumber = "123213213";
-
             BaseDAO dao = BaseDAO.getInstance();
-            dao.insert(user);
+            List<UserEntity> lstUserEntities = dao.getAll("UserEntity") as List<UserEntity>;
+            List<ProductEntity> lsdProductEntities = dao.getAll("ProductEntity") as List<ProductEntity>;
+            List<BillEntity> lsBillEntities = dao.getAll("BillEntity") as List<BillEntity>;
+
+            this.WindowState = BASE_STATE;
         }
 
         private readonly WindowState BASE_STATE;
