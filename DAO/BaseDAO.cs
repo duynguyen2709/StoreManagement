@@ -14,6 +14,12 @@ namespace StoreManagement.DAO
             return instance;
         }
 
+        public virtual void delete(Object obj)
+        {
+            instance = GetDAO(obj.GetType());
+            instance.delete(obj);
+        }
+
         public virtual Object get(int ID, Type type = null)
         {
             instance = GetDAO(type);

@@ -2,11 +2,39 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreManagement.DAO
 {
     internal class BillDAO : BaseDAO
     {
+        public override void delete(Object obj)
+        {
+            BillEntity entity = obj as BillEntity;
+
+            using (var context = new StoreManagementEntities())
+            {
+                foreach (KeyValuePair<int, int> product in entity.ListProduct)
+                {
+                    var detail = (from bill in context.BillDetails
+                                  where bill.BillID == entity.BillID
+                                     && bill.ProductID == product.Key
+                                  select bill)
+                        .Single();
+
+                    context.BillDetails.Remove(detail);
+                }
+
+                var history = (from bill in context.BillHistories
+                               where bill.BillID == entity.BillID
+                               select bill)
+                    .Single();
+
+                context.BillHistories.Remove(history);
+                context.SaveChanges();
+            }
+        }
+
         public override Object get(int ID, Type type = null)
         {
             try

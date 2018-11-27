@@ -1,12 +1,26 @@
 ﻿using StoreManagement.Entities;
+using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using StoreManagement.Utilities;
+using System.Linq;
 
 namespace StoreManagement.DAO
 {
     internal class UserDAO : BaseDAO
     {
+        public override void delete(Object obj)
+        {
+            UserEntity user = obj as UserEntity;
+            using (var context = new StoreManagementEntities())
+            {
+                var delete = (from u in context.Users
+                              where user.UserID == u.UserID
+                              select u).Single();
+                context.Users.Remove(delete);
+                context.SaveChanges();
+            }
+        }
+
         public override Object get(int ID, Type type = null)
         {
             using (var context = new StoreManagementEntities())
