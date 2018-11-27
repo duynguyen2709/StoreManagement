@@ -21,6 +21,14 @@ namespace StoreManagement.DAO
             return obj;
         }
 
+        public virtual Object getAll(string className = null)
+        {
+            instance = GetDAO(className);
+            Object obj = instance.getAll();
+
+            return obj;
+        }
+
         public virtual void insert(Object obj)
         {
             instance = GetDAO(obj);

@@ -1,5 +1,6 @@
 ﻿using StoreManagement.Entities;
 using System;
+using System.Collections.Generic;
 
 namespace StoreManagement.DAO
 {
@@ -20,6 +21,22 @@ namespace StoreManagement.DAO
             }
 
             return null;
+        }
+
+        public override Object getAll(string className = null)
+        {
+            List<UserEntity> listUserEntities = new List<UserEntity>();
+
+            using (var context = new StoreManagementEntities())
+            {
+                foreach (var user in context.Users)
+                {
+                    UserEntity entity = convertToEntity(user) as UserEntity;
+                    listUserEntities.Add(entity);
+                }
+            }
+
+            return listUserEntities;
         }
 
         public override void insert(Object obj)

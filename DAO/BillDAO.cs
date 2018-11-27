@@ -39,6 +39,37 @@ namespace StoreManagement.DAO
             return null;
         }
 
+        public override Object getAll(string className = null)
+        {
+            List<BillEntity> listBillEntities = new List<BillEntity>();
+
+            using (var context = new StoreManagementEntities())
+            {
+                foreach (var bill in context.BillHistories)
+                {
+                    Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+                    foreach (var billDetail in context.BillDetails)
+                    {
+                        if (billDetail.BillID == bill.BillID)
+                        {
+                            lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
+                        }
+                    }
+
+                    Object obj = new
+                    {
+                        BillInfo = bill,
+                        ListProduct = lstProduct
+                    };
+
+                    BillEntity entity = convertToEntity(obj) as BillEntity;
+                    listBillEntities.Add(entity);
+                }
+            }
+
+            return listBillEntities;
+        }
+
         public override void insert(Object obj)
         {
             if (obj == null)
