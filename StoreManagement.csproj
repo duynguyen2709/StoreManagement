@@ -81,6 +81,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DAO\BaseDAO.cs" />
+    <Compile Include="DAO\BillDAO.cs" />
+    <Compile Include="DAO\CustomSQLException.cs" />
+    <Compile Include="DAO\ProductDAO.cs" />
+    <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="Entities\BillEntity.cs" />
     <Compile Include="Entities\BillDetail.cs">
       <DependentUpon>StoreManagementModel.tt</DependentUpon>
     </Compile>
@@ -90,6 +96,7 @@
     <Compile Include="Entities\Product.cs">
       <DependentUpon>StoreManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ProductEntity.cs" />
     <Compile Include="Entities\StoreManagementModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,6 +115,7 @@
     <Compile Include="Entities\User.cs">
       <DependentUpon>StoreManagementModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="ManagerDashboard.xaml.cs">
       <DependentUpon>ManagerDashboard.xaml</DependentUpon>
     </Compile>
