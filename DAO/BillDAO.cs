@@ -1,7 +1,7 @@
 ﻿using StoreManagement.Entities;
+using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using StoreManagement.Utilities;
 
 namespace StoreManagement.DAO
 {
@@ -86,23 +86,28 @@ namespace StoreManagement.DAO
 
             BillEntity newBill = obj as BillEntity;
 
-            BillHistory billHistory = new BillHistory();
-            billHistory.BillID = newBill.BillID;
-            billHistory.BillDate = newBill.BillDate;
-            billHistory.TotalPrice = CalculateTotalPrice(newBill.ListProduct);
+            BillHistory billHistory = new BillHistory
+            {
+                BillID = newBill.BillID,
+                BillDate = newBill.BillDate,
+                TotalPrice = CalculateTotalPrice(newBill.ListProduct)
+            };
 
             using (var context = new StoreManagementEntities())
             {
                 context.BillHistories.Add(billHistory);
-                int id = billHistory.BillID;
-
                 foreach (KeyValuePair<int, int> product in newBill.ListProduct)
                 {
-                    BillDetail billDetail = new BillDetail();
-                    billDetail.ProductID = product.Key;
-                    billDetail.Quantity = product.Value;
+                    BillDetail billDetail = new BillDetail
+                    {
+                        BillID = billHistory.BillID,
+                        ProductID = product.Key,
+                        Quantity = product.Value
+                    };
+
                     context.BillDetails.Add(billDetail);
                 }
+
                 context.SaveChanges();
             }
         }

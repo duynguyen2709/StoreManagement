@@ -83,6 +83,10 @@
     </Compile>
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
+    <Compile Include="Entities\sysdiagram.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\CastEntity.cs" />
     <Compile Include="Utilities\CustomException.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />

@@ -16,13 +16,6 @@ namespace StoreManagement
         {
             InitializeComponent();
             BASE_STATE = this.WindowState;
-
-            BaseDAO dao = BaseDAO.getInstance();
-            List<UserEntity> lstUserEntities = dao.getAll(typeof(UserEntity)) as List<UserEntity>;
-            List<ProductEntity> lsdProductEntities = dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
-            List<BillEntity> lsBillEntities = dao.getAll(typeof(BillEntity)) as List<BillEntity>;
-
-            this.WindowState = BASE_STATE;
         }
 
         private readonly WindowState BASE_STATE;

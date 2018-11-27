@@ -15,7 +15,7 @@ namespace StoreManagement.DAO
                 {
                     if (user.UserID == ID)
                     {
-                        UserEntity userEntity = convertToEntity(user) as UserEntity;
+                        UserEntity userEntity = user.Cast<UserEntity>();
                         return userEntity;
                     }
                 }
@@ -32,7 +32,7 @@ namespace StoreManagement.DAO
             {
                 foreach (var user in context.Users)
                 {
-                    UserEntity entity = convertToEntity(user) as UserEntity;
+                    UserEntity entity = user.Cast<UserEntity>();
                     listUserEntities.Add(entity);
                 }
             }
@@ -45,11 +45,12 @@ namespace StoreManagement.DAO
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Inserting Null Value");
 
-            var newUser = obj as User;
+            var newUser = obj as UserEntity;
+            User user = newUser.Cast<User>();
 
             using (var context = new StoreManagementEntities())
             {
-                context.Users.Add(newUser);
+                context.Users.Add(user);
                 context.SaveChanges();
             }
         }
@@ -59,19 +60,7 @@ namespace StoreManagement.DAO
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
 
-            User user = obj as User;
-
-            UserEntity entity = new UserEntity
-            {
-                Username = user.Username,
-                UserID = user.UserID,
-                Address = user.Address,
-                Birthdate = user.Birthdate,
-                FullName = user.FullName,
-                IDCardNumber = user.IDCardNumber,
-                Password = user.Password,
-                Role = user.Role
-            };
+            UserEntity entity = obj.Cast<UserEntity>();
 
             return entity;
         }

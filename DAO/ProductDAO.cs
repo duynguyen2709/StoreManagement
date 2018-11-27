@@ -15,7 +15,7 @@ namespace StoreManagement.DAO
                 {
                     if (product.ProductID == ID)
                     {
-                        ProductEntity productEntity = convertToEntity(product) as ProductEntity;
+                        ProductEntity productEntity = product.Cast<ProductEntity>();
                         return productEntity;
                     }
                 }
@@ -32,7 +32,7 @@ namespace StoreManagement.DAO
             {
                 foreach (var product in context.Products)
                 {
-                    ProductEntity entity = convertToEntity(product) as ProductEntity;
+                    ProductEntity entity = product.Cast<ProductEntity>();
                     listProductEntities.Add(entity);
                 }
             }
@@ -45,11 +45,11 @@ namespace StoreManagement.DAO
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Inserting Null Value");
 
-            var newProduct = obj as Product;
+            var product = obj.Cast<Product>();
 
             using (var context = new StoreManagementEntities())
             {
-                context.Products.Add(newProduct);
+                context.Products.Add(product);
                 context.SaveChanges();
             }
         }
@@ -59,18 +59,7 @@ namespace StoreManagement.DAO
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
 
-            Product product = obj as Product;
-
-            ProductEntity entity = new ProductEntity
-            {
-                ProductID = product.ProductID,
-                Brand = product.Brand,
-                Type = product.Type,
-                Description = product.Description,
-                ImageURL = product.ImageURL,
-                Price = product.Price,
-                Quantity = product.Quantity,
-            };
+            ProductEntity entity = obj.Cast<ProductEntity>();
 
             return entity;
         }
