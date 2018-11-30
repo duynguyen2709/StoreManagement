@@ -7,20 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.Entities
+namespace StoreManagement.DAO
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class BillDetail
     {
-        public int UserID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public int Role { get; set; }
-        public string FullName { get; set; }
-        public System.DateTime Birthdate { get; set; }
-        public string IDCardNumber { get; set; }
-        public string Address { get; set; }
+        public int BillID { get; set; }
+        public int ProductID { get; set; }
+        public int Quantity { get; set; }
+    
+        public virtual BillHistory BillHistory { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

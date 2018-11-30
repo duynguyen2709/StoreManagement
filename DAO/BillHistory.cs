@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.Entities
+namespace StoreManagement.DAO
 {
     using System;
     using System.Collections.Generic;
@@ -22,9 +22,11 @@ namespace StoreManagement.Entities
     
         public int BillID { get; set; }
         public System.DateTime BillDate { get; set; }
+        public int CashierID { get; set; }
         public long TotalPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }
+        public virtual User User { get; set; }
     }
 }

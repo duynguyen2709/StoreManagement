@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.Entities
+namespace StoreManagement.DAO
 {
     using System;
     using System.Data.Entity;
@@ -25,10 +25,9 @@ namespace StoreManagement.Entities
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<BillHistory> BillHistories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<BillDetail> BillDetails { get; set; }
     }
 }

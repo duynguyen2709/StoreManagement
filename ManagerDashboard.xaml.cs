@@ -16,6 +16,22 @@ namespace StoreManagement
         {
             InitializeComponent();
             BASE_STATE = this.WindowState;
+
+            BaseDAO dao = BaseDAO.getInstance();
+
+            UserEntity entity = new UserEntity()
+            {
+                Address = "asd",
+                Birthdate = DateTime.Today,
+                FullName = "test get id",
+                IDCardNumber = "12345",
+                Password = "123",
+                Role = 0,
+                Username = "testgetid"
+            };
+
+            int id = dao.insert(entity);
+            BASE_STATE = this.WindowState;
         }
 
         private readonly WindowState BASE_STATE;

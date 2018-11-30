@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StoreManagement.Entities
+namespace StoreManagement.DAO
 {
     using System;
     using System.Collections.Generic;

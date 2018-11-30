@@ -9,12 +9,14 @@ namespace StoreManagement.Entities
         {
             BillDate = DateTime.Today;
             ListProduct = new Dictionary<int, int>();
-            TotalPrice = BillID = 0;
+            TotalPrice = BillID = CashierID = 0;
         }
 
         public DateTime BillDate { get; set; }
 
         public int BillID { get; set; }
+
+        public int CashierID { get; set; }
 
         // <ProductID , Quantity>
         public Dictionary<int, int> ListProduct { get; set; }

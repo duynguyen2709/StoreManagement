@@ -24,7 +24,7 @@ namespace StoreManagement.Utilities
             foreach (var memberInfo in members)
             {
                 var propertyInfo = typeof(T).GetProperty(memberInfo.Name);
-                var value = obj.GetType().GetProperty(memberInfo.Name).GetValue(obj, null);
+                var value = obj.GetType().GetProperty(memberInfo.Name)?.GetValue(obj, null);
 
                 propertyInfo.SetValue(result, value, null);
             }

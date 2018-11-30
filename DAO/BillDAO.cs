@@ -107,7 +107,7 @@ namespace StoreManagement.DAO
             return listBillEntities;
         }
 
-        public override void insert(Object obj)
+        public override int insert(Object obj)
         {
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Inserting Null Value");
@@ -116,7 +116,7 @@ namespace StoreManagement.DAO
 
             BillHistory billHistory = new BillHistory
             {
-                BillID = newBill.BillID,
+                CashierID = newBill.CashierID,
                 BillDate = newBill.BillDate,
                 TotalPrice = CalculateTotalPrice(newBill.ListProduct)
             };
@@ -138,6 +138,8 @@ namespace StoreManagement.DAO
 
                 context.SaveChanges();
             }
+
+            return billHistory.BillID;
         }
 
         protected override Object convertToEntity(Object obj)
@@ -152,6 +154,7 @@ namespace StoreManagement.DAO
             BillEntity entity = new BillEntity()
             {
                 BillID = billInfo.BillID,
+                CashierID = billInfo.CashierID,
                 BillDate = billInfo.BillDate,
                 ListProduct = listProduct,
                 TotalPrice = CalculateTotalPrice(listProduct)

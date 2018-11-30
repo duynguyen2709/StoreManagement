@@ -36,10 +36,10 @@ namespace StoreManagement.DAO
             return obj;
         }
 
-        public virtual void insert(Object obj)
+        public virtual int insert(Object obj)
         {
             instance = GetDAO(obj.GetType());
-            instance.insert(obj);
+            return instance.insert(obj);
         }
 
         protected static BaseDAO instance;

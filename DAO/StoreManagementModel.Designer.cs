@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\Entities\StoreManagementModel.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\DAO\StoreManagementModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

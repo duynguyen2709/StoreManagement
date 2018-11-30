@@ -83,7 +83,31 @@
     </Compile>
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
-    <Compile Include="Entities\sysdiagram.cs">
+    <Compile Include="DAO\BillDetail.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\BillHistory.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\Product.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\StoreManagementModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\StoreManagementModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\StoreManagementModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\User.cs">
       <DependentUpon>StoreManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilities\CastEntity.cs" />
@@ -91,34 +115,7 @@
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
     <Compile Include="Entities\BillEntity.cs" />
-    <Compile Include="Entities\BillDetail.cs">
-      <DependentUpon>StoreManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\BillHistory.cs">
-      <DependentUpon>StoreManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\Product.cs">
-      <DependentUpon>StoreManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\ProductEntity.cs" />
-    <Compile Include="Entities\StoreManagementModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoreManagementModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\StoreManagementModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoreManagementModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\StoreManagementModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StoreManagementModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\User.cs">
-      <DependentUpon>StoreManagementModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="ManagerDashboard.xaml.cs">
       <DependentUpon>ManagerDashboard.xaml</DependentUpon>
@@ -145,11 +142,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Entities\StoreManagementModel.edmx">
+    <EntityDeploy Include="DAO\StoreManagementModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>StoreManagementModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Entities\StoreManagementModel.edmx.diagram">
+    <None Include="DAO\StoreManagementModel.edmx.diagram">
       <DependentUpon>StoreManagementModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
@@ -174,14 +171,13 @@
   <ItemGroup>
     <Resource Include="Resources\avatar.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Entities\StoreManagementModel.Context.tt">
+    <Content Include="DAO\StoreManagementModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StoreManagementModel.edmx</DependentUpon>
       <LastGenOutput>StoreManagementModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entities\StoreManagementModel.tt">
+    <Content Include="DAO\StoreManagementModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>StoreManagementModel.edmx</DependentUpon>
       <LastGenOutput>StoreManagementModel.cs</LastGenOutput>

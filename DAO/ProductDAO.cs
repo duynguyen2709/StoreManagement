@@ -54,7 +54,7 @@ namespace StoreManagement.DAO
             return listProductEntities;
         }
 
-        public override void insert(Object obj)
+        public override int insert(Object obj)
         {
             if (obj == null)
                 throw new CustomException(this.GetType() + " : Inserting Null Value");
@@ -66,6 +66,8 @@ namespace StoreManagement.DAO
                 context.Products.Add(product);
                 context.SaveChanges();
             }
+
+            return product.ProductID;
         }
 
         protected override Object convertToEntity(Object obj)
