@@ -1,6 +1,5 @@
 ﻿using StoreManagement.Entities;
 using System;
-using StoreManagement.Utilities;
 
 namespace StoreManagement.DAO
 {

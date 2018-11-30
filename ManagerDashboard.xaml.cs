@@ -1,9 +1,7 @@
 ﻿using StoreManagement.DAO;
-using StoreManagement.Entities;
-using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using StoreManagement.Entities;
 
 namespace StoreManagement
 {
@@ -18,6 +16,10 @@ namespace StoreManagement
             BASE_STATE = this.WindowState;
 
             BaseDAO dao = BaseDAO.getInstance();
+            BillEntity entity = dao.get(2, typeof(BillEntity)) as BillEntity;
+            entity.ListProduct.Add(4, 1);
+            dao.update(entity);
+            entity = dao.get(2, typeof(BillEntity)) as BillEntity;
 
             BASE_STATE = this.WindowState;
         }

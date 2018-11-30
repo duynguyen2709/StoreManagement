@@ -2,6 +2,7 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace StoreManagement.DAO
@@ -10,28 +11,42 @@ namespace StoreManagement.DAO
     {
         public override void delete(Object obj)
         {
-            BillEntity entity = obj as BillEntity;
-
-            using (var context = new StoreManagementEntities())
+            try
             {
-                foreach (KeyValuePair<int, int> product in entity.ListProduct)
+                BillEntity entity = obj as BillEntity;
+
+                using (var context = new StoreManagementEntities())
                 {
-                    var detail = (from bill in context.BillDetails
-                                  where bill.BillID == entity.BillID
-                                     && bill.ProductID == product.Key
-                                  select bill)
+                    foreach (KeyValuePair<int, int> product in entity.ListProduct)
+                    {
+                        var detail = (from bill in context.BillDetails
+                                      where bill.BillID == entity.BillID
+                                         && bill.ProductID == product.Key
+                                      select bill)
+                            .Single();
+
+                        context.BillDetails.Remove(detail);
+                    }
+
+                    var history = (from bill in context.BillHistories
+                                   where bill.BillID == entity.BillID
+                                   select bill)
                         .Single();
 
-                    context.BillDetails.Remove(detail);
+                    context.BillHistories.Remove(history);
+                    context.SaveChanges();
                 }
+            }
+            catch (Exception e)
+            {
+                String msg = "";
 
-                var history = (from bill in context.BillHistories
-                               where bill.BillID == entity.BillID
-                               select bill)
-                    .Single();
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Delete " + obj.ToString();
 
-                context.BillHistories.Remove(history);
-                context.SaveChanges();
+                throw new CustomException(msg);
             }
         }
 
@@ -66,40 +81,60 @@ namespace StoreManagement.DAO
                     return entity;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new CustomException(this.GetType() + " : Get Entity");
-            }
+                String msg = "";
 
-            return null;
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Get " + ID;
+
+                throw new CustomException(msg);
+            }
         }
 
         public override Object getAll(Type type = null)
         {
             List<BillEntity> listBillEntities = new List<BillEntity>();
 
-            using (var context = new StoreManagementEntities())
+            try
             {
-                foreach (var bill in context.BillHistories)
+                using (var context = new StoreManagementEntities())
                 {
-                    Dictionary<int, int> lstProduct = new Dictionary<int, int>();
-                    foreach (var billDetail in context.BillDetails)
+                    foreach (var bill in context.BillHistories)
                     {
-                        if (billDetail.BillID == bill.BillID)
+                        Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+
+                        foreach (var billDetail in context.BillDetails)
                         {
-                            lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
+                            if (billDetail.BillID == bill.BillID)
+                            {
+                                lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
+                            }
                         }
+
+                        Object obj = new
+                        {
+                            BillInfo = bill,
+                            ListProduct = lstProduct
+                        };
+
+                        BillEntity entity = convertToEntity(obj) as BillEntity;
+                        listBillEntities.Add(entity);
                     }
-
-                    Object obj = new
-                    {
-                        BillInfo = bill,
-                        ListProduct = lstProduct
-                    };
-
-                    BillEntity entity = convertToEntity(obj) as BillEntity;
-                    listBillEntities.Add(entity);
                 }
+            }
+            catch (Exception e)
+            {
+                String msg = "";
+
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : GetAll ";
+
+                throw new CustomException(msg);
             }
 
             return listBillEntities;
@@ -107,37 +142,108 @@ namespace StoreManagement.DAO
 
         public override int insert(Object obj)
         {
-            if (obj == null)
-                throw new CustomException(this.GetType() + " : Inserting Null Value");
-
-            BillEntity newBill = obj as BillEntity;
-
-            BillHistory billHistory = new BillHistory
+            try
             {
-                CashierID = newBill.CashierID,
-                BillDate = newBill.BillDate,
-                TotalPrice = CalculateTotalPrice(newBill.ListProduct)
-            };
+                if (obj == null)
+                    throw new CustomException(this.GetType() + " : Inserting Null Value");
 
-            using (var context = new StoreManagementEntities())
-            {
-                context.BillHistories.Add(billHistory);
-                foreach (KeyValuePair<int, int> product in newBill.ListProduct)
+                BillEntity newBill = obj as BillEntity;
+
+                BillHistory billHistory = new BillHistory
                 {
-                    BillDetail billDetail = new BillDetail
-                    {
-                        BillID = billHistory.BillID,
-                        ProductID = product.Key,
-                        Quantity = product.Value
-                    };
+                    CashierID = newBill.CashierID,
+                    BillDate = newBill.BillDate,
+                    TotalPrice = CalculateTotalPrice(newBill.ListProduct)
+                };
 
-                    context.BillDetails.Add(billDetail);
+                using (var context = new StoreManagementEntities())
+                {
+                    context.BillHistories.Add(billHistory);
+
+                    foreach (KeyValuePair<int, int> product in newBill.ListProduct)
+                    {
+                        BillDetail billDetail = new BillDetail
+                        {
+                            BillID = billHistory.BillID,
+                            ProductID = product.Key,
+                            Quantity = product.Value
+                        };
+
+                        context.BillDetails.Add(billDetail);
+                    }
+
+                    context.SaveChanges();
                 }
 
-                context.SaveChanges();
+                return billHistory.BillID;
             }
+            catch (Exception e)
+            {
+                String msg = "";
 
-            return billHistory.BillID;
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Insert " + obj.ToString();
+
+                throw new CustomException(msg);
+            }
+        }
+
+        public override void update(object obj)
+        {
+            try
+            {
+                BillEntity entity = obj as BillEntity;
+
+                using (var context = new StoreManagementEntities())
+                {
+                    BillHistory billHistory = context.BillHistories.Find(entity.BillID);
+                    context.Entry(billHistory).CurrentValues.SetValues(entity);
+
+                    Dictionary<int, int> listProduct = entity.ListProduct;
+
+                    foreach (KeyValuePair<int, int> product in listProduct)
+                    {
+                        BillDetail billDetail = context.BillDetails.Find(entity.BillID, product.Key);
+
+                        if (billDetail != null && billDetail.Quantity != product.Value)
+                        {
+                            context.Entry(billDetail)
+                                   .CurrentValues.SetValues(new
+                                   {
+                                       BillID = billDetail.BillID,
+                                       ProductID = product.Key,
+                                       Quantity = product.Value
+                                   });
+                        }
+                        else if (billDetail == null)
+                        {
+                            BillDetail detail = new BillDetail()
+                            {
+                                BillID = entity.BillID,
+                                ProductID = product.Key,
+                                Quantity = product.Value
+                            };
+
+                            context.BillDetails.Add(detail);
+                        }
+                    }
+
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                String msg = "";
+
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Update " + obj.ToString();
+
+                throw new CustomException(msg);
+            }
         }
 
         protected override Object convertToEntity(Object obj)
