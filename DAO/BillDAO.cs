@@ -41,31 +41,29 @@ namespace StoreManagement.DAO
             {
                 using (var context = new StoreManagementEntities())
                 {
-                    foreach (var bill in context.BillHistories)
+                    var bill = context.BillHistories.Find(ID);
+                    if (bill == null)
+                        throw new Exception();
+
+                    Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+
+                    foreach (var billDetail in context.BillDetails)
                     {
-                        if (bill.BillID == ID)
+                        if (billDetail.BillID == ID)
                         {
-                            Dictionary<int, int> lstProduct = new Dictionary<int, int>();
-
-                            foreach (var billDetail in context.BillDetails)
-                            {
-                                if (billDetail.BillID == ID)
-                                {
-                                    lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
-                                }
-                            }
-
-                            Object obj = new
-                            {
-                                BillInfo = bill,
-                                ListProduct = lstProduct
-                            };
-
-                            BillEntity entity = convertToEntity(obj) as BillEntity;
-
-                            return entity;
+                            lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
                         }
                     }
+
+                    Object obj = new
+                    {
+                        BillInfo = bill,
+                        ListProduct = lstProduct
+                    };
+
+                    BillEntity entity = convertToEntity(obj) as BillEntity;
+
+                    return entity;
                 }
             }
             catch (Exception)
@@ -170,8 +168,8 @@ namespace StoreManagement.DAO
 
             foreach (KeyValuePair<int, int> product in listProduct)
             {
-                ProductEntity entity = dao.get(product.Key) as ProductEntity;
-                sum += entity.Price * product.Value;
+                if (dao.get(product.Key) is ProductEntity entity)
+                    sum += entity.Price * product.Value;
             }
 
             return sum;

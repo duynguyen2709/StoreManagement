@@ -42,6 +42,12 @@ namespace StoreManagement.DAO
             return instance.insert(obj);
         }
 
+        public virtual void update(Object obj)
+        {
+            instance = GetDAO(obj.GetType());
+            instance.update(obj);
+        }
+
         protected static BaseDAO instance;
 
         protected BaseDAO()

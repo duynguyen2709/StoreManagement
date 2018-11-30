@@ -19,18 +19,6 @@ namespace StoreManagement
 
             BaseDAO dao = BaseDAO.getInstance();
 
-            UserEntity entity = new UserEntity()
-            {
-                Address = "asd",
-                Birthdate = DateTime.Today,
-                FullName = "test get id",
-                IDCardNumber = "12345",
-                Password = "123",
-                Role = 0,
-                Username = "testgetid"
-            };
-
-            int id = dao.insert(entity);
             BASE_STATE = this.WindowState;
         }
 

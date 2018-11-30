@@ -2,6 +2,7 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 
 namespace StoreManagement.DAO
@@ -10,45 +11,83 @@ namespace StoreManagement.DAO
     {
         public override void delete(Object obj)
         {
-            ProductEntity product = obj as ProductEntity;
-            using (var context = new StoreManagementEntities())
+            try
             {
-                var delete = (from p in context.Products
-                              where product.ProductID == p.ProductID
-                              select p).Single();
-                context.Products.Remove(delete);
-                context.SaveChanges();
+                ProductEntity product = obj as ProductEntity;
+
+                using (var context = new StoreManagementEntities())
+                {
+                    var delete = (from p in context.Products
+                                  where product.ProductID == p.ProductID
+                                  select p).Single();
+
+                    context.Products.Remove(delete);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                String msg = "";
+
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Delete " + obj.ToString();
+
+                throw new CustomException(msg);
             }
         }
 
         public override Object get(int ID, Type type = null)
         {
-            using (var context = new StoreManagementEntities())
+            ProductEntity productEntity = null;
+            try
             {
-                foreach (var product in context.Products)
+                using (var context = new StoreManagementEntities())
                 {
-                    if (product.ProductID == ID)
-                    {
-                        ProductEntity productEntity = product.Cast<ProductEntity>();
-                        return productEntity;
-                    }
+                    productEntity = context.Products.Find(ID).Cast<ProductEntity>();
                 }
             }
+            catch (Exception e)
+            {
+                String msg = "";
 
-            return null;
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : get " + ID;
+
+                throw new CustomException(msg);
+            }
+
+            return productEntity;
         }
 
         public override Object getAll(Type type = null)
         {
             List<ProductEntity> listProductEntities = new List<ProductEntity>();
 
-            using (var context = new StoreManagementEntities())
+            try
             {
-                foreach (var product in context.Products)
+                using (var context = new StoreManagementEntities())
                 {
-                    ProductEntity entity = product.Cast<ProductEntity>();
-                    listProductEntities.Add(entity);
+                    foreach (var product in context.Products)
+                    {
+                        ProductEntity entity = product.Cast<ProductEntity>();
+                        listProductEntities.Add(entity);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                String msg = "";
+
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : GetAll ";
+
+                throw new CustomException(msg);
             }
 
             return listProductEntities;
@@ -56,18 +95,29 @@ namespace StoreManagement.DAO
 
         public override int insert(Object obj)
         {
-            if (obj == null)
-                throw new CustomException(this.GetType() + " : Inserting Null Value");
-
-            var product = obj.Cast<Product>();
-
-            using (var context = new StoreManagementEntities())
+            try
             {
-                context.Products.Add(product);
-                context.SaveChanges();
-            }
+                var product = obj.Cast<Product>();
 
-            return product.ProductID;
+                using (var context = new StoreManagementEntities())
+                {
+                    context.Products.Add(product);
+                    context.SaveChanges();
+                }
+
+                return product.ProductID;
+            }
+            catch (Exception e)
+            {
+                String msg = "";
+
+                if (e is SqlException)
+                    msg = e.InnerException.Message;
+                else
+                    msg = this.GetType() + " : Update " + obj.ToString();
+
+                throw new CustomException(msg);
+            }
         }
 
         protected override Object convertToEntity(Object obj)
