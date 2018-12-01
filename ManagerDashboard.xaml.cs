@@ -1,7 +1,7 @@
 ﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
 using System.Windows;
 using System.Windows.Controls;
-using StoreManagement.Entities;
 
 namespace StoreManagement
 {
@@ -13,14 +13,6 @@ namespace StoreManagement
         public ManagerDashboard()
         {
             InitializeComponent();
-            BASE_STATE = this.WindowState;
-
-            BaseDAO dao = BaseDAO.getInstance();
-            BillEntity entity = dao.get(2, typeof(BillEntity)) as BillEntity;
-            entity.ListProduct.Add(4, 1);
-            dao.update(entity);
-            entity = dao.get(2, typeof(BillEntity)) as BillEntity;
-
             BASE_STATE = this.WindowState;
         }
 
@@ -66,6 +58,10 @@ namespace StoreManagement
                     break;
 
                 case 3:
+
+                    UserEntity entity = new UserEntity();
+
+                    BaseDAO.getInstance().insert(entity);
                     break;
 
                 case 4:

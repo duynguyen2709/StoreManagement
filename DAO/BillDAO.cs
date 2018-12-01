@@ -2,7 +2,6 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace StoreManagement.DAO
@@ -39,14 +38,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Delete " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
             }
         }
 
@@ -83,14 +75,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Get " + ID;
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
             }
         }
 
@@ -127,14 +112,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : GetAll ";
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
             }
 
             return listBillEntities;
@@ -145,7 +123,7 @@ namespace StoreManagement.DAO
             try
             {
                 if (obj == null)
-                    throw new CustomException(this.GetType() + " : Inserting Null Value");
+                    throw new CustomException(this.GetType().Name + " : Inserting Null Value");
 
                 BillEntity newBill = obj as BillEntity;
 
@@ -179,14 +157,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Insert " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
             }
         }
 
@@ -235,21 +206,14 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Update " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Update " + obj.ToString() + "\n" + e.Message);
             }
         }
 
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
-                throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
+                throw new CustomException(this.GetType().Name + " : Converting to Entity Null Value");
 
             Dictionary<int, int> listProduct =
                 obj?.GetType().GetProperty("ListProduct")?.GetValue(obj, null) as Dictionary<int, int>;

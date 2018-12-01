@@ -1,14 +1,9 @@
-﻿using System;
-
-namespace StoreManagement.Entities
+﻿namespace StoreManagement.Entities
 {
     internal class UserEntity
     {
         public UserEntity()
         {
-            Address = FullName = Password = IDCardNumber = Username = "NULL";
-            Birthdate = DateTime.Today;
-            Role = UserID = 0;
         }
 
         public string Address { get; set; }
@@ -26,5 +21,10 @@ namespace StoreManagement.Entities
         public int UserID { get; set; }
 
         public string Username { get; set; }
+
+        public override string ToString()
+        {
+            return (GetType().Name + $"(ID:{UserID})");
+        }
     }
 }

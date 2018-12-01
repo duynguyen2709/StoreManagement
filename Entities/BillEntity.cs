@@ -7,9 +7,7 @@ namespace StoreManagement.Entities
     {
         public BillEntity()
         {
-            BillDate = DateTime.Today;
             ListProduct = new Dictionary<int, int>();
-            TotalPrice = BillID = CashierID = 0;
         }
 
         public DateTime BillDate { get; set; }
@@ -22,5 +20,10 @@ namespace StoreManagement.Entities
         public Dictionary<int, int> ListProduct { get; set; }
 
         public long TotalPrice { get; set; }
+
+        public override string ToString()
+        {
+            return (GetType().Name + $"(ID:{BillID})");
+        }
     }
 }

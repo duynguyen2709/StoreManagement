@@ -1,4 +1,5 @@
 ﻿using StoreManagement.Entities;
+using StoreManagement.Utilities;
 using System;
 
 namespace StoreManagement.DAO
@@ -15,36 +16,78 @@ namespace StoreManagement.DAO
 
         public virtual void delete(Object obj)
         {
-            instance = GetDAO(obj.GetType());
-            instance.delete(obj);
+            try
+            {
+                instance = GetDAO(obj.GetType());
+                instance.delete(obj);
+            }
+            catch (CustomException e)
+            {
+                e.showPopupError();
+            }
         }
 
         public virtual Object get(int ID, Type type = null)
         {
-            instance = GetDAO(type);
-            Object obj = instance.get(ID);
+            try
+            {
+                instance = GetDAO(type);
+                Object obj = instance.get(ID);
 
-            return obj;
+                return obj;
+            }
+            catch (CustomException e)
+            {
+                e.showPopupError();
+            }
+
+            return null;
         }
 
         public virtual Object getAll(Type type = null)
         {
-            instance = GetDAO(type);
-            Object obj = instance.getAll();
+            try
+            {
+                instance = GetDAO(type);
+                Object obj = instance.getAll();
 
-            return obj;
+                return obj;
+            }
+            catch (CustomException e)
+            {
+                e.showPopupError();
+            }
+
+            return null;
         }
 
         public virtual int insert(Object obj)
         {
-            instance = GetDAO(obj.GetType());
-            return instance.insert(obj);
+            try
+            {
+                instance = GetDAO(obj.GetType());
+
+                return instance.insert(obj);
+            }
+            catch (CustomException e)
+            {
+                e.showPopupError();
+            }
+
+            return -1;
         }
 
         public virtual void update(Object obj)
         {
-            instance = GetDAO(obj.GetType());
-            instance.update(obj);
+            try
+            {
+                instance = GetDAO(obj.GetType());
+                instance.update(obj);
+            }
+            catch (CustomException e)
+            {
+                e.showPopupError();
+            }
         }
 
         protected static BaseDAO instance;

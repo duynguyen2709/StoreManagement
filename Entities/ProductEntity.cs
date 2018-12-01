@@ -4,8 +4,6 @@
     {
         public ProductEntity()
         {
-            ProductName = Brand = Type = Description = ImageURL = "NULL";
-            Price = Quantity = 0;
         }
 
         public string Brand { get; set; }
@@ -23,5 +21,10 @@
         public int Quantity { get; set; }
 
         public string Type { get; set; }
+
+        public override string ToString()
+        {
+            return (GetType().Name + $"(ID:{ProductID})");
+        }
     }
 }

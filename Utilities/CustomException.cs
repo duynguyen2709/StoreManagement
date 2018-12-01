@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace StoreManagement.Utilities
 {
@@ -10,5 +11,10 @@ namespace StoreManagement.Utilities
         }
 
         public String Error { get; set; }
+
+        public void showPopupError()
+        {
+            MessageBox.Show(Error, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

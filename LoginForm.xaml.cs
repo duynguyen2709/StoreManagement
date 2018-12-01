@@ -1,6 +1,5 @@
-﻿using StoreManagement.Entities;
+﻿using StoreManagement.DAO;
 using System.Windows;
-using StoreManagement.DAO;
 
 namespace StoreManagement
 {

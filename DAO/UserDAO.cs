@@ -2,7 +2,6 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace StoreManagement.DAO
@@ -27,14 +26,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Delete " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
             }
         }
 
@@ -51,14 +43,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Get " + ID;
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
             }
 
             return userEntity;
@@ -81,7 +66,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType() + " : GetAll");
+                throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
             }
 
             return listUserEntities;
@@ -104,14 +89,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Insert " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
             }
         }
 
@@ -130,21 +108,14 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Update " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Update " + obj.ToString() + "\n" + e.Message);
             }
         }
 
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
-                throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
+                throw new CustomException(this.GetType().Name + " : Converting to Entity Null Value");
 
             UserEntity entity = obj.Cast<UserEntity>();
 

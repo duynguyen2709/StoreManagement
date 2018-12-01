@@ -2,7 +2,6 @@
 using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace StoreManagement.DAO
@@ -27,14 +26,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Delete " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
             }
         }
 
@@ -50,14 +42,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : get " + ID;
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
             }
 
             return productEntity;
@@ -80,14 +65,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : GetAll ";
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
             }
 
             return listProductEntities;
@@ -109,21 +87,14 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                String msg = "";
-
-                if (e is SqlException)
-                    msg = e.InnerException.Message;
-                else
-                    msg = this.GetType() + " : Update " + obj.ToString();
-
-                throw new CustomException(msg);
+                throw new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
             }
         }
 
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
-                throw new CustomException(this.GetType() + " : Converting to Entity Null Value");
+                throw new CustomException(this.GetType().Name + " : Converting to Entity Null Value");
 
             ProductEntity entity = obj.Cast<ProductEntity>();
 
