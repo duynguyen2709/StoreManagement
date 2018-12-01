@@ -34,6 +34,10 @@ namespace StoreManagement
                     break;
 
                 case 1:
+                    var cashierDashboard = new CashierDashboard();
+                    cashierDashboard.Show();
+                    this.Close();
+                    break;
 
                     break;
 
