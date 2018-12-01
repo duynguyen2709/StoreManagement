@@ -27,7 +27,7 @@ namespace StoreManagement.DAO
             }
         }
 
-        public virtual Object get(int ID, Type type = null)
+        public virtual Object get(Object ID, Type type = null)
         {
             try
             {
@@ -109,6 +109,8 @@ namespace StoreManagement.DAO
                 instance = new ProductDAO();
             else if (type == typeof(BillEntity))
                 instance = new BillDAO();
+            else if (type == typeof(GoodsImportEntity))
+                instance = new GoodsImportDAO();
 
             return instance;
         }

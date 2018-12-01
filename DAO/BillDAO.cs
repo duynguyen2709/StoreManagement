@@ -42,7 +42,7 @@ namespace StoreManagement.DAO
             }
         }
 
-        public override Object get(int ID, Type type = null)
+        public override object get(Object ID, Type type = null)
         {
             try
             {
@@ -56,7 +56,7 @@ namespace StoreManagement.DAO
 
                     foreach (var billDetail in context.BillDetails)
                     {
-                        if (billDetail.BillID == ID)
+                        if (billDetail.BillID == (int)ID)
                         {
                             lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
                         }

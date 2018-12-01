@@ -39,10 +39,10 @@ namespace StoreManagement
                     this.Close();
                     break;
 
-                    break;
-
                 case 2:
-
+                    var storageManagerDashboard = new StorageManagerDashboard();
+                    storageManagerDashboard.Show();
+                    this.Close();
                     break;
 
                 default:

@@ -8,7 +8,7 @@
         mc:Ignorable="d" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid Background="#FFEEEEEE">
         <StackPanel VerticalAlignment="Top">
-            <Grid Background="#FF32AD40" Height="50">
+            <Grid Background="#FF28C76F" Height="50">
                 <Grid>
                     <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                         <TextBlock Text="CASHIER DASHBOARD" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontFamily="Lato" Margin="20 0" FontWeight="Bold" Foreground="#FF20491E" />

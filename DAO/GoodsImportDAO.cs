@@ -6,21 +6,25 @@ using System.Linq;
 
 namespace StoreManagement.DAO
 {
-    internal class UserDAO : BaseDAO
+    internal class GoodsImportDAO : BaseDAO
     {
         public override void delete(Object obj)
         {
             try
             {
-                UserEntity user = obj as UserEntity;
+                GoodsImportEntity entity = obj as GoodsImportEntity;
 
                 using (var context = new StoreManagementEntities())
                 {
-                    var delete = (from u in context.Users
-                                  where user.UserID == u.UserID
+                    var delete = (from u in context.GoodsImportHistories
+                                  where entity.ImportDate == u.ImportDate
                                   select u).Single();
 
-                    context.Users.Remove(delete);
+                    context.GoodsImportHistories.Remove(delete);
+
+                    var product = context.Products.Find(entity.ProductID);
+                    product.Quantity += entity.Quantity;
+
                     context.SaveChanges();
                 }
             }
@@ -30,15 +34,18 @@ namespace StoreManagement.DAO
             }
         }
 
-        public override object get(Object ID, Type type = null)
+        public override object get(object ID, Type type = null)
         {
-            UserEntity userEntity = null;
+            GoodsImportEntity entity = null;
 
             try
             {
+                DateTime ImportDate = (DateTime)ID?.GetType().GetProperty("ImportDate")?.GetValue(ID, null);
+                int ProductID = (int)ID?.GetType().GetProperty("ProductID")?.GetValue(ID, null);
+
                 using (var context = new StoreManagementEntities())
                 {
-                    userEntity = context.Users.Find(ID).Cast<UserEntity>();
+                    entity = context.GoodsImportHistories.Find(ImportDate, ProductID).Cast<GoodsImportEntity>();
                 }
             }
             catch (Exception e)
@@ -46,21 +53,21 @@ namespace StoreManagement.DAO
                 throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
             }
 
-            return userEntity;
+            return entity;
         }
 
         public override Object getAll(Type type = null)
         {
-            List<UserEntity> listUserEntities = new List<UserEntity>();
+            List<GoodsImportEntity> listGoodsImportEntities = new List<GoodsImportEntity>();
 
             try
             {
                 using (var context = new StoreManagementEntities())
                 {
-                    foreach (var user in context.Users)
+                    foreach (var obj in context.GoodsImportHistories)
                     {
-                        UserEntity entity = user.Cast<UserEntity>();
-                        listUserEntities.Add(entity);
+                        GoodsImportEntity entity = obj.Cast<GoodsImportEntity>();
+                        listGoodsImportEntities.Add(entity);
                     }
                 }
             }
@@ -69,23 +76,25 @@ namespace StoreManagement.DAO
                 throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
             }
 
-            return listUserEntities;
+            return listGoodsImportEntities;
         }
 
         public override int insert(Object obj)
         {
             try
             {
-                var newUser = obj as UserEntity;
-                User user = newUser.Cast<User>();
+                var newEntity = obj as GoodsImportEntity;
+                GoodsImportHistory entity = newEntity.Cast<GoodsImportHistory>();
 
                 using (var context = new StoreManagementEntities())
                 {
-                    context.Users.Add(user);
+                    context.GoodsImportHistories.Add(entity);
+                    var product = context.Products.Find(entity.ProductID);
+                    product.Quantity += entity.Quantity;
                     context.SaveChanges();
                 }
 
-                return user.UserID;
+                return (int)entity.ImportDate.ToBinary();
             }
             catch (Exception e)
             {
@@ -97,12 +106,18 @@ namespace StoreManagement.DAO
         {
             try
             {
-                UserEntity user = obj as UserEntity;
+                GoodsImportEntity entity = obj as GoodsImportEntity;
 
                 using (var context = new StoreManagementEntities())
                 {
-                    var oldUser = context.Users.Find(user.UserID);
-                    context.Entry(oldUser).CurrentValues.SetValues(user);
+                    var old = context.GoodsImportHistories.Find(entity.ImportDate, entity.ProductID);
+                    var oldQuantity = old.Quantity;
+
+                    context.Entry(old).CurrentValues.SetValues(entity);
+
+                    var product = context.Products.Find(entity.ProductID);
+                    product.Quantity = product.Quantity - oldQuantity + entity.Quantity;
+
                     context.SaveChanges();
                 }
             }
@@ -117,7 +132,7 @@ namespace StoreManagement.DAO
             if (obj == null)
                 throw new CustomException(this.GetType().Name + " : Converting to Entity Null Value");
 
-            UserEntity entity = obj.Cast<UserEntity>();
+            GoodsImportEntity entity = obj.Cast<GoodsImportEntity>();
 
             return entity;
         }

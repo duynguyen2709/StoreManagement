@@ -7,11 +7,13 @@
       <Diagram DiagramId="03c9de53995145f9be9e392ff73c3c28" Name="Diagram1">
         <EntityTypeShape EntityType="StoreManagementModel.BillDetail" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
         <EntityTypeShape EntityType="StoreManagementModel.BillHistory" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="StoreManagementModel.Product" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StoreManagementModel.Product" Width="1.5" PointX="3.125" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="StoreManagementModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="StoreManagementModel.FK_BillDetail_BillHistory" ManuallyRouted="false" />
         <AssociationConnector Association="StoreManagementModel.FK_BillDetail_Product" ManuallyRouted="false" />
         <AssociationConnector Association="StoreManagementModel.FK_BillHistory_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StoreManagementModel.GoodsImportHistory" Width="1.5" PointX="0.5" PointY="4.625" />
+        <AssociationConnector Association="StoreManagementModel.FK_GoodsInputHistory_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -30,7 +30,7 @@ namespace StoreManagement.DAO
             }
         }
 
-        public override Object get(int ID, Type type = null)
+        public override object get(Object ID, Type type = null)
         {
             ProductEntity productEntity = null;
             try

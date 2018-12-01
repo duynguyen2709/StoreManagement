@@ -18,6 +18,7 @@ namespace StoreManagement.DAO
         public Product()
         {
             this.BillDetails = new HashSet<BillDetail>();
+            this.GoodsImportHistories = new HashSet<GoodsImportHistory>();
         }
     
         public int ProductID { get; set; }
@@ -31,5 +32,7 @@ namespace StoreManagement.DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GoodsImportHistory> GoodsImportHistories { get; set; }
     }
 }

@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="StorageManagerDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CashierDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,6 +88,14 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DAO\GoodsImportHistory.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\GoodsImportDAO.cs" />
+    <Compile Include="Entities\GoodsImportEntity.cs" />
+    <Compile Include="StorageManagerDashboard.xaml.cs">
+      <DependentUpon>StorageManagerDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAO\BaseDAO.cs" />
     <Compile Include="DAO\BillDAO.cs" />
