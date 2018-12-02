@@ -26,7 +26,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
             }
         }
 
@@ -43,7 +44,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
+                ex.showPopupError();
             }
 
             return userEntity;
@@ -66,7 +68,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
+                ex.showPopupError();
             }
 
             return listUserEntities;
@@ -89,8 +92,11 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
             }
+
+            return -1;
         }
 
         public override void update(Object obj)
@@ -108,7 +114,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Update " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Update " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
             }
         }
 

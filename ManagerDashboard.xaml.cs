@@ -1,7 +1,9 @@
-﻿using StoreManagement.DAO;
+﻿using System;
+using StoreManagement.DAO;
 using StoreManagement.Entities;
 using System.Windows;
 using System.Windows.Controls;
+using StoreManagement.Utilities;
 
 namespace StoreManagement
 {
@@ -60,8 +62,8 @@ namespace StoreManagement
                 case 3:
 
                     UserEntity entity = new UserEntity();
-
                     BaseDAO.getInstance().insert(entity);
+
                     break;
 
                 case 4:

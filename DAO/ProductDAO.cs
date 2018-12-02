@@ -26,7 +26,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
             }
         }
 
@@ -42,7 +43,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
+                ex.showPopupError();
             }
 
             return productEntity;
@@ -65,7 +67,8 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
+                ex.showPopupError();
             }
 
             return listProductEntities;
@@ -87,8 +90,11 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                throw new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
             }
+
+            return -1;
         }
 
         protected override Object convertToEntity(Object obj)
