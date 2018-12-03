@@ -50,6 +50,7 @@
     <Property Name="IDCardNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
     <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="BillHistories" Relationship="Self.FK_BillHistory_User" FromRole="User" ToRole="BillHistory" />
+    <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="User" ToRole="ShiftRegistration" />
   </EntityType>
   <Association Name="FK_BillDetail_BillHistory">
     <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="1" />
@@ -109,6 +110,16 @@
       <End Role="Product" EntitySet="Products" />
       <End Role="GoodsImportHistory" EntitySet="GoodsImportHistories" />
     </AssociationSet>
+    <EntitySet Name="ShiftRegistrations" EntityType="StoreManagementModel.ShiftRegistration" />
+    <EntitySet Name="ShiftTimes" EntityType="StoreManagementModel.ShiftTime" />
+    <AssociationSet Name="FK_ShiftRegistration_ShiftTime" Association="StoreManagementModel.FK_ShiftRegistration_ShiftTime">
+      <End Role="ShiftTime" EntitySet="ShiftTimes" />
+      <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShiftRegistration_User" Association="StoreManagementModel.FK_ShiftRegistration_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="GoodsImportHistory">
     <Key>
@@ -129,6 +140,55 @@
       </Principal>
       <Dependent Role="GoodsImportHistory">
         <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ShiftRegistration">
+    <Key>
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="WeekDay" />
+      <PropertyRef Name="Shift" />
+    </Key>
+    <Property Name="CashierID" Type="Int32" Nullable="false" />
+    <Property Name="Week" Type="Int32" Nullable="false" />
+    <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShiftTime" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftRegistration" ToRole="ShiftTime" />
+    <NavigationProperty Name="User" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="ShiftRegistration" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ShiftTime">
+    <Key>
+      <PropertyRef Name="WeekDay" />
+      <PropertyRef Name="Shift" />
+    </Key>
+    <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftTime" ToRole="ShiftRegistration" />
+  </EntityType>
+  <Association Name="FK_ShiftRegistration_ShiftTime">
+    <End Type="StoreManagementModel.ShiftTime" Role="ShiftTime" Multiplicity="1" />
+    <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftTime">
+        <PropertyRef Name="WeekDay" />
+        <PropertyRef Name="Shift" />
+      </Principal>
+      <Dependent Role="ShiftRegistration">
+        <PropertyRef Name="WeekDay" />
+        <PropertyRef Name="Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShiftRegistration_User">
+    <End Type="StoreManagementModel.User" Role="User" Multiplicity="1" />
+    <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ShiftRegistration">
+        <PropertyRef Name="CashierID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

@@ -45,6 +45,26 @@
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="ImageURL" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
+        <EntityType Name="ShiftRegistration">
+          <Key>
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="WeekDay" />
+            <PropertyRef Name="Shift" />
+          </Key>
+          <Property Name="CashierID" Type="int" Nullable="false" />
+          <Property Name="Week" Type="int" Nullable="false" />
+          <Property Name="WeekDay" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Shift" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShiftTime">
+          <Key>
+            <PropertyRef Name="WeekDay" />
+            <PropertyRef Name="Shift" />
+          </Key>
+          <Property Name="WeekDay" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Shift" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="UserID" />
@@ -106,11 +126,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ShiftRegistration_ShiftTime">
+          <End Role="ShiftTime" Type="Self.ShiftTime" Multiplicity="1" />
+          <End Role="ShiftRegistration" Type="Self.ShiftRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftTime">
+              <PropertyRef Name="WeekDay" />
+              <PropertyRef Name="Shift" />
+            </Principal>
+            <Dependent Role="ShiftRegistration">
+              <PropertyRef Name="WeekDay" />
+              <PropertyRef Name="Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRegistration_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="ShiftRegistration" Type="Self.ShiftRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ShiftRegistration">
+              <PropertyRef Name="CashierID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="StoreManagementModelStoreContainer">
           <EntitySet Name="BillDetail" EntityType="Self.BillDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BillHistory" EntityType="Self.BillHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GoodsImportHistory" EntityType="Self.GoodsImportHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShiftRegistration" EntityType="Self.ShiftRegistration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShiftTime" EntityType="Self.ShiftTime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_BillDetail_BillHistory" Association="Self.FK_BillDetail_BillHistory">
             <End Role="BillHistory" EntitySet="BillHistory" />
@@ -127,6 +175,14 @@
           <AssociationSet Name="FK_GoodsInputHistory_Product" Association="Self.FK_GoodsInputHistory_Product">
             <End Role="Product" EntitySet="Product" />
             <End Role="GoodsImportHistory" EntitySet="GoodsImportHistory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRegistration_ShiftTime" Association="Self.FK_ShiftRegistration_ShiftTime">
+            <End Role="ShiftTime" EntitySet="ShiftTime" />
+            <End Role="ShiftRegistration" EntitySet="ShiftRegistration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRegistration_User" Association="Self.FK_ShiftRegistration_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="ShiftRegistration" EntitySet="ShiftRegistration" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -183,6 +239,7 @@
           <Property Name="IDCardNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="BillHistories" Relationship="Self.FK_BillHistory_User" FromRole="User" ToRole="BillHistory" />
+          <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="User" ToRole="ShiftRegistration" />
         </EntityType>
         <Association Name="FK_BillDetail_BillHistory">
           <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="1" />
@@ -242,6 +299,16 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="GoodsImportHistory" EntitySet="GoodsImportHistories" />
           </AssociationSet>
+          <EntitySet Name="ShiftRegistrations" EntityType="StoreManagementModel.ShiftRegistration" />
+          <EntitySet Name="ShiftTimes" EntityType="StoreManagementModel.ShiftTime" />
+          <AssociationSet Name="FK_ShiftRegistration_ShiftTime" Association="StoreManagementModel.FK_ShiftRegistration_ShiftTime">
+            <End Role="ShiftTime" EntitySet="ShiftTimes" />
+            <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShiftRegistration_User" Association="StoreManagementModel.FK_ShiftRegistration_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="GoodsImportHistory">
           <Key>
@@ -262,6 +329,55 @@
             </Principal>
             <Dependent Role="GoodsImportHistory">
               <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShiftRegistration">
+          <Key>
+            <PropertyRef Name="Week" />
+            <PropertyRef Name="WeekDay" />
+            <PropertyRef Name="Shift" />
+          </Key>
+          <Property Name="CashierID" Type="Int32" Nullable="false" />
+          <Property Name="Week" Type="Int32" Nullable="false" />
+          <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Shift" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ShiftTime" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftRegistration" ToRole="ShiftTime" />
+          <NavigationProperty Name="User" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="ShiftRegistration" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ShiftTime">
+          <Key>
+            <PropertyRef Name="WeekDay" />
+            <PropertyRef Name="Shift" />
+          </Key>
+          <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Shift" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftTime" ToRole="ShiftRegistration" />
+        </EntityType>
+        <Association Name="FK_ShiftRegistration_ShiftTime">
+          <End Type="StoreManagementModel.ShiftTime" Role="ShiftTime" Multiplicity="1" />
+          <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ShiftTime">
+              <PropertyRef Name="WeekDay" />
+              <PropertyRef Name="Shift" />
+            </Principal>
+            <Dependent Role="ShiftRegistration">
+              <PropertyRef Name="WeekDay" />
+              <PropertyRef Name="Shift" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShiftRegistration_User">
+          <End Type="StoreManagementModel.User" Role="User" Multiplicity="1" />
+          <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ShiftRegistration">
+              <PropertyRef Name="CashierID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,6 +440,25 @@
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="ProductID" ColumnName="ProductID" />
                 <ScalarProperty Name="ImportDate" ColumnName="ImportDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShiftRegistrations">
+            <EntityTypeMapping TypeName="StoreManagementModel.ShiftRegistration">
+              <MappingFragment StoreEntitySet="ShiftRegistration">
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+                <ScalarProperty Name="Week" ColumnName="Week" />
+                <ScalarProperty Name="CashierID" ColumnName="CashierID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShiftTimes">
+            <EntityTypeMapping TypeName="StoreManagementModel.ShiftTime">
+              <MappingFragment StoreEntitySet="ShiftTime">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Shift" ColumnName="Shift" />
+                <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

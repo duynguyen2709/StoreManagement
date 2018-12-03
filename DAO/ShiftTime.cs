@@ -7,32 +7,42 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Linq;
+
 namespace StoreManagement.DAO
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class ShiftTime
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public ShiftTime()
         {
-            this.BillHistories = new HashSet<BillHistory>();
             this.ShiftRegistrations = new HashSet<ShiftRegistration>();
         }
     
-        public int UserID { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public int Role { get; set; }
-        public string FullName { get; set; }
-        public System.DateTime Birthdate { get; set; }
-        public string IDCardNumber { get; set; }
-        public string Address { get; set; }
+        public string WeekDay { get; set; }
+        public int Shift { get; set; }
+        public int Status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillHistory> BillHistories { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShiftRegistration> ShiftRegistrations { get; set; }
+
+        public static List<ShiftTime> getAllShift(){
+            using ( var context = new StoreManagementEntities() ) {
+                return context.ShiftTimes.ToList();
+            }
+        }
+
+        public static void resetShift(){
+            using ( var context = new StoreManagementEntities() ) {
+                foreach ( var shift in context.ShiftTimes ) {
+                    shift.Status = 1;
+                }
+
+                context.SaveChanges();
+            }
+        }
     }
 }

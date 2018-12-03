@@ -15,6 +15,7 @@ namespace StoreManagement
         public ManagerDashboard()
         {
             InitializeComponent();
+
             BASE_STATE = this.WindowState;
         }
 
@@ -60,16 +61,14 @@ namespace StoreManagement
                     break;
 
                 case 3:
-
-                    UserEntity entity = new UserEntity();
-                    BaseDAO.getInstance().insert(entity);
-
                     break;
 
                 case 4:
                     break;
 
                 case 5:
+
+                case 6:
                     var loginForm = new LoginForm();
                     loginForm.Show();
                     this.Close();

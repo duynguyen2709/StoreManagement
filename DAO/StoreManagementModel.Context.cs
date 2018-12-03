@@ -30,5 +30,7 @@ namespace StoreManagement.DAO
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<GoodsImportHistory> GoodsImportHistories { get; set; }
+        public virtual DbSet<ShiftRegistration> ShiftRegistrations { get; set; }
+        public virtual DbSet<ShiftTime> ShiftTimes { get; set; }
     }
 }

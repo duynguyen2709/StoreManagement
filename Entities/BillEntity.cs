@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace StoreManagement.Entities
 {
-    public partial class BillEntity
+    internal class BillEntity
     {
         public BillEntity()
         {

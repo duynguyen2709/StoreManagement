@@ -57,5 +57,24 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ShiftRegistrations">
+      <EntityTypeMapping TypeName="StoreManagementModel.ShiftRegistration">
+        <MappingFragment StoreEntitySet="ShiftRegistration">
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+          <ScalarProperty Name="Week" ColumnName="Week" />
+          <ScalarProperty Name="CashierID" ColumnName="CashierID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShiftTimes">
+      <EntityTypeMapping TypeName="StoreManagementModel.ShiftTime">
+        <MappingFragment StoreEntitySet="ShiftTime">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Shift" ColumnName="Shift" />
+          <ScalarProperty Name="WeekDay" ColumnName="WeekDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

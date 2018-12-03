@@ -14,6 +14,10 @@
         <AssociationConnector Association="StoreManagementModel.FK_BillHistory_User" ManuallyRouted="false" />
         <EntityTypeShape EntityType="StoreManagementModel.GoodsImportHistory" Width="1.5" PointX="0.5" PointY="4.625" />
         <AssociationConnector Association="StoreManagementModel.FK_GoodsInputHistory_Product" />
+        <EntityTypeShape EntityType="StoreManagementModel.ShiftRegistration" Width="1.5" PointX="8.25" PointY="3.875" />
+        <EntityTypeShape EntityType="StoreManagementModel.ShiftTime" Width="1.5" PointX="6" PointY="6.75" />
+        <AssociationConnector Association="StoreManagementModel.FK_ShiftRegistration_ShiftTime" />
+        <AssociationConnector Association="StoreManagementModel.FK_ShiftRegistration_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

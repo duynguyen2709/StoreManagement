@@ -111,6 +111,8 @@ namespace StoreManagement.DAO
                 instance = new BillDAO();
             else if (type == typeof(GoodsImportEntity))
                 instance = new GoodsImportDAO();
+            else if (type == typeof(UserShiftEntity))
+                instance = new ShiftDAO();
 
             return instance;
         }

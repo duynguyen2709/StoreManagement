@@ -93,7 +93,15 @@
       <DependentUpon>StoreManagementModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAO\GoodsImportDAO.cs" />
+    <Compile Include="DAO\ShiftDAO.cs" />
+    <Compile Include="DAO\ShiftRegistration.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAO\ShiftTime.cs">
+      <DependentUpon>StoreManagementModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\GoodsImportEntity.cs" />
+    <Compile Include="Entities\UserShiftEntity.cs" />
     <Compile Include="StorageManagerDashboard.xaml.cs">
       <DependentUpon>StorageManagerDashboard.xaml</DependentUpon>
     </Compile>
