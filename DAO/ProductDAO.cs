@@ -97,6 +97,26 @@ namespace StoreManagement.DAO
             return -1;
         }
 
+        public override void update(Object obj)
+        {
+            try
+            {
+                ProductEntity product = obj as ProductEntity;
+
+                using (var context = new StoreManagementEntities())
+                {
+                    var oldProduct = context.Products.Find(product.ProductID);
+                    context.Entry(oldProduct).CurrentValues.SetValues(product);
+                    context.SaveChanges();
+                }
+            }
+            catch (Exception e)
+            {
+                CustomException ex = new CustomException(this.GetType().Name + " : Update " + obj.ToString() + "\n" + e.Message);
+                ex.showPopupError();
+            }
+        }
+
         protected override Object convertToEntity(Object obj)
         {
             if (obj == null)
