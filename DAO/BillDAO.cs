@@ -185,6 +185,7 @@ namespace StoreManagement.DAO
                 {
                     BillHistory billHistory = context.BillHistories.Find(entity.BillID);
                     context.Entry(billHistory).CurrentValues.SetValues(entity);
+                    billHistory.TotalPrice = CalculateTotalPrice(entity.ListProduct);
 
                     Dictionary<int, int> listProduct = entity.ListProduct;
 
