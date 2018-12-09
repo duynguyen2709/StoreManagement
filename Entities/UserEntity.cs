@@ -1,6 +1,6 @@
 ﻿namespace StoreManagement.Entities
 {
-    internal class UserEntity
+    public class UserEntity
     {
         public UserEntity()
         {

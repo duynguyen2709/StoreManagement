@@ -1,6 +1,6 @@
 ﻿namespace StoreManagement.Entities
 {
-    internal class GoodsImportEntity
+    public class GoodsImportEntity
     {
         public GoodsImportEntity()
         {

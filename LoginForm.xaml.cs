@@ -8,6 +8,9 @@ namespace StoreManagement
     /// </summary>
     public partial class LoginForm : Window
     {
+        //lay iduser
+        static public int Idcashier;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -61,7 +64,11 @@ namespace StoreManagement
                 foreach (var user in context.Users)
                 {
                     if (user.Username == username && user.Password == password)
+                    {
+                        //lay iduser
+                        Idcashier = user.UserID;
                         return user.Role;
+                    }
                 }
             }
 

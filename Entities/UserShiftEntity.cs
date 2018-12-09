@@ -1,6 +1,6 @@
 ﻿namespace StoreManagement.Entities
 {
-    internal class UserShiftEntity
+    public class UserShiftEntity
     {
         public UserShiftEntity()
         {

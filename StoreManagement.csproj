@@ -69,6 +69,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Infobill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StorageManagerDashboard.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -102,6 +106,9 @@
     </Compile>
     <Compile Include="Entities\GoodsImportEntity.cs" />
     <Compile Include="Entities\UserShiftEntity.cs" />
+    <Compile Include="Infobill.xaml.cs">
+      <DependentUpon>Infobill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StorageManagerDashboard.xaml.cs">
       <DependentUpon>StorageManagerDashboard.xaml</DependentUpon>
     </Compile>
@@ -137,6 +144,19 @@
     <Compile Include="CashierDashboard.xaml.cs">
       <DependentUpon>CashierDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\basket.xaml.cs">
+      <DependentUpon>basket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\infobasket.cs" />
+    <Compile Include="UserControls\sale.xaml.cs">
+      <DependentUpon>sale.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\updatebill.xaml.cs">
+      <DependentUpon>updatebill.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\updatedetailbill.xaml.cs">
+      <DependentUpon>updatedetailbill.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\CastEntity.cs" />
     <Compile Include="Utilities\CustomException.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
@@ -150,6 +170,22 @@
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\basket.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\sale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\updatebill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\updatedetailbill.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

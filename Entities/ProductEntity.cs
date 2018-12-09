@@ -1,6 +1,6 @@
 ﻿namespace StoreManagement.Entities
 {
-    internal class ProductEntity
+    public class ProductEntity
     {
         public ProductEntity()
         {

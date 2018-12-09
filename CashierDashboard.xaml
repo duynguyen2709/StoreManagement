@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreManagement"
+        xmlns:usercontrol="clr-namespace:StoreManagement.UserControls"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Grid Background="#FFEEEEEE">
@@ -35,7 +36,12 @@
         </StackPanel>
 
         <Grid Margin="250 55 0 0">
-            <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <usercontrol:sale x:Name="selling" Visibility="Hidden">
+            </usercontrol:sale>
+            <usercontrol:basket x:Name="basket" Visibility="Hidden">
+            </usercontrol:basket>
+            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden">
+            </usercontrol:updatebill>
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">
