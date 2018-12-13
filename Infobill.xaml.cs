@@ -3,11 +3,19 @@ using StoreManagement.Entities;
 using StoreManagement.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace StoreManagement
 {
@@ -22,11 +30,58 @@ namespace StoreManagement
         public Infobill()
         {
             InitializeComponent();
+            
         }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            listbill.ItemsSource = sale.baskets;
+            
+            long tong = 0;
+            for (int i = 0; i < sale.baskets.Count(); i++)
+            {
+                sale.baskets[i].Number = i+1;
+                long z = sale.baskets[i].Price;
+
+                tong += z * sale.baskets[i].Size;
+            }
+
+            total.Text = tong.ToString();
+        }
+
+        private void Receive_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                if (receive.Text != "" && total.Text != "")
+                {
+                    if((long.Parse(receive.Text) - long.Parse(total.Text))>=0)
+                    {
+                        decimal value = 0.00M;
+
+                        value = Convert.ToDecimal((long.Parse(receive.Text) - long.Parse(total.Text)));
+
+                        sparecash.Text = value.ToString("C");
+                    }
+                    else
+                    {
+                        sparecash.Text = "";
+
+                    }
+
+                    
+
+                }
+            }
+            catch { }
+            
+        }
+
+
+        private void Receive_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
@@ -35,73 +90,50 @@ namespace StoreManagement
             switch (result)
             {
                 case MessageBoxResult.Yes:
-
+                   
+                    
                     //cap nhat database
                     //cap nhat BillHistory
                     //cap nhat Detail Bill
                     //init
                     //BaseDAO dao1 = BaseDAO
-                    int tmpIdCashier = LoginForm.Idcashier;
-
+                   int tmpIdCashier = LoginForm.Idcashier;
+                   
                     //chuyen sale.basket sang dang directory
                     Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
-                    for (int i = 0; i < sale.baskets.Count; i++)
+                    for (int i=0;i<sale.baskets.Count;i++)
                     {
+                        
                         tmpbasket.Add(sale.baskets[i].ProductID, sale.baskets[i].size);
                     }
-
+                    
                     //create new bill
                     BillEntity bill = new BillEntity()
                     {
                         //set date
                         BillDate = DateTime.Today,
-
                         //add list product
                         ListProduct = tmpbasket,
-
                         //set ID cashier
                         CashierID = tmpIdCashier
                     };
-
                     //insert and get new bill ID
                     BaseDAO dao = new BillDAO();
                     int billID = dao.insert(bill);
-
                     //bao hieu cap nhat listitems
                     flag = true;
                     this.Close();
-
                     sale.baskets.Clear();
                     break;
-
                 case MessageBoxResult.No:
                     break;
+
             }
         }
 
-        private void Receive_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void Receive_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (receive.Text != "" && total.Text != "")
-                sparecash.Text = (long.Parse(receive.Text) - long.Parse(total.Text)).ToString();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            listbill.ItemsSource = sale.baskets;
-            long tong = 0;
-            for (int i = 0; i < sale.baskets.Count(); i++)
-            {
-                long z = sale.baskets[i].Price;
-
-                tong += z * sale.baskets[i].Size;
-            }
-            total.Text = tong + "";
+            this.Close();
         }
     }
 }

@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:usercontrol="clr-namespace:StoreManagement.UserControls"
         xmlns:local="clr-namespace:StoreManagement"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
@@ -35,7 +36,7 @@
         </StackPanel>
 
         <Grid Margin="250 55 0 0">
-            <Grid x:Name="GridPrincipal" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden"></usercontrol:updatebill>
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

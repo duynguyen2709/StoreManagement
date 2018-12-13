@@ -35,13 +35,17 @@
             </Grid>
         </StackPanel>
 
-        <Grid Margin="250 55 0 0">
+        <Grid Margin="250 55 0 0" >
             <usercontrol:sale x:Name="selling" Visibility="Hidden">
+
             </usercontrol:sale>
-            <usercontrol:basket x:Name="basket" Visibility="Hidden">
-            </usercontrol:basket>
+            
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden">
+                
             </usercontrol:updatebill>
+
+
+
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

@@ -22,63 +22,19 @@ namespace StoreManagement.UserControls
     /// </summary>
     public partial class updatedetailbill : Window
     {
-        public updatedetailbill(BillEntity tmp)
-        {
-            InitializeComponent();
-            billdetail = tmp;
-
-            //Chuyen Dictionary thanh dạng list<value>
-
-            listproductbill = billdetail.ListProduct;
-
-            //Lay Product để lay quantity
-            BaseDAO dao = new ProductDAO();
-            List<int> array1 = new List<int>(listproductbill.Keys.ToList());
-            List<int> array2 = new List<int>(listproductbill.Values.ToList());
-            for (int i = 0; i < array1.Count; i++)
-            {
-                ProductEntity user = dao.get(array1[i], typeof(ProductEntity)) as ProductEntity;
-                array.Add(new info(array1[i], array2[i], user.Quantity));
-            }
-
-            listdetailbill.ItemsSource = array;
-        }
-
-        public Dictionary<int, int> convertListinfotoDictionary()
-        {
-            Dictionary<int, int> tmp = new Dictionary<int, int>();
-            for (int i = 0; i < array.Count; i++)
-            {
-                if (array[i].Value > 0)
-                    tmp.Add(array[i].Key, array[i].Value);
-            }
-            return tmp;
-        }
-
+        public static bool isUpdate=false;
         public class info
         {
             public bool flag = false;
-            public int value;
-
-            public info(int a, int b, int c)
-            {
-                Key = a;
-                Value = b;
-                Quantity = c;
-                flag = true;
-            }
-
             public int Key { set; get; }
-
+            public int value;
             public int Quantity { set; get; }
-
             public int Value
             {
                 get { return value; }
-
                 set
                 {
-                    if (flag == true)
+                    if (flag ==true)
                     {
                         if (value < 0)
                         {
@@ -88,6 +44,7 @@ namespace StoreManagement.UserControls
                         {
                             this.value = value;
                         }
+                        
                         else
                         {
                             this.value = Quantity;
@@ -99,19 +56,47 @@ namespace StoreManagement.UserControls
                     }
                 }
             }
+            public info(int a,int b,int c)
+                {
+                Key = a;
+                Value = b;
+                Quantity = c;
+                flag = true;
+                }
         }
+        BillEntity billdetail;
+        Dictionary<int,int> listproductbill=new Dictionary<int, int>();
+        List<info> array = new List<info>();
 
-        private List<info> array = new List<info>();
-        private BillEntity billdetail;
-        private Dictionary<int, int> listproductbill = new Dictionary<int, int>();
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
+        public updatedetailbill(BillEntity tmp)
         {
-            this.Close();
+            InitializeComponent();
+            billdetail = tmp;
+            //Chuyen Dictionary thanh dạng list<value>
+            
+            listproductbill = billdetail.ListProduct;
+            //Lay Product để lay quantity
+            BaseDAO dao = new ProductDAO();
+            List<int> array1 = new List<int>(listproductbill.Keys.ToList());
+            List<int> array2 = new List<int>(listproductbill.Values.ToList());
+            for (int i = 0; i < array1.Count; i++)
+            {
+                ProductEntity user = dao.get(array1[i], typeof(ProductEntity)) as ProductEntity;
+                array.Add(new info(array1[i], array2[i],user.Quantity));
+            }
+
+            listdetailbill.ItemsSource = array;
+
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void Update_Click(object sender, RoutedEventArgs e)
@@ -127,22 +112,35 @@ namespace StoreManagement.UserControls
                             {
                                 // convert to DICTIONARY
                                 Dictionary<int, int> detailbill = convertListinfotoDictionary();
-
                                 //Update bill
                                 billdetail.ListProduct = detailbill;
                                 BaseDAO dao = new BillDAO();
                                 dao.update(billdetail);
                                 Infobill.flag = true;
+                                isUpdate = true;
+                                this.Close();
+
                             }
                             catch { }
                         }
                         break;
-
                     case MessageBoxResult.No:
+                        
                         break;
+
                 }
             }
             catch { }
+        }
+        public Dictionary<int,int> convertListinfotoDictionary()
+        {
+            Dictionary<int, int> tmp = new Dictionary<int, int>();
+            for(int i=0;i<array.Count;i++)
+            {
+                if( array[i].Value>=0)
+                tmp.Add(array[i].Key, array[i].Value);
+            }
+            return tmp;
         }
     }
 }

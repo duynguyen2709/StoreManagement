@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
+﻿using System;
 using StoreManagement.DAO;
 using StoreManagement.Entities;
+using System.Windows;
+using System.Windows.Controls;
+using StoreManagement.Utilities;
 
 namespace StoreManagement
 {
@@ -61,9 +61,11 @@ namespace StoreManagement
                     break;
 
                 case 3:
+
                     break;
 
                 case 4:
+                    updatebill.Visibility = Visibility.Visible;
                     break;
 
                 case 5:

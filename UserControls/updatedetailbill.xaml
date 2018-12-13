@@ -11,27 +11,28 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="IDProduct" Width="200"></TextBlock>
             <TextBlock  Text="Count" Width="200"></TextBlock>
         </StackPanel>
         <Grid  Grid.Row="1">
-            <ListView  x:Name="listdetailbill" Height="auto">
+        <ListView  x:Name="listdetailbill" Height="auto" >
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBox Text="{Binding Key}" TextAlignment="Left" Width="200" Panel.ZIndex="2" LostFocus="TextBox_LostFocus" />
-                            <TextBox Text="{Binding Value}" TextAlignment="Left" Width="200" Panel.ZIndex="2" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" >
+                            <TextBlock Text="{Binding Key}" TextAlignment="Left" Width="200" Panel.ZIndex="2"  />
+                            <TextBox Text="{Binding Value}" TextAlignment="Left" Width="200" Panel.ZIndex="2"  />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button x:Name="update" Content="Update" Click="Update_Click"></Button>
-            <Button x:Name="cancel" Content="Cancel" Click="Cancel_Click"></Button>
+            <Button x:Name="update" Margin="10,10,10,10" Content="Update" Click="Update_Click"></Button>
+            <Button x:Name="cancel" Margin="10,10,10,10" Content="Cancel" Click="Cancel_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

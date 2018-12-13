@@ -49,21 +49,18 @@ namespace StoreManagement
             switch (index)
             {
                 case 0:
-                    selling.Visibility = Visibility.Hidden;
-                    basket.Visibility = Visibility.Hidden;
-                    updatebill.Visibility = Visibility.Visible;
+                    
                     break;
 
                 case 1:
                     selling.Visibility = Visibility.Visible;
-                    basket.Visibility = Visibility.Hidden;
+
                     updatebill.Visibility = Visibility.Hidden;
                     break;
 
                 case 2:
                     selling.Visibility = Visibility.Hidden;
-                    basket.Visibility = Visibility.Visible;
-                    updatebill.Visibility = Visibility.Hidden;
+                    updatebill.Visibility = Visibility.Visible;
                     break;
 
                 case 3:

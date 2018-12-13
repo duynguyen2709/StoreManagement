@@ -144,9 +144,6 @@
     <Compile Include="CashierDashboard.xaml.cs">
       <DependentUpon>CashierDashboard.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\basket.xaml.cs">
-      <DependentUpon>basket.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\infobasket.cs" />
     <Compile Include="UserControls\sale.xaml.cs">
       <DependentUpon>sale.xaml</DependentUpon>
@@ -170,10 +167,6 @@
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
-    <Page Include="UserControls\basket.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UserControls\sale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
