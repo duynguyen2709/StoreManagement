@@ -20,7 +20,7 @@ namespace StoreManagement.UserControls
 
             //Chuyen Dictionary thanh dạng list<value>
 
-            listproductbill = billdetail.ListProduct;
+            var listproductbill = billdetail.ListProduct;
 
             //Lay Product để lay quantity
             BaseDAO dao = new ProductDAO();
@@ -94,7 +94,6 @@ namespace StoreManagement.UserControls
 
         private List<info> array = new List<info>();
         private BillEntity billdetail;
-        private Dictionary<int, int> listproductbill = new Dictionary<int, int>();
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {

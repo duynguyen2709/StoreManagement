@@ -13,7 +13,7 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Label Content="Date range:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+            <Label Margin="20,0,0,0" Content="Date range:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
             <DatePicker
                 x:Name="Datefrom"
   Width="100"
@@ -36,14 +36,14 @@
                         <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding BillDate}" />
                         <GridViewColumn Header="CashierID" Width="150" DisplayMemberBinding="{Binding CashierID}" />
                         <GridViewColumn Header="TotalPrice" Width="150" DisplayMemberBinding="{Binding TotalPrice}" />
-                        <GridViewColumn Width="150">
+                        <GridViewColumn x:Name="deleteColumn" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Name="xoa" Margin="10,10,10,10" Content="Delete" Click="Xoa_Click" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Width="150">
+                        <GridViewColumn x:Name="editColumn" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button Name="edit" Margin="10,10,10,10" Content="Edit" Click="Edit_Click" />
