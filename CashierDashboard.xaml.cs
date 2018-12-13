@@ -1,6 +1,4 @@
-﻿using StoreManagement.DAO;
-using StoreManagement.Entities;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace StoreManagement
@@ -49,7 +47,7 @@ namespace StoreManagement
             switch (index)
             {
                 case 0:
-                    
+
                     break;
 
                 case 1:

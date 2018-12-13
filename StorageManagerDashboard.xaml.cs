@@ -1,7 +1,4 @@
-﻿using StoreManagement.DAO;
-using StoreManagement.Entities;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace StoreManagement

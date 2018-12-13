@@ -69,7 +69,6 @@ namespace StoreManagement
                         Idcashier = user.UserID;
                         return user.Role;
                     }
-                        
                 }
             }
 

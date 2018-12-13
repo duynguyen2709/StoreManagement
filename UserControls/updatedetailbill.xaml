@@ -5,34 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreManagement.UserControls"
         mc:Ignorable="d"
-        Title="updatedetailbill" Height="450" Width="800">
+        Title="Edit Bill Detail" Height="320" Width="350">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
-
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock Text="IDProduct" Width="200"></TextBlock>
-            <TextBlock  Text="Count" Width="200"></TextBlock>
+            <TextBlock Text="IDProduct" Width="150" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock  Text="Count" Width="150" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
         </StackPanel>
         <Grid  Grid.Row="1">
-        <ListView  x:Name="listdetailbill" Height="auto" >
+            <ListView  x:Name="listdetailbill" Height="auto">
 
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="{Binding Key}" TextAlignment="Left" Width="200" Panel.ZIndex="2"  />
-                            <TextBox Text="{Binding Value}" TextAlignment="Left" Width="200" Panel.ZIndex="2"  />
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Key}" TextAlignment="Center" VerticalAlignment="Center" Width="150" Panel.ZIndex="2" />
+                            <TextBox Text="{Binding Value}" TextAlignment="Center" VerticalAlignment="Center" Width="150" Panel.ZIndex="2" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button x:Name="update" Margin="10,10,10,10" Content="Update" Click="Update_Click"></Button>
-            <Button x:Name="cancel" Margin="10,10,10,10" Content="Cancel" Click="Cancel_Click"></Button>
+            <Button x:Name="update" Margin="90,10,0,0" Content="Update" Click="Update_Click"></Button>
+            <Button x:Name="cancel" Margin="10,10,0,0" Content="Cancel" Click="Cancel_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

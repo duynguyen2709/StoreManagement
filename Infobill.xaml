@@ -3,18 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   
+
         xmlns:local="clr-namespace:StoreManagement"
         mc:Ignorable="d"
         Title="Infobill" Height="800" Width="800" Loaded="Window_Loaded">
-    <StackPanel Grid.Column="1" Orientation="Vertical" >
+    <StackPanel Grid.Column="1" Orientation="Vertical">
         <TextBlock Text="HÓA ĐƠN" TextAlignment="Center"></TextBlock>
         <Grid Height="400">
-            <ListView x:Name="listbill"  Margin="10"   >
+            <ListView x:Name="listbill"  Margin="10">
 
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Number" Width="60" DisplayMemberBinding="{Binding Number}"  />
+                        <GridViewColumn Header="Number" Width="60" DisplayMemberBinding="{Binding Number}" />
                         <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding ProductID}" />
                         <GridViewColumn Header="Name" Width="270" DisplayMemberBinding="{Binding ProductName}" />
                         <GridViewColumn Header="Count" Width="70" DisplayMemberBinding="{Binding Size}" />
@@ -22,7 +22,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-
         </Grid>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -35,7 +34,7 @@
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Label Content="Total:" Grid.Column="0" Grid.Row="0"></Label>
-            <TextBlock Name="total" Grid.Column="1" Grid.Row="0"/>
+            <TextBlock Name="total" Grid.Column="1" Grid.Row="0" />
             <Label Content="Receive:" Grid.Column="0" Grid.Row="1"></Label>
             <TextBox Name="receive"  Grid.Column="1" Grid.Row="1" TextChanged="Receive_TextChanged" PreviewTextInput="Receive_PreviewTextInput" ></TextBox>
             <Label Content="Spare cash:" Grid.Column="0" Grid.Row="2"></Label>

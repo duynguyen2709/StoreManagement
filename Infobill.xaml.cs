@@ -3,19 +3,11 @@ using StoreManagement.Entities;
 using StoreManagement.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace StoreManagement
 {
@@ -30,23 +22,66 @@ namespace StoreManagement
         public Infobill()
         {
             InitializeComponent();
-            
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            listbill.ItemsSource = sale.baskets;
-            
-            long tong = 0;
-            for (int i = 0; i < sale.baskets.Count(); i++)
+            this.Close();
+        }
+
+        private void Confirm_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure?", "", MessageBoxButton.YesNo);
+            switch (result)
             {
-                sale.baskets[i].Number = i+1;
-                long z = sale.baskets[i].Price;
+                case MessageBoxResult.Yes:
 
-                tong += z * sale.baskets[i].Size;
+                    //cap nhat database
+                    //cap nhat BillHistory
+                    //cap nhat Detail Bill
+                    //init
+                    //BaseDAO dao1 = BaseDAO
+                    int tmpIdCashier = LoginForm.Idcashier;
+
+                    //chuyen sale.basket sang dang directory
+                    Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
+                    for (int i = 0; i < sale.baskets.Count; i++)
+                    {
+                        tmpbasket.Add(sale.baskets[i].ProductID, sale.baskets[i].size);
+                    }
+
+                    //create new bill
+                    BillEntity bill = new BillEntity()
+                    {
+                        //set date
+                        BillDate = DateTime.Today,
+
+                        //add list product
+                        ListProduct = tmpbasket,
+
+                        //set ID cashier
+                        CashierID = tmpIdCashier
+                    };
+
+                    //insert and get new bill ID
+                    BaseDAO dao = new BillDAO();
+                    int billID = dao.insert(bill);
+
+                    //bao hieu cap nhat listitems
+                    flag = true;
+                    this.Close();
+                    sale.baskets.Clear();
+                    break;
+
+                case MessageBoxResult.No:
+                    break;
             }
+        }
 
-            total.Text = tong.ToString();
+        private void Receive_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void Receive_TextChanged(object sender, TextChangedEventArgs e)
@@ -55,7 +90,7 @@ namespace StoreManagement
             {
                 if (receive.Text != "" && total.Text != "")
                 {
-                    if((long.Parse(receive.Text) - long.Parse(total.Text))>=0)
+                    if ((long.Parse(receive.Text) - long.Parse(total.Text)) >= 0)
                     {
                         decimal value = 0.00M;
 
@@ -66,74 +101,26 @@ namespace StoreManagement
                     else
                     {
                         sparecash.Text = "";
-
                     }
-
-                    
-
                 }
             }
             catch { }
-            
         }
 
-
-        private void Receive_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
-            e.Handled = regex.IsMatch(e.Text);
-        }
+            listbill.ItemsSource = sale.baskets;
 
-        private void Confirm_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult result = MessageBox.Show("Are you sure?", "", MessageBoxButton.YesNo);
-            switch (result)
+            long tong = 0;
+            for (int i = 0; i < sale.baskets.Count(); i++)
             {
-                case MessageBoxResult.Yes:
-                   
-                    
-                    //cap nhat database
-                    //cap nhat BillHistory
-                    //cap nhat Detail Bill
-                    //init
-                    //BaseDAO dao1 = BaseDAO
-                   int tmpIdCashier = LoginForm.Idcashier;
-                   
-                    //chuyen sale.basket sang dang directory
-                    Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
-                    for (int i=0;i<sale.baskets.Count;i++)
-                    {
-                        
-                        tmpbasket.Add(sale.baskets[i].ProductID, sale.baskets[i].size);
-                    }
-                    
-                    //create new bill
-                    BillEntity bill = new BillEntity()
-                    {
-                        //set date
-                        BillDate = DateTime.Today,
-                        //add list product
-                        ListProduct = tmpbasket,
-                        //set ID cashier
-                        CashierID = tmpIdCashier
-                    };
-                    //insert and get new bill ID
-                    BaseDAO dao = new BillDAO();
-                    int billID = dao.insert(bill);
-                    //bao hieu cap nhat listitems
-                    flag = true;
-                    this.Close();
-                    sale.baskets.Clear();
-                    break;
-                case MessageBoxResult.No:
-                    break;
+                sale.baskets[i].Number = i + 1;
+                long z = sale.baskets[i].Price;
 
+                tong += z * sale.baskets[i].Size;
             }
-        }
 
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
+            total.Text = tong.ToString();
         }
     }
 }

@@ -35,7 +35,7 @@
             </Grid>
         </StackPanel>
 
-        <Grid Margin="250 55 0 0">
+        <Grid Margin="260 75 10 20">
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden"></usercontrol:updatebill>
         </Grid>
 
