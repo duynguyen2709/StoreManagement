@@ -23,7 +23,7 @@
                 x:Name="Dateto"
   Width="100"
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-            <Label Content="IDCashier:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
+            <Label x:Name="lblIDCashier" Content="IDCashier:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
             <TextBox Width="100" x:Name="IDCashier" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"></TextBox>
             <Button Margin="10 0 0 0" Content="Find" Click="Button_Click"></Button>
         </StackPanel>
@@ -36,9 +36,9 @@
             <ListView x:Name="listbillupdate"  Margin="10" Grid.ColumnSpan="2">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding BillID}" />
+                        <GridViewColumn Header="Bill ID" Width="70" DisplayMemberBinding="{Binding BillID}" />
                         <GridViewColumn Header="Date" Width="150" DisplayMemberBinding="{Binding BillDate}" />
-                        <GridViewColumn Header="CashierID" Width="150" DisplayMemberBinding="{Binding CashierID}" />
+                        <GridViewColumn x:Name="IDCashierColumn" Header="CashierID" Width="150" DisplayMemberBinding="{Binding CashierID}" />
                         <GridViewColumn Header="TotalPrice" Width="150" DisplayMemberBinding="{Binding TotalPrice}" />
                         <GridViewColumn x:Name="deleteColumn" Width="150">
                             <GridViewColumn.CellTemplate>

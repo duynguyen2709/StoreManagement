@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using static System.Windows.Controls.UserControl;
 
 namespace StoreManagement
 {
@@ -12,6 +13,8 @@ namespace StoreManagement
         {
             InitializeComponent();
             BASE_STATE = this.WindowState;
+
+            HideBillElements();
         }
 
         private readonly WindowState BASE_STATE;
@@ -36,6 +39,20 @@ namespace StoreManagement
         private void BtnMinimize_OnClick(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
+        }
+
+        private void HideBillElements()
+        {
+            updatebill.IDCashierColumn.Header = "";
+            updatebill.IDCashierColumn.CellTemplate = new DataTemplate(typeof(TextBlock));
+            updatebill.IDCashierColumn.Width = 0;
+
+            updatebill.deleteColumn.CellTemplate = new DataTemplate(typeof(Button));
+            updatebill.editColumn.CellTemplate = new DataTemplate(typeof(Button));
+
+            updatebill.lblIDCashier.Visibility = Visibility.Hidden;
+            updatebill.IDCashier.Visibility = Visibility.Collapsed;
+            updatebill.IDCashier.Text = LoginForm.Idcashier.ToString();
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
