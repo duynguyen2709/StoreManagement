@@ -2,6 +2,7 @@
 using StoreManagement.Entities;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -17,38 +18,43 @@ namespace StoreManagement.UserControls
         public updatebill()
         {
             InitializeComponent();
-            listbillupdate.ItemsSource = bills;
+            LoadAllBillTask = GetAllBill();
+        }
+
+        public static async Task GetAllBill()
+        {
+            await Task.Run(() =>
+                           {
+                               ListBill = dao.getAll(typeof(BillEntity)) as List<BillEntity>;
+                               firstLoaded = true;
+                           });
         }
 
         public void GetBill()
         {
             try
             {
-                bills.Clear();
-                bills = dao.getAll(typeof(BillEntity)) as List<BillEntity>;
+                var bills = ListBill.GetRange(0, ListBill.Count);
 
-                if (bills != null)
+                bills.RemoveAll(entity => !(DateTime.Parse(Datefrom.Text) <= entity.BillDate
+                                         && DateTime.Parse(Dateto.Text) >= entity.BillDate));
+
+                if (IDCashier.Text != "")
                 {
-                    bills.RemoveAll(entity => !(DateTime.Parse(Datefrom.Text) <= entity.BillDate
-                                              && DateTime.Parse(Dateto.Text) >= entity.BillDate));
+                    bills.RemoveAll(entity => entity.CashierID != Int32.Parse(IDCashier.Text));
+                }
 
-                    if (IDCashier.Text != "")
-                    {
-                        bills.RemoveAll(entity => entity.CashierID != Int32.Parse(IDCashier.Text));
-                    }
-
-                    if (bills.Count > 0)
-                    {
-                        listbillupdate.ItemsSource = bills;
-                        listbillupdate.Items.Refresh();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không tìm thấy bill",
-                                        "Kết quả",
-                                        MessageBoxButton.OK,
-                                        MessageBoxImage.Information);
-                    }
+                if (bills.Count > 0)
+                {
+                    listbillupdate.ItemsSource = bills;
+                    listbillupdate.Items.Refresh();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy bill",
+                                    "Kết quả",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
                 }
             }
             catch
@@ -60,11 +66,16 @@ namespace StoreManagement.UserControls
             }
         }
 
-        private List<BillEntity> bills = new List<BillEntity>();
-        private BaseDAO dao = new BillDAO();
+        private static readonly BaseDAO dao = new BillDAO();
+        private static bool firstLoaded = false;
+        private static List<BillEntity> ListBill = new List<BillEntity>();
+        private static Task LoadAllBillTask;
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (!firstLoaded)
+                await LoadAllBillTask;
+
             GetBill();
         }
 
@@ -79,6 +90,11 @@ namespace StoreManagement.UserControls
                 window.ShowDialog();
                 if (updatedetailbill.isUpdate)
                 {
+                    // ListBill = dao.getAll(typeof(BillEntity)) as List<BillEntity>;
+                    int index = ListBill.IndexOf(ListBill.Find(entity => tmp.BillID == entity.BillID));
+                    BillEntity updBill = dao.get(tmp.BillID) as BillEntity;
+                    ListBill[index].TotalPrice = updBill.TotalPrice;
+
                     GetBill();
                     updatedetailbill.isUpdate = false;
                 }
@@ -118,14 +134,12 @@ namespace StoreManagement.UserControls
                         {
                             try
                             {
-                                Button btn = sender as Button;
-                                BillEntity tmp = btn.DataContext as BillEntity;
-                                BaseDAO dao = new BillDAO();
-                                dao.delete(tmp);
+                                BillEntity tmp = (sender as Button).DataContext as BillEntity;
+                                Task.Run(() => dao.delete(tmp));
                                 Infobill.flag = true;
 
-                                //lay lai bill tren database
-                                bills.Clear();
+                                BillEntity delObject = ListBill.Find(entity => tmp.BillID == entity.BillID);
+                                ListBill.Remove(delObject);
                                 GetBill();
                             }
                             catch { }

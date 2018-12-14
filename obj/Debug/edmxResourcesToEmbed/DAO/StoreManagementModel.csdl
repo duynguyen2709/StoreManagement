@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BillDetail">
+    <Key>
+      <PropertyRef Name="BillID" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="BillHistory" Relationship="Self.FK_BillDetail_BillHistory" FromRole="BillDetail" ToRole="BillHistory" />
+    <NavigationProperty Name="Product" Relationship="Self.FK_BillDetail_Product" FromRole="BillDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="BillHistory">
+    <Key>
+      <PropertyRef Name="BillID" />
+    </Key>
+    <Property Name="BillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BillDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CashierID" Type="Int32" Nullable="false" />
+    <Property Name="TotalPrice" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="BillDetails" Relationship="Self.FK_BillDetail_BillHistory" FromRole="BillHistory" ToRole="BillDetail" />
+    <NavigationProperty Name="User" Relationship="Self.FK_BillHistory_User" FromRole="BillHistory" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Price" Type="Int64" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BillDetails" Relationship="Self.FK_BillDetail_Product" FromRole="Product" ToRole="BillDetail" />
+    <NavigationProperty Name="GoodsImportHistories" Relationship="StoreManagementModel.FK_GoodsInputHistory_Product" FromRole="Product" ToRole="GoodsImportHistory" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Role" Type="Int32" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthdate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IDCardNumber" Type="String" MaxLength="9" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="BillHistories" Relationship="Self.FK_BillHistory_User" FromRole="User" ToRole="BillHistory" />
+    <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="User" ToRole="ShiftRegistration" />
+  </EntityType>
+  <Association Name="FK_BillDetail_BillHistory">
+    <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="1" />
+    <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BillHistory">
+        <PropertyRef Name="BillID" />
+      </Principal>
+      <Dependent Role="BillDetail">
+        <PropertyRef Name="BillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillDetail_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="BillDetail" Type="Self.BillDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="BillDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BillHistory_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="BillHistory" Type="Self.BillHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="BillHistory">
+        <PropertyRef Name="CashierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BillDetails" EntityType="Self.BillDetail" />
+    <EntitySet Name="BillHistories" EntityType="Self.BillHistory" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_BillDetail_BillHistory" Association="Self.FK_BillDetail_BillHistory">
+      <End Role="BillHistory" EntitySet="BillHistories" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillDetail_Product" Association="Self.FK_BillDetail_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="BillDetail" EntitySet="BillDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BillHistory_User" Association="Self.FK_BillHistory_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="BillHistory" EntitySet="BillHistories" />
+    </AssociationSet>
+    <EntitySet Name="GoodsImportHistories" EntityType="StoreManagementModel.GoodsImportHistory" />
+    <AssociationSet Name="FK_GoodsInputHistory_Product" Association="StoreManagementModel.FK_GoodsInputHistory_Product">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="GoodsImportHistory" EntitySet="GoodsImportHistories" />
+    </AssociationSet>
+    <EntitySet Name="ShiftRegistrations" EntityType="StoreManagementModel.ShiftRegistration" />
+    <EntitySet Name="ShiftTimes" EntityType="StoreManagementModel.ShiftTime" />
+    <AssociationSet Name="FK_ShiftRegistration_ShiftTime" Association="StoreManagementModel.FK_ShiftRegistration_ShiftTime">
+      <End Role="ShiftTime" EntitySet="ShiftTimes" />
+      <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShiftRegistration_User" Association="StoreManagementModel.FK_ShiftRegistration_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="ShiftRegistration" EntitySet="ShiftRegistrations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="GoodsImportHistory">
+    <Key>
+      <PropertyRef Name="ImportDate" />
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ImportDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="StoreManagementModel.FK_GoodsInputHistory_Product" FromRole="GoodsImportHistory" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_GoodsInputHistory_Product">
+    <End Type="StoreManagementModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="StoreManagementModel.GoodsImportHistory" Role="GoodsImportHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="GoodsImportHistory">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ShiftRegistration">
+    <Key>
+      <PropertyRef Name="Week" />
+      <PropertyRef Name="WeekDay" />
+      <PropertyRef Name="Shift" />
+    </Key>
+    <Property Name="CashierID" Type="Int32" Nullable="false" />
+    <Property Name="Week" Type="Int32" Nullable="false" />
+    <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShiftTime" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftRegistration" ToRole="ShiftTime" />
+    <NavigationProperty Name="User" Relationship="StoreManagementModel.FK_ShiftRegistration_User" FromRole="ShiftRegistration" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ShiftTime">
+    <Key>
+      <PropertyRef Name="WeekDay" />
+      <PropertyRef Name="Shift" />
+    </Key>
+    <Property Name="WeekDay" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Shift" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ShiftRegistrations" Relationship="StoreManagementModel.FK_ShiftRegistration_ShiftTime" FromRole="ShiftTime" ToRole="ShiftRegistration" />
+  </EntityType>
+  <Association Name="FK_ShiftRegistration_ShiftTime">
+    <End Type="StoreManagementModel.ShiftTime" Role="ShiftTime" Multiplicity="1" />
+    <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ShiftTime">
+        <PropertyRef Name="WeekDay" />
+        <PropertyRef Name="Shift" />
+      </Principal>
+      <Dependent Role="ShiftRegistration">
+        <PropertyRef Name="WeekDay" />
+        <PropertyRef Name="Shift" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShiftRegistration_User">
+    <End Type="StoreManagementModel.User" Role="User" Multiplicity="1" />
+    <End Type="StoreManagementModel.ShiftRegistration" Role="ShiftRegistration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="ShiftRegistration">
+        <PropertyRef Name="CashierID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

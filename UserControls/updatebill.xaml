@@ -24,12 +24,16 @@
   Width="100"
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
             <Label Content="IDCashier:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
-            <TextBox Width="100" x:Name="IDCashier" TextAlignment="Center"></TextBox>
-            <Button Content="Find" Click="Button_Click"></Button>
+            <TextBox Width="100" x:Name="IDCashier" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"></TextBox>
+            <Button Margin="10 0 0 0" Content="Find" Click="Button_Click"></Button>
         </StackPanel>
 
         <Grid Grid.Row="1">
-            <ListView x:Name="listbillupdate"  Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="481*" />
+                <ColumnDefinition Width="319*" />
+            </Grid.ColumnDefinitions>
+            <ListView x:Name="listbillupdate"  Margin="10" Grid.ColumnSpan="2">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding BillID}" />

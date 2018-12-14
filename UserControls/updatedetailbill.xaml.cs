@@ -37,13 +37,7 @@ namespace StoreManagement.UserControls
 
         public Dictionary<int, int> convertListinfotoDictionary()
         {
-            Dictionary<int, int> tmp = new Dictionary<int, int>();
-            for (int i = 0; i < array.Count; i++)
-            {
-                if (array[i].Value >= 0)
-                    tmp.Add(array[i].Key, array[i].Value);
-            }
-            return tmp;
+            return array.Where(t => t.Value >= 0).ToDictionary(t => t.Key, t => t.Value);
         }
 
         public class info
@@ -92,8 +86,8 @@ namespace StoreManagement.UserControls
             }
         }
 
-        private List<info> array = new List<info>();
-        private BillEntity billdetail;
+        private readonly List<info> array = new List<info>();
+        private readonly BillEntity billdetail;
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
@@ -108,7 +102,7 @@ namespace StoreManagement.UserControls
         {
             try
             {
-                MessageBoxResult result = MessageBox.Show("Update bill detail ?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("UPDATE BILL DETAIL ?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 switch (result)
                 {
                     case MessageBoxResult.Yes:
