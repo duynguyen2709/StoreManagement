@@ -144,9 +144,15 @@
     <Compile Include="CashierDashboard.xaml.cs">
       <DependentUpon>CashierDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Add_Shift.xaml.cs">
+      <DependentUpon>Add_Shift.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\infobasket.cs" />
     <Compile Include="UserControls\Manage_Shift.xaml.cs">
       <DependentUpon>Manage_Shift.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Manage_Shift_Admin.xaml.cs">
+      <DependentUpon>Manage_Shift_Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\sale.xaml.cs">
       <DependentUpon>sale.xaml</DependentUpon>
@@ -170,7 +176,15 @@
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\Add_Shift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Manage_Shift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Manage_Shift_Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

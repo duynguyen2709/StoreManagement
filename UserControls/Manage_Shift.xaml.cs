@@ -854,23 +854,10 @@ namespace StoreManagement.UserControls
                         Shift = Registation_Shift_list[i].Shift
                     };
 
-                    UserShiftEntity temp = null;
-
-                    try
-                    {
-                        temp = dao.get(Id, typeof(UserShiftEntity)) as UserShiftEntity;
-                    }
-                    catch (Exception)
-                    {
-                        // ignored
-                    }
+                    UserShiftEntity temp = dao.get(Id, typeof(UserShiftEntity)) as UserShiftEntity;
 
                     if (temp == null)
                         dao.insert(Registation_Shift_list[i]);
-                    else
-                    {
-                        MessageBox.Show("Shift Not Available For Registration", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
                 }
                 else
                 {
@@ -879,6 +866,7 @@ namespace StoreManagement.UserControls
             }
             this.Page_Loaded(null, null);
             button.IsEnabled = true;
+            MessageBox.Show("Shift Updated", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

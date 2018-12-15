@@ -53,8 +53,6 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                CustomException ex = new CustomException(this.GetType().Name + " : Get " + ID + "\n" + e.Message);
-                ex.showPopupError();
             }
 
             return entity;

@@ -36,7 +36,8 @@
         </StackPanel>
 
         <Grid Margin="260 75 10 20">
-            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden"></usercontrol:updatebill>
+            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
+            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Hidden" />
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">
@@ -63,7 +64,7 @@
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="AddShoppingCart" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Add New Product" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Edit Product" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">

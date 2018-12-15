@@ -45,6 +45,9 @@ namespace StoreManagement
 
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
+            updatebill.Visibility = Visibility.Hidden;
+            manageShift.Visibility = Visibility.Hidden;
+
             switch (index)
             {
                 case 0:
@@ -65,7 +68,7 @@ namespace StoreManagement
                     break;
 
                 case 5:
-
+                    manageShift.Visibility = Visibility.Visible;
                     break;
 
                 case 6:
