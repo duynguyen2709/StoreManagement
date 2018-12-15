@@ -1,0 +1,196 @@
+﻿<Page x:Class="StoreManagement.UserControls.Manage_Shift"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StoreManagement"
+      mc:Ignorable="d"
+      d:DesignHeight="670" d:DesignWidth="1030"
+      Title="Manage_Shift" Loaded="Page_Loaded">
+    <Canvas>
+        <Grid Name="Shift_table" Height="595" Width="1025" Canvas.Top="73">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="51" />
+                <RowDefinition Height="136" />
+                <RowDefinition Height="136" />
+                <RowDefinition Height="136" />
+                <RowDefinition Height="136" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.Column="0" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="1" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="2" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="3" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="4" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="5" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="6" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="0" Grid.Column="7" BorderBrush="Black" BorderThickness="1"  Background="Azure" />
+            <Border Grid.Row="1" Grid.Column="0" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="2" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="3" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="4" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="5" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="6" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="1" Grid.Column="7" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="0" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="1" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="2" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="3" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="4" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="5" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="6" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="2" Grid.Column="7" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="0" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="1" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="2" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="3" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="4" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="5" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="6" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="3" Grid.Column="7" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="0" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="1" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="2" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="3" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="4" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="5" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="6" BorderBrush="Black" BorderThickness="1" />
+            <Border Grid.Row="4" Grid.Column="7" BorderBrush="Black" BorderThickness="1" />
+            <TextBlock  Text="Sunday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Column="1" Height="24" />
+            <TextBlock Text="Monday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"   TextWrapping="Wrap" Grid.Column="2" Height="24" />
+            <TextBlock Text="Tuesday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"   TextWrapping="Wrap" Grid.Column="3" Height="24" />
+            <TextBlock Text="Wednesday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"   TextWrapping="Wrap" Grid.Column="4" Height="24" />
+            <TextBlock Text="Thursday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"   TextWrapping="Wrap" Grid.Column="5" Height="24" />
+            <TextBlock Text="Friday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Column="6" Height="24" />
+            <TextBlock Text="Saturday" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"   TextWrapping="Wrap" Grid.Column="7" Height="24" />
+            <TextBlock Name="Shift1_Sun" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="1" Visibility="{Binding }">
+                <CheckBox Name="Shift1_Sun_check" Checked="CheckBox_Checked_1" Unchecked="Shift1_Sun_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Mon" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="2">
+                <CheckBox Name="Shift1_Mon_check" Checked="CheckBox_Checked" RenderTransformOrigin="1.25,1.25" Unchecked="Shift1_Mon_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Tues" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="3" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="3">
+                <CheckBox Name="Shift1_Tues_check" RenderTransformOrigin="1.25,1.25" Checked="CheckBox_Checked_2" Unchecked="Shift1_Tues_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Wed" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="4" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="4">
+                <CheckBox Name="Shift1_Wed_check" Checked="CheckBox_Checked_3" Unchecked="Shift1_Wed_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Thu" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="5" Height="136" Margin="0,0,0,0" />
+            <Viewbox  Height="45"  Grid.Row="1" Grid.Column="5">
+                <CheckBox  Name="Shift1_Thu_check" Checked="CheckBox_Checked_4" Unchecked="Shift1_Thu_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Fri" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="6" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="6">
+                <CheckBox Name="Shift1_Fri_check" Checked="CheckBox_Checked_5" Unchecked="Shift1_Fri_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift1_Sat" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Grid.Column="7" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="1" Grid.Column="7">
+                <CheckBox Name="Shift1_Sat_check" Checked="CheckBox_Checked_6" Unchecked="Shift1_Sat_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Sun" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="1" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="1" Visibility="{Binding Status[1] }">
+                <CheckBox Name="Shift2_Sun_check" Checked="CheckBox_Checked_7" Unchecked="Shift2_Sun_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Mon" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="2" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="2">
+                <CheckBox Name="Shift2_Mon_check" Checked="CheckBox_Checked_10" Unchecked="Shift2_Mon_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Tues" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="3" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="3">
+                <CheckBox Name="Shift2_Tues_check" Checked="CheckBox_Checked_13" Unchecked="Shift2_Tues_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Wed" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="4" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="4">
+                <CheckBox Name="Shift2_Wed_check" Checked="CheckBox_Checked_16" Unchecked="Shift2_Wed_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Thu" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="5" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="5">
+                <CheckBox Name="Shift2_Thu_check" Checked="CheckBox_Checked_19" Unchecked="Shift2_Thu_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Fri" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="6" Height="136" Margin="0,0,0,0" />
+            <Viewbox  Height="45"  Grid.Row="2" Grid.Column="6">
+                <CheckBox  Name="Shift2_Fri_check" Checked="CheckBox_Checked_22" Unchecked="Shift2_Fri_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift2_Sat" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Grid.Column="7" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="2" Grid.Column="7">
+                <CheckBox Name="Shift2_Sat_check" Checked="CheckBox_Checked_25" Unchecked="Shift2_Sat_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Sun" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="1" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="1" Visibility="{Binding Status[1] }">
+                <CheckBox Name="Shift3_Sun_check" Checked="CheckBox_Checked_8" Unchecked="Shift3_Sun_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Mon" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="2" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="2">
+                <CheckBox Name="Shift3_Mon_check" Checked="CheckBox_Checked_11" Unchecked="Shift3_Mon_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Tues" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="3" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="3">
+                <CheckBox Name="Shift3_Tues_check" Checked="CheckBox_Checked_14" Unchecked="Shift3_Tues_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Wed" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="4" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="4">
+                <CheckBox Name="Shift3_Wed_check" Checked="CheckBox_Checked_17" Unchecked="Shift3_Wed_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Thu" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="5" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="5">
+                <CheckBox Name="Shift3_Thu_check" Checked="CheckBox_Checked_20" Unchecked="Shift3_Thu_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Fri" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="6" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="6">
+                <CheckBox Name="Shift3_Fri_check" Checked="CheckBox_Checked_23" Unchecked="Shift3_Fri_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift3_Sat" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Grid.Column="7" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="3" Grid.Column="7">
+                <CheckBox Name="Shift3_Sat_check" Checked="CheckBox_Checked_26" Unchecked="Shift3_Sat_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Sun" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="1" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="1" Visibility="{Binding Status[1] }">
+                <CheckBox Name="Shift4_Sun_check" Checked="CheckBox_Checked_9" Unchecked="Shift4_Sun_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Mon" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="2" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="2">
+                <CheckBox Name="Shift4_Mon_check" Checked="CheckBox_Checked_12" Unchecked="Shift4_Mon_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Tues" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="3" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="3">
+                <CheckBox Name="Shift4_Tues_check" Checked="CheckBox_Checked_15" RenderTransformOrigin="1.25,1.25" Unchecked="Shift4_Tues_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Wed" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="4" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="4">
+                <CheckBox Name="Shift4_Wed_check" Checked="CheckBox_Checked_18" Unchecked="Shift4_Wed_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Thu" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="5" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="5">
+                <CheckBox Name="Shift4_Thu_check" Checked="CheckBox_Checked_21" Unchecked="Shift4_Thu_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Fri" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="6" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="6">
+                <CheckBox Name="Shift4_Fri_check" Checked="CheckBox_Checked_24" Unchecked="Shift4_Fri_check_Unchecked" />
+            </Viewbox>
+            <TextBlock Name="Shift4_Sat" Text="" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Grid.Column="7" Height="136" Margin="0,0,0,0" />
+            <Viewbox   Height="45"  Grid.Row="4" Grid.Column="7">
+                <CheckBox Name="Shift4_Sat_check" Checked="CheckBox_Checked_27" Unchecked="Shift4_Sat_check_Unchecked" />
+            </Viewbox>
+            <TextBlock  Text="Shift 1 (7:00-11:00)" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="1" Margin="0,0,0,0" />
+            <TextBlock  Text="Shift 2 (11:00-15:00)" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="2" Margin="0,0,0,0" />
+            <TextBlock  Text="Shift 3 (15:00-19:00)" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="3" Margin="0,0,0,0" />
+            <TextBlock  Text="Shift 4 (19:00-23:00)" FontSize="20" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Stretch"  TextWrapping="Wrap" Grid.Row="4" Margin="0,0,0,0" />
+        </Grid>
+        <Label x:Name="label" Content="Shift Registation Table" FontSize="30" FontWeight="Bold" Height="50" Canvas.Left="12" Canvas.Top="8" Width="592" />
+        <Button x:Name="button" Content="Finish" FontSize="25" Height="48" Canvas.Left="818" Canvas.Top="12" Width="178" Click="button_Click" />
+    </Canvas>
+</Page>

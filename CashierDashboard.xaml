@@ -35,12 +35,12 @@
             </Grid>
         </StackPanel>
 
-        <Grid Margin="260,75,10,20">
-            <usercontrol:sale x:Name="selling" Visibility="Hidden">
-            </usercontrol:sale>
+        <Grid Name="mainGrid" Margin="260,75,10,20" Width="1000">
+            <usercontrol:sale x:Name="selling" Visibility="Hidden" />
 
-            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden">
-            </usercontrol:updatebill>
+            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
+
+            <usercontrol:Manage_Shift Width="{Binding ElementName=mainGrid, Path=ActualWidth}" x:Name="manageShift" HorizontalAlignment="Stretch" Visibility="Hidden" />
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

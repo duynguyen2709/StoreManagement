@@ -66,6 +66,8 @@ namespace StoreManagement
 
                 case 5:
 
+                    break;
+
                 case 6:
                     var loginForm = new LoginForm();
                     loginForm.Show();

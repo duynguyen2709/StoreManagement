@@ -44,5 +44,11 @@ namespace StoreManagement.DAO
                 context.SaveChanges();
             }
         }
+
+        public override string ToString(){
+            string str = $"(WeekDay : {WeekDay} - Shift : {Shift} - Status : {Status})";
+
+            return str;
+        }
     }
 }

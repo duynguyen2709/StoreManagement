@@ -1,0 +1,43 @@
+﻿<Window x:Class="StoreManagement.Add_Product_Popup"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreManagement"
+        mc:Ignorable="d"
+        Title="Add Product" Height="750" Width="401" ResizeMode="NoResize">
+    <Canvas Margin="0,0,0,-5">
+        <Label x:Name="lbl_ProductInfo" Content="Product Information:" FontSize="20" FontStyle="Italic"  Canvas.Left="16" Canvas.Top="14" Height="36" Width="220" FontWeight="Bold"/>
+        <Label x:Name="lbl_Name" Content="Name:" FontSize="18" FontStyle="Italic" Canvas.Left="17" Canvas.Top="62"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="94" Canvas.Top="59" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Name" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="16" Margin="7,-2,-35,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Name_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Price" Content="Price:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="121"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="94" Canvas.Top="116" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Price" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" TextChanged="txt_Price_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Type" Content="Type:" FontSize="18" FontStyle="Italic" Canvas.Left="21" Canvas.Top="176"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="94" Canvas.Top="176" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Type" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Type_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Brand" Content="Brand:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="234"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="94" Canvas.Top="234" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Brand" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Brand_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Quantity" Content="Quantity:" FontSize="18" FontStyle="Italic" Canvas.Left="11" Canvas.Top="289"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="94" Canvas.Top="289" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Quantity" Height="38" Width="254" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,-1,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" TextChanged="txt_Quantity_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_URLimage" Content="URL image:" FontSize="18" FontStyle="Italic"  Canvas.Left="12" Canvas.Top="337" Width="103"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="26" Canvas.Top="369" Width="330" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_URLimage" Height="38" Width="319" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
+        </Border>
+        <Label x:Name="lbl_Description" Content="Description:" FontSize="18" FontStyle="Italic" Canvas.Left="14" Canvas.Top="403"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="164" Canvas.Left="21" Canvas.Top="437" Width="334" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Description" Height="161" Width="331" HorizontalAlignment="Left"  TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" Margin="-1,2,0,-1" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}"/>
+        </Border>
+        <Button x:Name="btn_Add" Content="Add" Height="55" Canvas.Left="147" Canvas.Top="630" Width="113" Click="btn_Add_Click" IsEnabled="False"/>
+
+
+    </Canvas>
+</Window>

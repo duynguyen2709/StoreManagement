@@ -43,7 +43,7 @@ namespace StoreManagement.DAO
             try
             {
                 int Week = (int)ID?.GetType().GetProperty("Week")?.GetValue(ID, null);
-                int WeekDay = (int)ID?.GetType().GetProperty("WeekDay")?.GetValue(ID, null);
+                string WeekDay = (string)ID?.GetType().GetProperty("WeekDay")?.GetValue(ID, null);
                 int Shift = (int)ID?.GetType().GetProperty("Shift")?.GetValue(ID, null);
 
                 using (var context = new StoreManagementEntities())

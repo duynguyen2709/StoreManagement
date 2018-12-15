@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using static System.Windows.Controls.UserControl;
 
 namespace StoreManagement
 {
@@ -50,7 +49,7 @@ namespace StoreManagement
             updatebill.deleteColumn.CellTemplate = new DataTemplate(typeof(Button));
             updatebill.editColumn.CellTemplate = new DataTemplate(typeof(Button));
 
-            updatebill.lblIDCashier.Visibility = Visibility.Hidden;
+            updatebill.lblIDCashier.Visibility = Visibility.Collapsed;
             updatebill.IDCashier.Visibility = Visibility.Collapsed;
             updatebill.IDCashier.Text = LoginForm.Idcashier.ToString();
         }
@@ -61,6 +60,10 @@ namespace StoreManagement
 
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
+            selling.Visibility = Visibility.Hidden;
+            updatebill.Visibility = Visibility.Hidden;
+            manageShift.Visibility = Visibility.Hidden;
+
             switch (index)
             {
                 case 0:
@@ -69,18 +72,18 @@ namespace StoreManagement
 
                 case 1:
                     selling.Visibility = Visibility.Visible;
-
-                    updatebill.Visibility = Visibility.Hidden;
                     break;
 
                 case 2:
-                    selling.Visibility = Visibility.Hidden;
                     updatebill.Visibility = Visibility.Visible;
                     break;
 
                 case 3:
 
+                    break;
+
                 case 4:
+                    manageShift.Visibility = Visibility.Visible;
                     break;
 
                 case 5:
