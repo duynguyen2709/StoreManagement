@@ -144,8 +144,14 @@
     <Compile Include="CashierDashboard.xaml.cs">
       <DependentUpon>CashierDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Add_Product_Popup.xaml.cs">
+      <DependentUpon>Add_Product_Popup.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Add_Shift.xaml.cs">
       <DependentUpon>Add_Shift.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Edit_Product_Page.xaml.cs">
+      <DependentUpon>Edit_Product_Page.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\infobasket.cs" />
     <Compile Include="UserControls\Manage_Shift.xaml.cs">
@@ -176,7 +182,15 @@
     <Compile Include="LoginForm.xaml.cs">
       <DependentUpon>LoginForm.xaml</DependentUpon>
     </Compile>
+    <Page Include="UserControls\Add_Product_Popup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Add_Shift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Edit_Product_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,13 +7,14 @@
              xmlns:local="clr-namespace:StoreManagement.UserControls"
              mc:Ignorable="d"
              d:DesignHeight="3075" d:DesignWidth="2725"
+             FontFamily="Lato"
               Loaded="UserControl_Loaded"
              IsVisibleChanged="UserControl_IsVisibleChanged"
              GotFocus="UserControl_GotFocus" IsEnabledChanged="UserControl_IsEnabledChanged">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="1.1*"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -22,7 +23,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition ></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox Name="search" Grid.Row="0"
+            <TextBox x:Name="search" Grid.Row="0"
                     materialDesign:HintAssist.Hint="Search"
                   materialDesign:HintAssist.HintOpacity=".26"
                   Width="2700" Background="{x:Null}" TextChanged="Search_TextChanged" />
@@ -38,9 +39,13 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
 
-                        <Canvas Width="100" Height="100" Margin="5,5,5,5">
-                            <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Opacity="0.5" Background="Black" Foreground="#FFF9F8F8" />
-                            <Image  Panel.ZIndex="1" Width="100" Height="90" Source="{Binding ImageURL}" Stretch="Fill" ></Image>
+                        <Canvas Margin="10" Width="100" Height="100">
+                            <Border Panel.ZIndex="2"  BorderBrush="Black" BorderThickness="0.5">
+                                <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Opacity="0.5" Background="#FF4D69FF" Foreground="#FFF9F8F8" />
+                            </Border>
+                            <Border Panel.ZIndex="1"  BorderBrush="Black" BorderThickness="0.5">
+                                <Image Margin="0.5"  Panel.ZIndex="1" Width="100" Height="90" Source="{Binding ImageURL}" Stretch="Fill" ></Image>
+                            </Border>
                             <TextBlock Panel.ZIndex="2" Text="{Binding ProductName}" Canvas.Top="90" />
                         </Canvas>
                     </DataTemplate>
@@ -55,9 +60,9 @@
                                             <Expander IsExpanded="true" Collapsed="Expander_Collapsed">
                                                 <Expander.Header>
                                                     <StackPanel Orientation="Horizontal" IsEnabled="True">
-                                                        <Label Content="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Bottom" />
-                                                        <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" Margin="10,0,0,0" VerticalAlignment="Bottom" />
-                                                        <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Bottom" />
+                                                        <Label Content="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Center" />
+                                                        <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" />
+                                                        <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Center" />
                                                     </StackPanel>
                                                 </Expander.Header>
                                                 <ItemsPresenter />
@@ -78,11 +83,16 @@
                 <TextBlock Text="HÓA ĐƠN" TextAlignment="Center"></TextBlock>
                 <Grid Height="400">
                     <ListView x:Name="listbill"  Margin="10" SourceUpdated="Listbill_SourceUpdated" DataContextChanged="Listbill_DataContextChanged">
-
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="{x:Type ListViewItem}">
+                                <Setter Property="BorderBrush" Value="#FFC2C2C2" />
+                                <Setter Property="BorderThickness" Value="1" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="ID" Width="60" DisplayMemberBinding="{Binding ProductID}" />
-                                <GridViewColumn Header="Name" Width="150" DisplayMemberBinding="{Binding ProductName}" />
+                                <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding ProductID}" />
+                                <GridViewColumn Header="Name" Width="180" DisplayMemberBinding="{Binding ProductName}" />
                                 <GridViewColumn Header="Count" Width="70">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
@@ -90,8 +100,8 @@
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
-                                <GridViewColumn Header="total" Width="100"   DisplayMemberBinding="{Binding Sum, Mode=TwoWay}" />
-                                <GridViewColumn Width="150">
+                                <GridViewColumn Header="Total" Width="80"  DisplayMemberBinding="{Binding Sum, Mode=TwoWay}" />
+                                <GridViewColumn Width="95">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Button Content="Delete" Click="Button_Click" />
@@ -102,9 +112,14 @@
                         </ListView.View>
                     </ListView>
                 </Grid>
-                <TextBlock Name="total" Text="???" Margin="10,10,10,10" TextAlignment="Center" FontSize="24" FontFamily="Segoe UI Semibold" FontWeight="Bold" Foreground="Red" />
-                <Button Name="clear" Content="Clear" Margin="10,10,10,10" Click="Clear_Click" ></Button>
-                <Button Name="pay" Content="Pay" Margin="10,10,10,10" IsDefault="True" Click="Pay_Click"></Button>
+                <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                    <Label Name="lblTotal" Content="TOTAL :" FontSize="24" FontWeight="Bold" Foreground="Red" />
+                    <TextBlock Name="total" Text="$0.00" VerticalAlignment="Center"  TextAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="Red" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Name="clear" Content="Clear" Margin="10,10,10,10" Click="Clear_Click" Width="220" Height="40" Background="#FFFF4545" FontSize="22" />
+                    <Button Name="pay" Content="Pay" Margin="10,10,10,10" IsDefault="True" Click="Pay_Click" Width="220" Height="40" FontSize="22" />
+                </StackPanel>
             </StackPanel>
         </Grid>
         <GridSplitter  Grid.Column="1"

@@ -1,5 +1,6 @@
 ﻿using StoreManagement.DAO;
 using System.Windows;
+using StoreManagement.UserControls;
 
 namespace StoreManagement
 {

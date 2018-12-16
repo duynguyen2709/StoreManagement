@@ -36,6 +36,8 @@
         </StackPanel>
 
         <Grid Margin="260 75 10 20">
+
+            <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Hidden" />
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
             <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Hidden" />
         </Grid>

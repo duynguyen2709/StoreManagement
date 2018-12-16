@@ -114,7 +114,6 @@ namespace StoreManagement.DAO
             else if (type == typeof(UserShiftEntity))
                 instance = new ShiftDAO();
 
-
             return instance;
         }
     }

@@ -51,8 +51,8 @@ namespace StoreManagement.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy bill",
-                                    "Kết quả",
+                    MessageBox.Show("Không tìm thấy hóa đơn",
+                                    "Result",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
                 }

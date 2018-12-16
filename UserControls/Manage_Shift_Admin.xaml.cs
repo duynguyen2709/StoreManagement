@@ -1,13 +1,12 @@
-﻿using System;
+﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using MaterialDesignThemes.Wpf;
-using StoreManagement.DAO;
-using StoreManagement.Entities;
 
 namespace StoreManagement.UserControls
 {

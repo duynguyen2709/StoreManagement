@@ -7,11 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Linq;
-
 namespace StoreManagement.DAO
 {
-    using System;
+    using System.Linq;
     using System.Collections.Generic;
     
     public partial class ShiftTime
@@ -28,6 +26,7 @@ namespace StoreManagement.DAO
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ShiftRegistration> ShiftRegistrations { get; set; }
+
 
         public static List<ShiftTime> getAllShift(){
             using ( var context = new StoreManagementEntities() ) {

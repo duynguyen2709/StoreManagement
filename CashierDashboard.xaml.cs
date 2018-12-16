@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using StoreManagement.UserControls;
 
 namespace StoreManagement
 {
@@ -87,6 +88,7 @@ namespace StoreManagement
                     break;
 
                 case 5:
+                    sale.baskets.Clear();
                     var loginForm = new LoginForm();
                     loginForm.Show();
                     this.Close();

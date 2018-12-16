@@ -45,3 +45,7 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csproj.CopyComplete
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.exe
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.pdb
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.g.cs
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.g.cs
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.baml
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.baml

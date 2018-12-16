@@ -1,8 +1,8 @@
-﻿using System;
+﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
+using System;
 using System.Collections.Generic;
 using System.Windows;
-using StoreManagement.DAO;
-using StoreManagement.Entities;
 
 namespace StoreManagement.UserControls
 {

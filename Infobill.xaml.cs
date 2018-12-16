@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -41,34 +42,43 @@ namespace StoreManagement
                     //cap nhat Detail Bill
                     //init
                     //BaseDAO dao1 = BaseDAO
-                    int tmpIdCashier = LoginForm.Idcashier;
-
-                    //chuyen sale.basket sang dang directory
-                    Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
-                    for (int i = 0; i < sale.baskets.Count; i++)
+                    Task.Run(() =>
                     {
-                        tmpbasket.Add(sale.baskets[i].ProductID, sale.baskets[i].size);
-                    }
+                        int tmpIdCashier = LoginForm.Idcashier;
 
-                    //create new bill
-                    BillEntity bill = new BillEntity()
-                    {
-                        //set date
-                        BillDate = DateTime.Today,
+                        //chuyen sale.basket sang dang directory
+                        Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
 
-                        //add list product
-                        ListProduct = tmpbasket,
+                        foreach (var t in sale.baskets)
+                        {
+                            tmpbasket.Add(t.ProductID, t.size);
+                        }
 
-                        //set ID cashier
-                        CashierID = tmpIdCashier
-                    };
+                        //create new bill
+                        BillEntity bill = new BillEntity()
+                        {
+                            //set date
+                            BillDate = DateTime.Today,
 
-                    //insert and get new bill ID
-                    BaseDAO dao = new BillDAO();
-                    int billID = dao.insert(bill);
+                            //add list product
+                            ListProduct = tmpbasket,
+
+                            //set ID cashier
+                            CashierID = tmpIdCashier
+                        };
+
+                        //insert and get new bill ID
+                        BaseDAO dao = new BillDAO();
+                        int billID = dao.insert(bill);
+                    });
 
                     //bao hieu cap nhat listitems
                     flag = true;
+
+                    MessageBox.Show("Thanh toán thành công",
+                                    "Result",
+                                    MessageBoxButton.OK,
+                                    MessageBoxImage.Information);
                     this.Close();
                     sale.baskets.Clear();
                     break;

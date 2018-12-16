@@ -102,7 +102,9 @@ namespace StoreManagement.UserControls
                 listitem.SelectedItems.Clear();
             }
             catch
-            { }
+            {
+                // ignored
+            }
         }
 
         private void Listitem_PreviewMouseRightButtonUp(object sender, MouseButtonEventArgs e)
@@ -129,7 +131,9 @@ namespace StoreManagement.UserControls
                 listitem.SelectedItems.Clear();
             }
             catch
-            { }
+            {
+                // ignored
+            }
         }
 
         private void Listitem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -138,7 +142,6 @@ namespace StoreManagement.UserControls
 
         private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            long sum = 0;
             if (baskets.Count == 0)
             {
                 if (Infobill.flag == true)
@@ -147,10 +150,9 @@ namespace StoreManagement.UserControls
                     Infobill.flag = false;
                 }
             }
-            for (int i = 0; i < baskets.Count; i++)
-            {
-                sum += baskets[i].Sum;
-            }
+
+            long sum = baskets.Sum(t => t.Sum);
+
             decimal value = 0.00M;
             value = Convert.ToDecimal(sum);
             total.Text = value.ToString("C");
@@ -170,11 +172,7 @@ namespace StoreManagement.UserControls
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             listbill.Items.Refresh();
-            long sum = 0;
-            for (int i = 0; i < baskets.Count; i++)
-            {
-                sum += baskets[i].Sum;
-            }
+            long sum = baskets.Sum(t => t.Sum);
             decimal value = 0.00M;
             value = Convert.ToDecimal(sum);
             total.Text = value.ToString("C");
@@ -216,8 +214,8 @@ namespace StoreManagement.UserControls
         {
             if (String.IsNullOrEmpty(search.Text))
                 return true;
-            else
-                return ((item as ProductEntity).ProductName.IndexOf(search.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+
+            return ((item as ProductEntity).ProductName.IndexOf(search.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }
     }
 }
