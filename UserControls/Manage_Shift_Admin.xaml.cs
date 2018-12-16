@@ -151,7 +151,7 @@ namespace StoreManagement.UserControls
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Load_Table();
+            Task.Run(() => { Load_Table(); });
         }
 
         private async void Reset_Shift_btn_Click(object sender, RoutedEventArgs e)

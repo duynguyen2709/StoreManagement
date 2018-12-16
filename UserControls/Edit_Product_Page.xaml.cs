@@ -1,4 +1,6 @@
-﻿using System;
+﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -6,8 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using StoreManagement.DAO;
-using StoreManagement.Entities;
 
 namespace StoreManagement.UserControls
 {
@@ -91,11 +91,23 @@ namespace StoreManagement.UserControls
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            products = dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
-            listBox.ItemsSource = products;
-            listBox.SelectedIndex = 0;
-            CollectionView view = CollectionViewSource.GetDefaultView(listBox.ItemsSource) as CollectionView;
-            view.Filter = CustomFilter;
+            Task.Run(() =>
+            {
+                this.Dispatcher.Invoke(() =>
+                                       {
+                                           products =
+                                               dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
+
+                                           listBox.ItemsSource = products;
+                                           listBox.SelectedIndex = 0;
+
+                                           CollectionView view =
+                                               CollectionViewSource.GetDefaultView(listBox.ItemsSource) as
+                                                   CollectionView;
+
+                                           view.Filter = CustomFilter;
+                                       });
+            });
         }
 
         private void search_text_box_TextChanged(object sender, TextChangedEventArgs e)

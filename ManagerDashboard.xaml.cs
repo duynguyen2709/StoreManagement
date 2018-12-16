@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using StoreManagement.UserControls;
 
 namespace StoreManagement
 {
@@ -45,6 +46,7 @@ namespace StoreManagement
 
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
+            selling.Visibility = Visibility.Hidden;
             editProduct.Visibility = Visibility.Hidden;
             updatebill.Visibility = Visibility.Hidden;
             manageShift.Visibility = Visibility.Hidden;
@@ -55,6 +57,7 @@ namespace StoreManagement
                     break;
 
                 case 1:
+                    selling.Visibility = Visibility.Visible;
                     break;
 
                 case 2:
@@ -74,6 +77,7 @@ namespace StoreManagement
                     break;
 
                 case 6:
+                    sale.baskets.Clear();
                     var loginForm = new LoginForm();
                     loginForm.Show();
                     this.Close();

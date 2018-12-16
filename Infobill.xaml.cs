@@ -107,9 +107,11 @@ namespace StoreManagement
                         value = Convert.ToDecimal((long.Parse(receive.Text) - long.Parse(total.Text)));
 
                         sparecash.Text = value.ToString("C");
+                        confirm.Visibility = Visibility.Visible;
                     }
                     else
                     {
+                        confirm.Visibility = Visibility.Collapsed;
                         sparecash.Text = "";
                     }
                 }
