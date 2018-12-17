@@ -9,13 +9,14 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\EntityFramework.SqlServer.xml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignThemes.Wpf.xml
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csprojAssemblyReference.cache
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\Infobill.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StorageManagerDashboard.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\CashierDashboard.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\ManagerDashboard.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\LoginForm.g.cs
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Shift.g.cs
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Manage_Shift.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Manage_Shift_Admin.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\sale.g.cs
@@ -32,7 +33,9 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\CashierDashboard.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\ManagerDashboard.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\LoginForm.baml
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Shift.baml
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Manage_Shift.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Manage_Shift_Admin.baml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\sale.baml
@@ -45,7 +48,3 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csproj.CopyComplete
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.exe
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.pdb
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.g.cs
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.g.cs
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Add_Product_Popup.baml
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\UserControls\Edit_Product_Page.baml

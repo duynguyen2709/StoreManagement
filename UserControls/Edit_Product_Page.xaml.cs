@@ -57,9 +57,20 @@ namespace StoreManagement.UserControls
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
         {
-            ProductEntity temp = listBox.SelectedItem as ProductEntity;
+            ProductEntity entity = new ProductEntity();
+            entity.Brand = txt_Brand.Text;
+            entity.Type = txt_Type.Text;
+            entity.ProductName = txt_Name.Text;
+            entity.ProductID = int.Parse(txt_Id.Text);
+            entity.Quantity = int.Parse(txt_Quantity.Text);
+            entity.Price = int.Parse(txt_Price.Text);
+            entity.ImageURL = txt_URL.Text;
+            entity.Description = txt_Description.Text;
+            dao.update(entity);
 
-            dao.update(temp);
+            int index = products.IndexOf(products.Find(obj => obj.ProductID == entity.ProductID));
+            products[index] = entity;
+            CollectionViewSource.GetDefaultView(listBox.ItemsSource).Refresh();
 
             MessageBox.Show("Cập nhật thông tin sản phẩm thành công",
                             "Info",

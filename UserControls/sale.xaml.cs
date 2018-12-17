@@ -22,25 +22,25 @@ namespace StoreManagement.UserControls
 
         public sale()
         {
-            InitializeComponent();
-
             Task.Run(() =>
-                     {
-                         this.Dispatcher.Invoke(() =>
-                                                {
-                                                    BaseDAO dao = BaseDAO.getInstance();
-                                                    listitems = new ObservableCollection<ProductEntity>((dao.getAll(typeof(ProductEntity)) as List<ProductEntity>));
-                                                    listitem.ItemsSource = listitems;
-                                                    CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listitem.ItemsSource);
-                                                    view.Filter = UserFilter;
+            {
+                this.Dispatcher.Invoke(() =>
+                {
+                    InitializeComponent();
 
-                                                    PropertyGroupDescription group = new PropertyGroupDescription("Type");
-                                                    view.GroupDescriptions.Add(group);
-                                                    listbill.ItemsSource = baskets;
+                    BaseDAO dao = BaseDAO.getInstance();
+                    listitems = new ObservableCollection<ProductEntity>((dao.getAll(typeof(ProductEntity)) as List<ProductEntity>));
+                    listitem.ItemsSource = listitems;
+                    CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listitem.ItemsSource);
+                    view.Filter = UserFilter;
 
-                                                    baskets.CollectionChanged += this.OnCollectionChanged;
-                                                });
-                     });
+                    PropertyGroupDescription group = new PropertyGroupDescription("Type");
+                    view.GroupDescriptions.Add(group);
+                    listbill.ItemsSource = baskets;
+
+                    baskets.CollectionChanged += OnCollectionChanged;
+                });
+            });
         }
 
         private ObservableCollection<ProductEntity> listitems;
@@ -49,11 +49,11 @@ namespace StoreManagement.UserControls
         {
             Button btn = (Button)sender;
             infobasket tmp = (infobasket)btn.DataContext;
-            for (int i = 0; i < sale.baskets.Count(); i++)
+            for (int i = 0; i < baskets.Count(); i++)
             {
-                if (tmp.ProductID == sale.baskets[i].ProductID)
+                if (tmp.ProductID == baskets[i].ProductID)
                 {
-                    sale.baskets.RemoveAt(i);
+                    baskets.RemoveAt(i);
                 }
             }
         }
@@ -152,7 +152,7 @@ namespace StoreManagement.UserControls
         {
             if (baskets.Count == 0)
             {
-                if (Infobill.flag == true)
+                if (Infobill.flag)
                 {
                     updatelistitem();
                     Infobill.flag = false;
@@ -207,7 +207,7 @@ namespace StoreManagement.UserControls
 
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (Infobill.flag == true)
+            if (Infobill.flag)
             {
                 updatelistitem();
                 Infobill.flag = false;
