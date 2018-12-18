@@ -36,6 +36,7 @@
         </StackPanel>
 
         <Grid Name="mainGrid" Margin="260,75,10,20">
+
             <usercontrol:sale x:Name="selling" Visibility="Hidden" />
 
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />

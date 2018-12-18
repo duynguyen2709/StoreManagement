@@ -74,7 +74,13 @@ namespace StoreManagement.UserControls
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             if (!firstLoaded)
+            {
+                loadingGif.Visibility = Visibility.Visible;
+                listbillupdate.Visibility = Visibility.Collapsed;
                 await LoadAllBillTask;
+                loadingGif.Visibility = Visibility.Hidden;
+                listbillupdate.Visibility = Visibility.Visible;
+            }
 
             GetBill();
         }

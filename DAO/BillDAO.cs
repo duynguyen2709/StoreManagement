@@ -3,6 +3,7 @@ using StoreManagement.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace StoreManagement.DAO
 {
@@ -56,23 +57,18 @@ namespace StoreManagement.DAO
                     if (bill == null)
                         throw new Exception();
 
-                    Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+                    var lstProduct = context.BillDetails.AsParallel()
+                                            .Where(temp => temp.BillID == bill.BillID)
+                                            .ToDictionary(t => t.ProductID, t => t.Quantity);
 
-                    foreach (var billDetail in context.BillDetails)
+                    BillEntity entity = new BillEntity()
                     {
-                        if (billDetail.BillID == (int)ID)
-                        {
-                            lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
-                        }
-                    }
-
-                    Object obj = new
-                    {
-                        BillInfo = bill,
-                        ListProduct = lstProduct
+                        BillDate = bill.BillDate,
+                        BillID = bill.BillID,
+                        CashierID = bill.CashierID,
+                        ListProduct = lstProduct,
+                        TotalPrice = bill.TotalPrice
                     };
-
-                    BillEntity entity = convertToEntity(obj) as BillEntity;
 
                     return entity;
                 }
@@ -96,23 +92,19 @@ namespace StoreManagement.DAO
                 {
                     foreach (var bill in context.BillHistories)
                     {
-                        Dictionary<int, int> lstProduct = new Dictionary<int, int>();
+                        var lstProduct = context.BillDetails.AsParallel()
+                                                .Where(temp => temp.BillID == bill.BillID)
+                                                .ToDictionary(t => t.ProductID, t => t.Quantity);
 
-                        foreach (var billDetail in context.BillDetails)
+                        BillEntity entity = new BillEntity()
                         {
-                            if (billDetail.BillID == bill.BillID)
-                            {
-                                lstProduct.Add(billDetail.ProductID, billDetail.Quantity);
-                            }
-                        }
-
-                        Object obj = new
-                        {
-                            BillInfo = bill,
-                            ListProduct = lstProduct
+                            BillDate = bill.BillDate,
+                            BillID = bill.BillID,
+                            CashierID = bill.CashierID,
+                            ListProduct = lstProduct,
+                            TotalPrice = bill.TotalPrice
                         };
 
-                        BillEntity entity = convertToEntity(obj) as BillEntity;
                         listBillEntities.Add(entity);
                     }
                 }

@@ -1,6 +1,7 @@
-﻿using System.Windows;
+﻿using StoreManagement.UserControls;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
-using StoreManagement.UserControls;
 
 namespace StoreManagement
 {
@@ -12,9 +13,10 @@ namespace StoreManagement
         public CashierDashboard()
         {
             InitializeComponent();
-            BASE_STATE = this.WindowState;
 
             HideBillElements();
+
+            BASE_STATE = this.WindowState;
         }
 
         private readonly WindowState BASE_STATE;

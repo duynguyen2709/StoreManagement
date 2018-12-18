@@ -42,35 +42,32 @@ namespace StoreManagement
                     //cap nhat Detail Bill
                     //init
                     //BaseDAO dao1 = BaseDAO
-                    Task.Run(() =>
+                    int tmpIdCashier = LoginForm.Idcashier;
+
+                    //chuyen sale.basket sang dang directory
+                    Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
+
+                    foreach (var t in sale.baskets)
                     {
-                        int tmpIdCashier = LoginForm.Idcashier;
+                        tmpbasket.Add(t.ProductID, t.size);
+                    }
 
-                        //chuyen sale.basket sang dang directory
-                        Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
+                    //create new bill
+                    BillEntity bill = new BillEntity()
+                    {
+                        //set date
+                        BillDate = DateTime.Today,
 
-                        foreach (var t in sale.baskets)
-                        {
-                            tmpbasket.Add(t.ProductID, t.size);
-                        }
+                        //add list product
+                        ListProduct = tmpbasket,
 
-                        //create new bill
-                        BillEntity bill = new BillEntity()
-                        {
-                            //set date
-                            BillDate = DateTime.Today,
+                        //set ID cashier
+                        CashierID = tmpIdCashier
+                    };
 
-                            //add list product
-                            ListProduct = tmpbasket,
-
-                            //set ID cashier
-                            CashierID = tmpIdCashier
-                        };
-
-                        //insert and get new bill ID
-                        BaseDAO dao = new BillDAO();
-                        int billID = dao.insert(bill);
-                    });
+                    //insert and get new bill ID
+                    BaseDAO dao = new BillDAO();
+                    int billID = dao.insert(bill);
 
                     //bao hieu cap nhat listitems
                     flag = true;

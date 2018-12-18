@@ -41,7 +41,7 @@
 
                         <Canvas Margin="10" Width="100" Height="100">
                             <Border Panel.ZIndex="2"  BorderBrush="Black" BorderThickness="0.5">
-                                <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Opacity="0.5" Background="#FF4D69FF" Foreground="#FFF9F8F8" />
+                                <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Background="#FF4D69FF" Foreground="#FFF9F8F8" FontFamily="Lato" FontSize="14" />
                             </Border>
                             <Border Panel.ZIndex="1"  BorderBrush="Black" BorderThickness="0.5">
                                 <Image Margin="0.5"  Panel.ZIndex="1" Width="100" Height="90" Source="{Binding ImageURL}" Stretch="Fill" ></Image>
