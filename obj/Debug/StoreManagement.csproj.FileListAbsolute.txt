@@ -49,3 +49,4 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.exe
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.pdb
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\XamlAnimatedGif.dll
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csprojAssemblyReference.cache
