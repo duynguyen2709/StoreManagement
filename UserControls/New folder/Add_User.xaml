@@ -1,0 +1,47 @@
+﻿<Window x:Class="StoreManagement.Add_User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:StoreManagement"
+        mc:Ignorable="d"
+        Title="Add Product" Height="620" Width="470" ResizeMode="NoResize">
+    <Canvas Margin="0,0,0,-5">
+        <Label x:Name="lbl_ProductInfo" Content="User Information:" FontSize="20" FontStyle="Italic"  Canvas.Left="16" Canvas.Top="14" Height="36" Width="220" FontWeight="Bold"/>
+        <Label x:Name="lbl_Name" Content="Name:" FontSize="18" FontStyle="Italic" Canvas.Left="17" Canvas.Top="62"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="59" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Name" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="16" Margin="7,-2,-35,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Name_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Password" Content="Password:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="121"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="116" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Password" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}"  TextChanged="txt_Password_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Role" Content="Role:" FontSize="18" FontStyle="Italic" Canvas.Left="21" Canvas.Top="176"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="176" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Role" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Role_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_FullName" Content="Full Name:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="234"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="234" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_FullName" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_FullName_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Birthdate" Content="Birthdate:" FontSize="18" FontStyle="Italic" Canvas.Left="11" Canvas.Top="289"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="289" Width="262" Background="White" VerticalAlignment="Center">
+            <!--<TextBox Name="txt_Birthdate" Height="38" Width="254" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,-1,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}"  TextChanged="txt_Birthdate_TextChanged" />-->
+            <DatePicker
+                x:Name="txt_Birthdate"  Width="200" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+        </Border>
+        <Label x:Name="lbl_IdCard" Content="ID Card Number:" FontSize="18" FontStyle="Italic" Canvas.Left="11" Canvas.Top="347"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="347" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_IdCard" Height="38" Width="254" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,-1,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}"  TextChanged="txt_IdCard_TextChanged" />
+        </Border>
+        <Label x:Name="lbl_Address" Content="Address:" FontSize="18" FontStyle="Italic" Canvas.Left="11" Canvas.Top="405"/>
+        <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="140" Canvas.Top="405" Width="262" Background="White" VerticalAlignment="Center">
+            <TextBox Name="txt_Address" Height="38" Width="254" HorizontalAlignment="Left"  VerticalAlignment="Center"   FontSize="16" Margin="7,-2,-1,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}"  TextChanged="txt_Address_TextChanged" />
+        </Border>
+        
+        
+        <Button x:Name="btn_Add" Content="Add" Height="55" Canvas.Left="180" Canvas.Top="500" Width="113" Click="btn_Add_Click" IsEnabled="False"/>
+
+
+    </Canvas>
+</Window>

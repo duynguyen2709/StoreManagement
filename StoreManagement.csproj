@@ -153,6 +153,9 @@
     <Compile Include="UserControls\Add_Shift.xaml.cs">
       <DependentUpon>Add_Shift.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Add_User.xaml.cs">
+      <DependentUpon>Add_User.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Edit_Product_Page.xaml.cs">
       <DependentUpon>Edit_Product_Page.xaml</DependentUpon>
     </Compile>
@@ -190,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Add_Shift.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Add_User.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
