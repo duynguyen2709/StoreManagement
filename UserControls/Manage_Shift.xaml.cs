@@ -16,14 +16,14 @@ namespace StoreManagement.UserControls
         public Manage_Shift()
         {
             InitializeComponent();
-            this.DataContext = this;
+            DataContext = this;
         }
 
         public void Load_Table(List<ShiftTime> data)
         {
             if (data[12].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[12].WeekDay,
@@ -52,7 +52,7 @@ namespace StoreManagement.UserControls
 
             if (data[13].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[13].WeekDay,
@@ -81,7 +81,7 @@ namespace StoreManagement.UserControls
             }
             if (data[14].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[14].WeekDay,
@@ -110,7 +110,7 @@ namespace StoreManagement.UserControls
             }
             if (data[15].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[15].WeekDay,
@@ -139,7 +139,7 @@ namespace StoreManagement.UserControls
             }
             if (data[4].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[4].WeekDay,
@@ -168,7 +168,7 @@ namespace StoreManagement.UserControls
             }
             if (data[5].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[5].WeekDay,
@@ -197,7 +197,7 @@ namespace StoreManagement.UserControls
             }
             if (data[6].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[6].WeekDay,
@@ -226,7 +226,7 @@ namespace StoreManagement.UserControls
             }
             if (data[7].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[7].WeekDay,
@@ -255,7 +255,7 @@ namespace StoreManagement.UserControls
             }
             if (data[20].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[20].WeekDay,
@@ -284,7 +284,7 @@ namespace StoreManagement.UserControls
             }
             if (data[21].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[21].WeekDay,
@@ -313,7 +313,7 @@ namespace StoreManagement.UserControls
             }
             if (data[22].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[22].WeekDay,
@@ -342,7 +342,7 @@ namespace StoreManagement.UserControls
             }
             if (data[23].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[23].WeekDay,
@@ -371,7 +371,7 @@ namespace StoreManagement.UserControls
             }
             if (data[24].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[24].WeekDay,
@@ -400,7 +400,7 @@ namespace StoreManagement.UserControls
             }
             if (data[25].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[25].WeekDay,
@@ -429,7 +429,7 @@ namespace StoreManagement.UserControls
             }
             if (data[26].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[26].WeekDay,
@@ -458,7 +458,7 @@ namespace StoreManagement.UserControls
             }
             if (data[27].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[27].WeekDay,
@@ -487,7 +487,7 @@ namespace StoreManagement.UserControls
             }
             if (data[16].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[16].WeekDay,
@@ -516,7 +516,7 @@ namespace StoreManagement.UserControls
             }
             if (data[17].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[17].WeekDay,
@@ -545,7 +545,7 @@ namespace StoreManagement.UserControls
             }
             if (data[18].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[18].WeekDay,
@@ -574,7 +574,7 @@ namespace StoreManagement.UserControls
             }
             if (data[19].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[19].WeekDay,
@@ -603,7 +603,7 @@ namespace StoreManagement.UserControls
             }
             if (data[0].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[0].WeekDay,
@@ -632,7 +632,7 @@ namespace StoreManagement.UserControls
             }
             if (data[1].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[1].WeekDay,
@@ -661,7 +661,7 @@ namespace StoreManagement.UserControls
             }
             if (data[2].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[2].WeekDay,
@@ -690,7 +690,7 @@ namespace StoreManagement.UserControls
             }
             if (data[3].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[3].WeekDay,
@@ -719,7 +719,7 @@ namespace StoreManagement.UserControls
             }
             if (data[8].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[8].WeekDay,
@@ -748,7 +748,7 @@ namespace StoreManagement.UserControls
             }
             if (data[9].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[9].WeekDay,
@@ -777,7 +777,7 @@ namespace StoreManagement.UserControls
             }
             if (data[10].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[10].WeekDay,
@@ -806,7 +806,7 @@ namespace StoreManagement.UserControls
             }
             if (data[11].Status == 0)
             {
-                Object Id = new
+                object Id = new
                 {
                     Week = DateTime.Today.DayOfYear / 7,
                     WeekDay = data[11].WeekDay,
@@ -847,7 +847,7 @@ namespace StoreManagement.UserControls
             {
                 if (regStatus[i] == true)
                 {
-                    Object Id = new
+                    object Id = new
                     {
                         Week = DateTime.Today.DayOfYear / 7,
                         WeekDay = Registation_Shift_list[i].WeekDay,
@@ -857,14 +857,16 @@ namespace StoreManagement.UserControls
                     UserShiftEntity temp = dao.get(Id, typeof(UserShiftEntity)) as UserShiftEntity;
 
                     if (temp == null)
+                    {
                         dao.insert(Registation_Shift_list[i]);
+                    }
                 }
                 else
                 {
                     dao.delete(Registation_Shift_list[i]);
                 }
             }
-            this.Page_Loaded(null, null);
+            Page_Loaded(null, null);
             button.IsEnabled = true;
             MessageBox.Show("Shift Updated", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
         }

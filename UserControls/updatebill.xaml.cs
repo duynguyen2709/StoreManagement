@@ -34,14 +34,14 @@ namespace StoreManagement.UserControls
         {
             try
             {
-                var bills = ListBill.GetRange(0, ListBill.Count);
+                List<BillEntity> bills = ListBill.GetRange(0, ListBill.Count);
 
                 bills.RemoveAll(entity => !(DateTime.Parse(Datefrom.Text) <= entity.BillDate
                                          && DateTime.Parse(Dateto.Text) >= entity.BillDate));
 
                 if (IDCashier.Text != "")
                 {
-                    bills.RemoveAll(entity => entity.CashierID != Int32.Parse(IDCashier.Text));
+                    bills.RemoveAll(entity => entity.CashierID != int.Parse(IDCashier.Text));
                 }
 
                 if (bills.Count > 0)
@@ -92,7 +92,7 @@ namespace StoreManagement.UserControls
                 Button btn = sender as Button;
                 BillEntity tmp = btn.DataContext as BillEntity;
 
-                var window = new updatedetailbill(tmp);
+                updatedetailbill window = new updatedetailbill(tmp);
                 window.ShowDialog();
                 if (updatedetailbill.isUpdate)
                 {

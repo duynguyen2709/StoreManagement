@@ -5,10 +5,12 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\EntityFramework.SqlServer.dll
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignColors.dll
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\XamlAnimatedGif.dll
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\EntityFramework.xml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\EntityFramework.SqlServer.xml
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignThemes.Wpf.pdb
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csprojAssemblyReference.cache
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\Infobill.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StorageManagerDashboard.g.cs
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\CashierDashboard.g.cs
@@ -48,5 +50,3 @@ D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\Stor
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csproj.CopyComplete
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.exe
 D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.pdb
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\bin\Debug\XamlAnimatedGif.dll
-D:\PROJECTS\Introduce to Software Development\Final Project\StoreManagement\StoreManagement\obj\Debug\StoreManagement.csprojAssemblyReference.cache

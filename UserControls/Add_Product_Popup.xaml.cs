@@ -1,9 +1,8 @@
-﻿using System;
+﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
-using StoreManagement.DAO;
-using StoreManagement.Entities;
 
 namespace StoreManagement.UserControls
 {
@@ -26,14 +25,16 @@ namespace StoreManagement.UserControls
                 return;
             }
 
-            ProductEntity newProduct = new ProductEntity();
-            newProduct.ProductName = txt_Name.Text.Trim();
-            newProduct.Type = txt_Type.Text.Trim();
-            newProduct.Brand = txt_Brand.Text.Trim();
-            newProduct.Price = int.Parse(txt_Price.Text.Trim());
-            newProduct.Quantity = int.Parse(txt_Quantity.Text.Trim());
-            newProduct.ImageURL = txt_URLimage.Text.Trim();
-            newProduct.Description = txt_Description.Text.Trim();
+            ProductEntity newProduct = new ProductEntity
+            {
+                ProductName = txt_Name.Text.Trim(),
+                Type = txt_Type.Text.Trim(),
+                Brand = txt_Brand.Text.Trim(),
+                Price = int.Parse(txt_Price.Text.Trim()),
+                Quantity = int.Parse(txt_Quantity.Text.Trim()),
+                ImageURL = txt_URLimage.Text.Trim(),
+                Description = txt_Description.Text.Trim()
+            };
             BaseDAO dao = BaseDAO.getInstance();
             dao.insert(newProduct);
 
@@ -43,13 +44,13 @@ namespace StoreManagement.UserControls
 
         private bool checkValue()
         {
-            return (!String.Equals(txt_Name.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_Price.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_Brand.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_Description.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_Quantity.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_Type.Text.Trim().ToLower(), "")
-                 && !String.Equals(txt_URLimage.Text.Trim().ToLower(), ""));
+            return (!string.Equals(txt_Name.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_Price.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_Brand.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_Description.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_Quantity.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_Type.Text.Trim().ToLower(), "")
+                 && !string.Equals(txt_URLimage.Text.Trim().ToLower(), ""));
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)

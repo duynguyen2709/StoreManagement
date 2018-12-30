@@ -5,12 +5,12 @@ namespace StoreManagement.Utilities
 {
     internal class CustomException : Exception
     {
-        public CustomException(String _error)
+        public CustomException(string _error)
         {
             Error = _error;
         }
 
-        public String Error { get; set; }
+        public string Error { get; set; }
 
         public void showPopupError()
         {

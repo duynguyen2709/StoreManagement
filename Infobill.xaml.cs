@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,7 +26,7 @@ namespace StoreManagement
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
@@ -47,7 +46,7 @@ namespace StoreManagement
                     //chuyen sale.basket sang dang directory
                     Dictionary<int, int> tmpbasket = new Dictionary<int, int>();
 
-                    foreach (var t in sale.baskets)
+                    foreach (infobasket t in sale.baskets)
                     {
                         tmpbasket.Add(t.ProductID, t.size);
                     }
@@ -76,7 +75,7 @@ namespace StoreManagement
                                     "Result",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
-                    this.Close();
+                    Close();
                     sale.baskets.Clear();
                     break;
 

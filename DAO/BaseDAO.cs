@@ -9,12 +9,14 @@ namespace StoreManagement.DAO
         public static BaseDAO getInstance()
         {
             if (instance == null)
+            {
                 instance = new BaseDAO();
+            }
 
             return instance;
         }
 
-        public virtual void delete(Object obj)
+        public virtual void delete(object obj)
         {
             try
             {
@@ -27,12 +29,12 @@ namespace StoreManagement.DAO
             }
         }
 
-        public virtual Object get(Object ID, Type type = null)
+        public virtual object get(object ID, Type type = null)
         {
             try
             {
                 instance = GetDAO(type);
-                Object obj = instance.get(ID);
+                object obj = instance.get(ID);
 
                 return obj;
             }
@@ -44,12 +46,12 @@ namespace StoreManagement.DAO
             return null;
         }
 
-        public virtual Object getAll(Type type = null)
+        public virtual object getAll(Type type = null)
         {
             try
             {
                 instance = GetDAO(type);
-                Object obj = instance.getAll();
+                object obj = instance.getAll();
 
                 return obj;
             }
@@ -61,7 +63,7 @@ namespace StoreManagement.DAO
             return null;
         }
 
-        public virtual int insert(Object obj)
+        public virtual int insert(object obj)
         {
             try
             {
@@ -77,7 +79,7 @@ namespace StoreManagement.DAO
             return -1;
         }
 
-        public virtual void update(Object obj)
+        public virtual void update(object obj)
         {
             try
             {
@@ -96,7 +98,7 @@ namespace StoreManagement.DAO
         {
         }
 
-        protected virtual Object convertToEntity(Object obj)
+        protected virtual object convertToEntity(object obj)
         {
             return null;
         }
@@ -104,15 +106,25 @@ namespace StoreManagement.DAO
         protected BaseDAO GetDAO(Type type)
         {
             if (type == typeof(UserEntity))
+            {
                 instance = new UserDAO();
+            }
             else if (type == typeof(ProductEntity))
+            {
                 instance = new ProductDAO();
+            }
             else if (type == typeof(BillEntity))
+            {
                 instance = new BillDAO();
+            }
             else if (type == typeof(GoodsImportEntity))
+            {
                 instance = new GoodsImportDAO();
+            }
             else if (type == typeof(UserShiftEntity))
+            {
                 instance = new ShiftDAO();
+            }
 
             return instance;
         }

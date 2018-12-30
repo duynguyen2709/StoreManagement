@@ -20,9 +20,19 @@ namespace StoreManagement.UserControls
             {
                 Weekday += "day";
             }
-            else if (Weekday == "Thu") Weekday = "Thursday";
-            else if (Weekday == "Sat") Weekday = "Saturday";
-            else if (Weekday == "Wed") Weekday = "Wednesday";
+            else if (Weekday == "Thu")
+            {
+                Weekday = "Thursday";
+            }
+            else if (Weekday == "Sat")
+            {
+                Weekday = "Saturday";
+            }
+            else if (Weekday == "Wed")
+            {
+                Weekday = "Wednesday";
+            }
+
             textBlock_WeekDay.Text = Weekday;
         }
 
@@ -31,17 +41,19 @@ namespace StoreManagement.UserControls
         private void Add_btn_Click(object sender, RoutedEventArgs e)
         {
             UserEntity curCashier = comboBox.SelectedItem as UserEntity;
-            UserShiftEntity temp = new UserShiftEntity();
-            temp.CashierID = curCashier.UserID;
-            temp.Shift = int.Parse(textBlock_Shift.Text[5].ToString());
-            temp.Week = DateTime.Today.DayOfYear / 7;
-            temp.WeekDay = textBlock_WeekDay.Text;
+            UserShiftEntity temp = new UserShiftEntity
+            {
+                CashierID = curCashier.UserID,
+                Shift = int.Parse(textBlock_Shift.Text[5].ToString()),
+                Week = DateTime.Today.DayOfYear / 7,
+                WeekDay = textBlock_WeekDay.Text
+            };
             ShiftDAO dao = new ShiftDAO();
             dao.insert(temp);
 
             Manage_Shift_Admin.isUpdate = true;
 
-            this.Close();
+            Close();
         }
 
         private void comboBox_SelectionChanged()
@@ -54,7 +66,7 @@ namespace StoreManagement.UserControls
             List<UserEntity> Employees = dao.getAll(typeof(UserEntity)) as List<UserEntity>;
             Cashiers = new List<UserEntity>();
 
-            foreach (var c in Employees)
+            foreach (UserEntity c in Employees)
             {
                 if (c.Role == 1)
                 {

@@ -1,6 +1,5 @@
 ﻿using StoreManagement.DAO;
 using System.Windows;
-using StoreManagement.UserControls;
 
 namespace StoreManagement
 {
@@ -32,21 +31,21 @@ namespace StoreManagement
             switch (role)
             {
                 case 0:
-                    var managerDashboard = new ManagerDashboard();
+                    ManagerDashboard managerDashboard = new ManagerDashboard();
                     managerDashboard.Show();
-                    this.Close();
+                    Close();
                     break;
 
                 case 1:
-                    var cashierDashboard = new CashierDashboard();
+                    CashierDashboard cashierDashboard = new CashierDashboard();
                     cashierDashboard.Show();
-                    this.Close();
+                    Close();
                     break;
 
                 case 2:
-                    var storageManagerDashboard = new StorageManagerDashboard();
+                    StorageManagerDashboard storageManagerDashboard = new StorageManagerDashboard();
                     storageManagerDashboard.Show();
-                    this.Close();
+                    Close();
                     break;
 
                 default:
@@ -58,11 +57,13 @@ namespace StoreManagement
         private int validateAccount(string username, string password)
         {
             if (username.Length == 0 || password.Length == 0)
-                return -1;
-
-            using (var context = new StoreManagementEntities())
             {
-                foreach (var user in context.Users)
+                return -1;
+            }
+
+            using (StoreManagementEntities context = new StoreManagementEntities())
+            {
+                foreach (User user in context.Users)
                 {
                     if (user.Username == username && user.Password == password)
                     {

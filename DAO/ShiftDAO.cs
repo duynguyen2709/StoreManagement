@@ -14,16 +14,16 @@ namespace StoreManagement.DAO
             {
                 UserShiftEntity entity = obj as UserShiftEntity;
 
-                using (var context = new StoreManagementEntities())
+                using (StoreManagementEntities context = new StoreManagementEntities())
                 {
-                    var delete = (from u in context.ShiftRegistrations
-                                  where entity.Week == u.Week && entity.Shift == u.Shift
-                                        && entity.WeekDay == u.WeekDay
-                                  select u).Single();
+                    ShiftRegistration delete = (from u in context.ShiftRegistrations
+                                                where entity.Week == u.Week && entity.Shift == u.Shift
+                                                      && entity.WeekDay == u.WeekDay
+                                                select u).Single();
 
                     context.ShiftRegistrations.Remove(delete);
 
-                    var shift = context.ShiftTimes.Find(entity.WeekDay, entity.Shift);
+                    ShiftTime shift = context.ShiftTimes.Find(entity.WeekDay, entity.Shift);
                     shift.Status = 1;
 
                     context.SaveChanges();
@@ -31,7 +31,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                CustomException ex = new CustomException(this.GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(GetType().Name + " : Delete " + obj.ToString() + "\n" + e.Message);
                 ex.showPopupError();
             }
         }
@@ -46,12 +46,12 @@ namespace StoreManagement.DAO
                 string WeekDay = (string)ID?.GetType().GetProperty("WeekDay")?.GetValue(ID, null);
                 int Shift = (int)ID?.GetType().GetProperty("Shift")?.GetValue(ID, null);
 
-                using (var context = new StoreManagementEntities())
+                using (StoreManagementEntities context = new StoreManagementEntities())
                 {
                     entity = context.ShiftRegistrations.Find(Week, WeekDay, Shift).Cast<UserShiftEntity>();
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
             }
 
@@ -64,9 +64,9 @@ namespace StoreManagement.DAO
 
             try
             {
-                using (var context = new StoreManagementEntities())
+                using (StoreManagementEntities context = new StoreManagementEntities())
                 {
-                    foreach (var shift in context.ShiftRegistrations)
+                    foreach (ShiftRegistration shift in context.ShiftRegistrations)
                     {
                         UserShiftEntity entity = shift.Cast<UserShiftEntity>();
                         listShift.Add(entity);
@@ -75,7 +75,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                CustomException ex = new CustomException(this.GetType().Name + " : GetAll \n" + e.Message);
+                CustomException ex = new CustomException(GetType().Name + " : GetAll \n" + e.Message);
                 ex.showPopupError();
             }
 
@@ -86,14 +86,14 @@ namespace StoreManagement.DAO
         {
             try
             {
-                var newUserShift = obj as UserShiftEntity;
+                UserShiftEntity newUserShift = obj as UserShiftEntity;
                 ShiftRegistration shift = newUserShift.Cast<ShiftRegistration>();
 
-                using (var context = new StoreManagementEntities())
+                using (StoreManagementEntities context = new StoreManagementEntities())
                 {
                     context.ShiftRegistrations.Add(shift);
 
-                    var regShift = context.ShiftTimes.Find(shift.WeekDay, shift.Shift);
+                    ShiftTime regShift = context.ShiftTimes.Find(shift.WeekDay, shift.Shift);
                     regShift.Status = 0;
 
                     context.SaveChanges();
@@ -103,7 +103,7 @@ namespace StoreManagement.DAO
             }
             catch (Exception e)
             {
-                CustomException ex = new CustomException(this.GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
+                CustomException ex = new CustomException(GetType().Name + " : Insert " + obj.ToString() + "\n" + e.Message);
                 ex.showPopupError();
             }
 
@@ -112,7 +112,7 @@ namespace StoreManagement.DAO
 
         public override void update(object obj)
         {
-            throw new CustomException(this.GetType().Name + ": Not support update");
+            throw new CustomException(GetType().Name + ": Not support update");
         }
     }
 }

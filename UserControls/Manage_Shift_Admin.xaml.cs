@@ -76,7 +76,7 @@ namespace StoreManagement.UserControls
             List<Task> taskList = new List<Task>();
 
             //duyệt mỗi ô, update mỗi ô = 1 thread
-            foreach (var shiftMapping in listShiftMapping)
+            foreach (ShiftMapping shiftMapping in listShiftMapping)
             {
                 //add vào thead tự chạy
                 taskList.Add(LoadShift(shiftMapping));
@@ -96,7 +96,7 @@ namespace StoreManagement.UserControls
             string btnName = (sender as Button).Name.ToString();
             string[] element = btnName.Split('_');
 
-            var f = new Add_Shift(element[1], element[2]);
+            Add_Shift f = new Add_Shift(element[1], element[2]);
             f.ShowDialog();
 
             if (isUpdate)
@@ -115,12 +115,12 @@ namespace StoreManagement.UserControls
             await Task.Run(() =>
                            {
                                //có cập nhật UI thì phải xài hàm này để đảm bảo không conflict UI
-                               this.Dispatcher.Invoke(() =>
+                               Dispatcher.Invoke(() =>
                                                       {
                                                           //đoạn này của m
                                                           if (map.shift.Status == 0)
                                                           {
-                                                              Object Id = new
+                                                              object Id = new
                                                               {
                                                                   Week = DateTime.Today.DayOfYear / 7,
                                                                   WeekDay = map.shift.WeekDay,
@@ -134,9 +134,7 @@ namespace StoreManagement.UserControls
                                                               BrushConverter bc = new BrushConverter();
                                                               map.textBlock.Background = (Brush)bc.ConvertFrom("#DCDCDC");
 
-                                                              map.textBlock.Text =
-                                                                  (new UserDAO().get(sample.CashierID) as UserEntity)
-                                                                  .FullName.Trim();
+                                                              map.textBlock.Text = (new UserDAO().get(sample.CashierID) as UserEntity).FullName.Trim();
 
                                                               map.textBlock.Visibility = Visibility.Visible;
                                                           }
@@ -164,7 +162,7 @@ namespace StoreManagement.UserControls
                          ShiftDAO dao = new ShiftDAO();
                          List<UserShiftEntity> data = dao.getAll() as List<UserShiftEntity>;
                          List<UserShiftEntity> Weekdata = data.Where(x => x.Week == DateTime.Today.DayOfYear / 7).ToList();
-                         foreach (var c in Weekdata)
+                         foreach (UserShiftEntity c in Weekdata)
                          {
                              dao.delete(c);
                          }

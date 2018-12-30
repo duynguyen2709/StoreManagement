@@ -22,12 +22,12 @@ namespace StoreManagement.UserControls
 
         public sale()
         {
+            InitializeComponent();
+
             Task.Run(() =>
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                 {
-                    InitializeComponent();
-
                     BaseDAO dao = BaseDAO.getInstance();
                     listitems = new ObservableCollection<ProductEntity>((dao.getAll(typeof(ProductEntity)) as List<ProductEntity>));
                     listitem.ItemsSource = listitems;
@@ -127,7 +127,10 @@ namespace StoreManagement.UserControls
                     {
                         baskets[i].Size--;
                         if (baskets[i].Size <= 0)
+                        {
                             flag = i;
+                        }
+
                         break;
                     }
                 }
@@ -168,7 +171,7 @@ namespace StoreManagement.UserControls
 
         private void Pay_Click(object sender, RoutedEventArgs e)
         {
-            var tmp = new Infobill();
+            Infobill tmp = new Infobill();
             tmp.ShowDialog();
         }
 
@@ -220,8 +223,10 @@ namespace StoreManagement.UserControls
 
         private bool UserFilter(object item)
         {
-            if (String.IsNullOrEmpty(search.Text))
+            if (string.IsNullOrEmpty(search.Text))
+            {
                 return true;
+            }
 
             return ((item as ProductEntity).ProductName.IndexOf(search.Text, StringComparison.OrdinalIgnoreCase) >= 0);
         }

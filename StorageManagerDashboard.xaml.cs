@@ -11,7 +11,7 @@ namespace StoreManagement
         public StorageManagerDashboard()
         {
             InitializeComponent();
-            BASE_STATE = this.WindowState;
+            BASE_STATE = WindowState;
         }
 
         private readonly WindowState BASE_STATE;
@@ -23,19 +23,19 @@ namespace StoreManagement
 
         private void BtnMaximize_OnClick(object sender, RoutedEventArgs e)
         {
-            if (this.WindowState != WindowState.Maximized)
+            if (WindowState != WindowState.Maximized)
             {
-                this.WindowState = WindowState.Maximized;
+                WindowState = WindowState.Maximized;
             }
             else
             {
-                this.WindowState = BASE_STATE;
+                WindowState = BASE_STATE;
             }
         }
 
         private void BtnMinimize_OnClick(object sender, RoutedEventArgs e)
         {
-            this.WindowState = WindowState.Minimized;
+            WindowState = WindowState.Minimized;
         }
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,9 +61,9 @@ namespace StoreManagement
                     break;
 
                 case 5:
-                    var loginForm = new LoginForm();
+                    LoginForm loginForm = new LoginForm();
                     loginForm.Show();
-                    this.Close();
+                    Close();
                     break;
 
                 default: break;

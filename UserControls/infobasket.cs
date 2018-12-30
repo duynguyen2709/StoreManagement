@@ -16,9 +16,9 @@
             this.ProductID = ProductID;
             this.ProductName = ProductName;
             this.Quantity = Quantity;
-            this.Size = size;
-            this.Sum = Size * Price;
-            this.Number = 0;
+            Size = size;
+            Sum = Size * Price;
+            Number = 0;
         }
 
         public string Brand { get; set; }

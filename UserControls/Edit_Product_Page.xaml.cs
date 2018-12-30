@@ -40,7 +40,11 @@ namespace StoreManagement.UserControls
         {
             ProductEntity temp = listBox.SelectedItem as ProductEntity;
             int idx = listBox.SelectedIndex + 1;
-            if (idx == listBox.Items.Count) idx = 0;
+            if (idx == listBox.Items.Count)
+            {
+                idx = 0;
+            }
+
             listBox.SelectedIndex = idx;
             dao.delete(temp);
 
@@ -57,15 +61,17 @@ namespace StoreManagement.UserControls
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
         {
-            ProductEntity entity = new ProductEntity();
-            entity.Brand = txt_Brand.Text;
-            entity.Type = txt_Type.Text;
-            entity.ProductName = txt_Name.Text;
-            entity.ProductID = int.Parse(txt_Id.Text);
-            entity.Quantity = int.Parse(txt_Quantity.Text);
-            entity.Price = int.Parse(txt_Price.Text);
-            entity.ImageURL = txt_URL.Text;
-            entity.Description = txt_Description.Text;
+            ProductEntity entity = new ProductEntity
+            {
+                Brand = txt_Brand.Text,
+                Type = txt_Type.Text,
+                ProductName = txt_Name.Text,
+                ProductID = int.Parse(txt_Id.Text),
+                Quantity = int.Parse(txt_Quantity.Text),
+                Price = int.Parse(txt_Price.Text),
+                ImageURL = txt_URL.Text,
+                Description = txt_Description.Text
+            };
             dao.update(entity);
 
             int index = products.IndexOf(products.Find(obj => obj.ProductID == entity.ProductID));
@@ -104,7 +110,7 @@ namespace StoreManagement.UserControls
         {
             Task.Run(() =>
             {
-                this.Dispatcher.Invoke(() =>
+                Dispatcher.Invoke(() =>
                                        {
                                            products =
                                                dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;

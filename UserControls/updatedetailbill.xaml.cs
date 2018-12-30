@@ -20,7 +20,7 @@ namespace StoreManagement.UserControls
 
             //Chuyen Dictionary thanh dạng list<value>
 
-            var listproductbill = billdetail.ListProduct;
+            Dictionary<int, int> listproductbill = billdetail.ListProduct;
 
             //Lay Product để lay quantity
             BaseDAO dao = new ProductDAO();
@@ -91,7 +91,7 @@ namespace StoreManagement.UserControls
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -118,7 +118,7 @@ namespace StoreManagement.UserControls
                                 dao.update(billdetail);
                                 Infobill.flag = true;
                                 isUpdate = true;
-                                this.Close();
+                                Close();
                             }
                             catch { }
                         }
