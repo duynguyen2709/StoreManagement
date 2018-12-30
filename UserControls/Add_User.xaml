@@ -9,7 +9,7 @@
         Title="Add User" Height="620" Width="470" ResizeMode="NoResize">
     <Canvas Margin="0,0,0,-5">
         <Label x:Name="lbl_ProductInfo" Content="User Information:" FontSize="20"    Canvas.Left="15" Canvas.Top="14" Height="36" Width="220" FontWeight="Bold" />
-        <Label x:Name="lbl_Name" Content="Name:" FontSize="18"   Canvas.Left="17" Canvas.Top="62" />
+        <Label x:Name="lbl_Name" Content="Username:" FontSize="18"   Canvas.Left="17" Canvas.Top="62" />
         <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="160" Canvas.Top="59" Width="262" Background="White" VerticalAlignment="Center">
             <TextBox Name="txt_Name" Height="38" Width="253" HorizontalAlignment="Left"  VerticalAlignment="Center"  FontSize="16" Margin="7,-2,-35,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" TextChanged="txt_Name_TextChanged" />
         </Border>

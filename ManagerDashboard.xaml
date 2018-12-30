@@ -39,6 +39,7 @@
 
             <usercontrol:sale x:Name="selling" Visibility="Hidden" />
             <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Hidden" />
+            <usercontrol:Edit_Information_Admin x:Name="editInformationAdmin" Visibility="Hidden" />
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
             <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Hidden" />
         </Grid>

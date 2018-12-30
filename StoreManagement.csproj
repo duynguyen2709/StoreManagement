@@ -159,6 +159,9 @@
     <Compile Include="UserControls\Edit_Information.xaml.cs">
       <DependentUpon>Edit_Information.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Edit_Information_Admin.xaml.cs">
+      <DependentUpon>Edit_Information_Admin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Edit_Product_Page.xaml.cs">
       <DependentUpon>Edit_Product_Page.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Edit_Information.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Edit_Information_Admin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
