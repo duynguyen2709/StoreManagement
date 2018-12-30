@@ -41,6 +41,8 @@
 
             <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
 
+            <usercontrol:Edit_Information x:Name="editInformation" Visibility="Hidden" />
+
             <usercontrol:Manage_Shift x:Name="manageShift" HorizontalAlignment="Stretch" Visibility="Hidden" />
         </Grid>
 

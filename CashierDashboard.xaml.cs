@@ -64,6 +64,7 @@ namespace StoreManagement
 
             selling.Visibility = Visibility.Hidden;
             updatebill.Visibility = Visibility.Hidden;
+            editInformation.Visibility = Visibility.Hidden;
             manageShift.Visibility = Visibility.Hidden;
 
             switch (index)
@@ -81,7 +82,7 @@ namespace StoreManagement
                     break;
 
                 case 3:
-
+                    editInformation.Visibility = Visibility.Visible;
                     break;
 
                 case 4:

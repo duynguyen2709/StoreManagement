@@ -1,4 +1,6 @@
 ﻿using StoreManagement.DAO;
+using StoreManagement.Entities;
+using StoreManagement.Utilities;
 using System.Windows;
 
 namespace StoreManagement
@@ -8,6 +10,8 @@ namespace StoreManagement
     /// </summary>
     public partial class LoginForm : Window
     {
+        public static UserEntity currentUser = null;
+
         //lay iduser
         static public int Idcashier;
 
@@ -69,6 +73,9 @@ namespace StoreManagement
                     {
                         //lay iduser
                         Idcashier = user.UserID;
+
+                        currentUser = user.Cast<UserEntity>();
+
                         return user.Role;
                     }
                 }
