@@ -8,9 +8,10 @@
 
         public enum TimeSpan
         {
-            Weekly,
+            _7Days,
             _15Days,
-            Monthly
+            _4Weeks,
+            _6Months
         }
 
         public static int GetDays(TimeSpan time)
@@ -19,7 +20,7 @@
 
             switch (time)
             {
-                case TimeSpan.Weekly:
+                case TimeSpan._7Days:
                     day = 7;
 
                     break;
@@ -29,8 +30,13 @@
 
                     break;
 
-                case TimeSpan.Monthly:
-                    day = 30;
+                case TimeSpan._4Weeks:
+                    day = 28;
+
+                    break;
+
+                case TimeSpan._6Months:
+                    day = 180;
 
                     break;
             }

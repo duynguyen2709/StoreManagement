@@ -27,37 +27,38 @@ namespace StoreManagement.UserControls.Charts
 
         protected static DateTime Today = DateTime.Today;
 
-        private string DrawBarChart()
+        private void CbbTime_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DrawLineChart();
+        }
+
+        private void DrawBarChart()
         {
             int index = cbbTime.SelectedIndex;
 
             ChartData.TimeSpan time = (ChartData.TimeSpan)index;
 
             //LineChart.DrawChart(ChartData.GetDays(time));
-            return "";
         }
 
-        private string DrawLineChart()
+        private void DrawLineChart()
         {
             int index = cbbTime.SelectedIndex;
 
             ChartData.TimeSpan time = (ChartData.TimeSpan)index;
 
-            string url = LineChart.DrawChart(ChartData.GetDays(time));
+            string url = LineChart.DrawChart(time);
 
             lineChart.Source = new BitmapImage(new Uri(url));
-            return url;
         }
 
-        private string DrawPieChart()
+        private void DrawPieChart()
         {
             int index = cbbTime.SelectedIndex;
 
             ChartData.TimeSpan time = (ChartData.TimeSpan)index;
 
             //LineChart.DrawChart(ChartData.GetDays(time));
-
-            return "";
         }
 
         private async void InitChart()

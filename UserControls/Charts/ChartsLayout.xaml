@@ -12,14 +12,18 @@
         <Image x:Name="loadingGif" Margin="0,50,0,0" Width="150" Height="150" gif:AnimationBehavior.SourceUri="../../Resources/Loading.gif" Visibility="Hidden" />
 
         <StackPanel x:Name="mainPanel" Orientation="Vertical">
-            <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,0,10,0" FontSize="18" Background="#FFE4E4E4">
+            <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center"
+                      Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"
+                      Margin="0,0,10,0" FontSize="18" Background="#FFE4E4E4" SelectionChanged="CbbTime_OnSelectionChanged">
                 <ComboBoxItem Content="7 Days" />
                 <ComboBoxItem Content="15 Days" />
-                <ComboBoxItem Content="1 Month" />
+                <ComboBoxItem Content="4 Weeks" />
+                <ComboBoxItem Content="6 Months" />
             </ComboBox>
             <StackPanel Orientation="Horizontal">
-                <Grid x:Name="gridLineChart" Height="350" Width="700">
-                    <Image Margin="10,0,20,5" x:Name="lineChart" Height="320" Width="700" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                <Grid x:Name="gridLineChart" Height="350" Width="600">
+                    <Grid Height="50" VerticalAlignment="Top" Background="#FF27BF8B" />
+                    <Image x:Name="lineChart" Height="300" Width="600" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                 </Grid>
                 <Grid x:Name="gridPieChart">
 
