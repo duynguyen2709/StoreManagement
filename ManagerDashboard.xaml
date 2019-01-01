@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:usercontrol="clr-namespace:StoreManagement.UserControls"
+        xmlns:chart="clr-namespace:StoreManagement.UserControls.Charts"
         xmlns:local="clr-namespace:StoreManagement"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d" Height="720" Width="1280" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
@@ -36,12 +37,12 @@
         </StackPanel>
 
         <Grid Margin="260 75 10 20">
-
-            <usercontrol:sale x:Name="selling" Visibility="Hidden" />
-            <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Hidden" />
-            <usercontrol:Edit_Information_Admin x:Name="editInformationAdmin" Visibility="Hidden" />
-            <usercontrol:updatebill x:Name="updatebill" Visibility="Hidden" />
-            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Hidden" />
+            <chart:ChartsLayout />
+            <!--<usercontrol:sale x:Name="selling" Visibility="Collapsed" />
+            <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Collapsed" />
+            <usercontrol:Edit_Information_Admin x:Name="editInformationAdmin" Visibility="Collapsed" />
+            <usercontrol:updatebill x:Name="updatebill" Visibility="Collapsed" />
+            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Collapsed" />-->
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

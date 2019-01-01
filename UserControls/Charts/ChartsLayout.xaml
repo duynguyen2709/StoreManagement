@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="StoreManagement.UserControls.Charts.ChartsLayout"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:StoreManagement.UserControls.Charts"
+      mc:Ignorable="d" FontFamily="Lato"
+      d:DesignHeight="650" d:DesignWidth="1000">
+
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Grid x:Name="gridLineChart" Height="350" Width="600" Background="#FFFFD5D5">
+                    <ComboBox x:Name="cbbLineChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,5,20,0" FontSize="20" Background="#FFE4E4E4">
+                        <ComboBoxItem Content="3 Days" />
+                        <ComboBoxItem Content="Weekly" />
+                        <ComboBoxItem Content="Monthly" />
+                    </ComboBox>
+                    <Image x:Name="lineChart" Source="../../Resources/avatar.png" Height="300" Width="600" VerticalAlignment="Bottom" />
+                </Grid>
+                <Grid x:Name="gridPieChart" Background="#FFB0FFAB">
+                    <ComboBox x:Name="cbbPieChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,5,10,0" FontSize="20" Background="#FFE4E4E4">
+                        <ComboBoxItem Content="3 Days" />
+                        <ComboBoxItem Content="Weekly" />
+                        <ComboBoxItem Content="Monthly" />
+                    </ComboBox>
+                    <Image x:Name="pieChart" Source="https://chart.googleapis.com/chart?chs=400x300&amp;chd=t:60,40&amp;cht=p3&amp;chl=Hello|World" Height="300" Width="400" VerticalAlignment="Bottom" />
+                </Grid>
+            </StackPanel>
+            <Grid x:Name="gridBarChart" Height="270" Background="#FFCEF9FF">
+                <ComboBox x:Name="cbbBarChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,10,20,0" FontSize="20" Background="#FFE4E4E4">
+                    <ComboBoxItem Content="3 Days" />
+                    <ComboBoxItem Content="Weekly" />
+                    <ComboBoxItem Content="Monthly" />
+                </ComboBox>
+                <Image x:Name="barChart" Source="../../Resources/avatar.png" Height="250" Width="600" VerticalAlignment="Bottom" />
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

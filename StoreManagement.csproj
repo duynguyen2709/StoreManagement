@@ -156,6 +156,10 @@
     <Compile Include="UserControls\Add_User.xaml.cs">
       <DependentUpon>Add_User.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Charts\ChartData.cs" />
+    <Compile Include="UserControls\Charts\ChartsLayout.xaml.cs">
+      <DependentUpon>ChartsLayout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Edit_Information.xaml.cs">
       <DependentUpon>Edit_Information.xaml</DependentUpon>
     </Compile>
@@ -203,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Add_User.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Charts\ChartsLayout.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
