@@ -20,16 +20,26 @@ namespace StoreManagement.UserControls.Charts
         {
             InitializeComponent();
 
-            cbbTime.SelectedIndex = 0;
+            LoadData = Task.Run(() =>
+                                {
+                                    BaseDAO dao = new BillDAO();
+                                    ListBillData = dao.getAll() as List<BillEntity>;
+                                });
+
+            cbbTime.SelectedIndex = 1;
 
             InitChart();
         }
 
         protected static DateTime Today = DateTime.Today;
 
+        private static Task LoadData;
+
         private void CbbTime_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DrawLineChart();
+
+            DrawPieChart();
         }
 
         private void DrawBarChart()
@@ -58,6 +68,10 @@ namespace StoreManagement.UserControls.Charts
 
             ChartData.TimeSpan time = (ChartData.TimeSpan)index;
 
+            string url = PieChart.DrawChart(time);
+
+            pieChart.Source = new BitmapImage(new Uri(url));
+
             //LineChart.DrawChart(ChartData.GetDays(time));
         }
 
@@ -65,19 +79,18 @@ namespace StoreManagement.UserControls.Charts
         {
             loadingGif.Visibility = Visibility.Visible;
             mainPanel.Visibility = Visibility.Hidden;
-            await Task.Run(() =>
-                              {
-                                  BaseDAO dao = new BillDAO();
-                                  ListBillData = dao.getAll() as List<BillEntity>;
+            await Task.Run(async () =>
+                           {
+                               await LoadData;
+                               Dispatcher.Invoke(() =>
+                                                 {
+                                                     DrawLineChart();
+                                                     DrawPieChart();
+                                                 });
 
-                                  Dispatcher.Invoke(() =>
-                                                    {
-                                                        DrawLineChart();
-                                                    });
-
-                                  //DrawPieChart();
-                                  // DrawBarChart();
-                              });
+                               //DrawPieChart();
+                               // DrawBarChart();
+                           });
 
             loadingGif.Visibility = Visibility.Hidden;
             mainPanel.Visibility = Visibility.Visible;

@@ -161,6 +161,7 @@
       <DependentUpon>ChartsLayout.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Charts\LineChart.cs" />
+    <Compile Include="UserControls\Charts\PieChart.cs" />
     <Compile Include="UserControls\Edit_Information.xaml.cs">
       <DependentUpon>Edit_Information.xaml</DependentUpon>
     </Compile>
