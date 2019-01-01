@@ -12,7 +12,7 @@
         <Border BorderBrush="Black"
             BorderThickness="2"
             VerticalAlignment="Center"
-            CornerRadius="5" Canvas.Left="462" Canvas.Top="20">
+            CornerRadius="5" Canvas.Left="450" Canvas.Top="20">
 
             <StackPanel Margin="5"
                     Orientation="Horizontal">
@@ -23,7 +23,7 @@
                        Margin="3 0 0 0" Width="153" TextChanged="search_text_box_TextChanged" />
             </StackPanel>
         </Border>
-        <ListBox x:Name="listBox" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="677" Height="570"  Canvas.Top="65">
+        <ListBox x:Name="listBox" ScrollViewer.VerticalScrollBarVisibility="Auto" Width="650" Height="590"  Canvas.Top="65">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <UniformGrid Columns="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
@@ -38,47 +38,47 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Height="670" Canvas.Left="677" Width="323" Orientation="Vertical">
+        <StackPanel Height="670" Canvas.Left="650" Width="350" Orientation="Vertical">
             <Canvas Height="668">
-                <Label x:Name="lbl_ProductInfo" Content="Product Information:" FontSize="20" FontStyle="Italic"  Canvas.Left="16" Canvas.Top="14" Height="36" Width="220" FontWeight="Bold" />
-                <Label x:Name="lbl_ID" Content="ID:" FontSize="18" FontStyle="Italic" Canvas.Left="22" Canvas.Top="68" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="79" Canvas.Top="66" Width="227" Background="#FFEEEEEE">
-                    <TextBlock Name="txt_Id" Height="38" Width="216" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Path=SelectedItem.ProductID}" FontSize="16" Margin="9,7,0,-9" />
+                <Label x:Name="lbl_ProductInfo" Content="Product Information:" FontSize="20"   Canvas.Left="16" Canvas.Top="14" Height="36" Width="220" FontWeight="Bold" Foreground="#FF686868" />
+                <Label Foreground="#FF686868" x:Name="lbl_ID" Content="ID:" FontSize="18"  Canvas.Left="22" Canvas.Top="68" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="66" Width="227" Background="#FFEEEEEE">
+                    <TextBlock  Name="txt_Id" Height="38" Width="216" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Path=SelectedItem.ProductID}" FontSize="16" Margin="9,7,0,-9" />
                 </Border>
-                <Label x:Name="lbl_Name" Content="Name:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="118" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="81" Canvas.Top="114" Width="227" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Name" Content="Name:" FontSize="18"  Canvas.Left="20" Canvas.Top="118" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="114" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Name" Height="38" Width="218" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Path=SelectedItem.ProductName, Mode=OneWay}" FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
                 </Border>
-                <Label x:Name="lbl_Price" Content="Price:" FontSize="18" FontStyle="Italic" Canvas.Left="19" Canvas.Top="167" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="81" Canvas.Top="164" Width="227" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Price" Content="Price:" FontSize="18"  Canvas.Left="19" Canvas.Top="167" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="164" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Price" Height="38" Width="218" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox,Mode=OneWay, Path=SelectedItem.Price}" FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
-                <Label x:Name="lbl_Type" Content="Type:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="220" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="81" Canvas.Top="216" Width="227" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Type" Content="Type:" FontSize="18"  Canvas.Left="20" Canvas.Top="220" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="216" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Type" Height="38" Width="218" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Mode=OneWay, Path=SelectedItem.Type}" FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
                 </Border>
-                <Label x:Name="lbl_Brand" Content="Brand:" FontSize="18" FontStyle="Italic" Canvas.Left="20" Canvas.Top="274" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="81" Canvas.Top="268" Width="227" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Brand" Content="Brand:" FontSize="18"  Canvas.Left="20" Canvas.Top="274" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="268" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Brand" Height="38" Width="218" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Mode=OneWay, Path=SelectedItem.Brand}" FontSize="16" Margin="7,-2,0,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
                 </Border>
-                <Label x:Name="lbl_Quantity" Content="Quantity:" FontSize="18" FontStyle="Italic" Canvas.Left="16" Canvas.Top="322" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="102" Canvas.Top="316" Width="206" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Quantity" Content="Quantity:" FontSize="18"  Canvas.Left="16" Canvas.Top="322" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="316" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Quantity" Height="38" Width="198" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding ElementName=listBox, Mode=OneWay, Path=SelectedItem.Quantity}" FontSize="16" Margin="7,-2,-1,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
-                <Label x:Name="lbl_Description" Content="Description:" FontSize="18" FontStyle="Italic" Canvas.Left="16" Canvas.Top="406" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="150" Canvas.Left="22" Canvas.Top="440" Width="274" Background="White" VerticalAlignment="Center">
+                <Label Foreground="#FF686868" x:Name="lbl_Description" Content="Description:" FontSize="18"  Canvas.Left="16" Canvas.Top="406" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="150" Canvas.Left="22" Canvas.Top="440" Width="320" Background="White" VerticalAlignment="Center">
                     <TextBox Name="txt_Description" Height="150" Width="263" HorizontalAlignment="Left" VerticalContentAlignment="Top" Text="{Binding ElementName=listBox, Mode=OneWay, Path=SelectedItem.Description}" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="16" Margin="7,-3,0,1" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
                 </Border>
-                <Button x:Name="btn_Delete" Content="Delete" Height="40" Canvas.Left="25" Canvas.Top="604" Width="126" IsEnabled="True" Click="btn_Delete_Click" />
-                <Button x:Name="btn_Update" Content="Update" Height="40" Canvas.Left="163" Canvas.Top="602" Width="126" Click="btn_Update_Click" IsEnabled="True" />
-                <Label x:Name="lbl_URL" Content="Image URL:" FontSize="18" FontStyle="Italic" Canvas.Left="16" Canvas.Top="368" />
-                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="362" Width="191" Background="White" VerticalAlignment="Center">
+                <Button x:Name="btn_Delete" Content="Delete" Height="40" Canvas.Left="25" Canvas.Top="604" Width="150" IsEnabled="True" Click="btn_Delete_Click" BorderBrush="#FFD93647" Background="#FFD93647" />
+                <Button x:Name="btn_Update" Content="Update" Height="40" Canvas.Left="190" Canvas.Top="604" Width="150" Click="btn_Update_Click" IsEnabled="True" />
+                <Label Foreground="#FF686868" x:Name="lbl_URL" Content="Image URL:" FontSize="18"  Canvas.Left="16" Canvas.Top="368" />
+                <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="362" Width="227" Background="White" VerticalAlignment="Center">
                     <TextBox x:Name="txt_URL" Height="38" Width="184" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding SelectedItem.ImageURL, ElementName=listBox, Mode=OneWay}" FontSize="16" Margin="7,-2,-2,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" />
                 </Border>
             </Canvas>
         </StackPanel>
 
-        <Button Name="Add_btn" Width="55" Height="55"   Canvas.Left="934" Canvas.Top="5" Click="Add_btn_Click">
+        <Button Name="Add_btn" Width="45" Height="45"   Canvas.Left="934" Canvas.Top="2" Click="Add_btn_Click">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Grid>

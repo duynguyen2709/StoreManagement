@@ -36,13 +36,13 @@
             </Grid>
         </StackPanel>
 
-        <Grid Margin="260 75 10 20">
-            <chart:ChartsLayout />
-            <!--<usercontrol:sale x:Name="selling" Visibility="Collapsed" />
+        <Grid Margin="260 55 10 10">
+            <chart:ChartsLayout x:Name="chart" />
+            <usercontrol:sale x:Name="selling" Visibility="Collapsed" />
             <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Collapsed" />
             <usercontrol:Edit_Information_Admin x:Name="editInformationAdmin" Visibility="Collapsed" />
             <usercontrol:updatebill x:Name="updatebill" Visibility="Collapsed" />
-            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Collapsed" />-->
+            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Collapsed" />
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

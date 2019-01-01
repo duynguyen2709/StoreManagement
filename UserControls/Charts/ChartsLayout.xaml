@@ -9,30 +9,23 @@
 
     <Grid>
         <StackPanel Orientation="Vertical">
+            <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,0,10,0" FontSize="18" Background="#FFE4E4E4">
+                <ComboBoxItem Content="3 Days" />
+                <ComboBoxItem Content="Weekly" />
+                <ComboBoxItem Content="15 Days" />
+                <ComboBoxItem Content="Monthly" />
+            </ComboBox>
             <StackPanel Orientation="Horizontal">
-                <Grid x:Name="gridLineChart" Height="350" Width="600" Background="#FFFFD5D5">
-                    <ComboBox x:Name="cbbLineChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,5,20,0" FontSize="20" Background="#FFE4E4E4">
-                        <ComboBoxItem Content="3 Days" />
-                        <ComboBoxItem Content="Weekly" />
-                        <ComboBoxItem Content="Monthly" />
-                    </ComboBox>
-                    <Image x:Name="lineChart" Source="../../Resources/avatar.png" Height="300" Width="600" VerticalAlignment="Bottom" />
+                <Grid x:Name="gridLineChart" Height="350" Width="700">
+                    <Image Margin="10,0,20,5" x:Name="lineChart" Height="320" Width="700" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                 </Grid>
-                <Grid x:Name="gridPieChart" Background="#FFB0FFAB">
-                    <ComboBox x:Name="cbbPieChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,5,10,0" FontSize="20" Background="#FFE4E4E4">
-                        <ComboBoxItem Content="3 Days" />
-                        <ComboBoxItem Content="Weekly" />
-                        <ComboBoxItem Content="Monthly" />
-                    </ComboBox>
-                    <Image x:Name="pieChart" Source="https://chart.googleapis.com/chart?chs=400x300&amp;chd=t:60,40&amp;cht=p3&amp;chl=Hello|World" Height="300" Width="400" VerticalAlignment="Bottom" />
+                <Grid x:Name="gridPieChart">
+
+                    <Image x:Name="pieChart" Source="https://chart.googleapis.com/chart?chs=400x300&amp;chd=t:60,40&amp;cht=p3&amp;chl=Hello|World" Height="300" Width="300" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
-            <Grid x:Name="gridBarChart" Height="270" Background="#FFCEF9FF">
-                <ComboBox x:Name="cbbBarChart" VerticalAlignment="Top" Height="40" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom" Margin="0,10,20,0" FontSize="20" Background="#FFE4E4E4">
-                    <ComboBoxItem Content="3 Days" />
-                    <ComboBoxItem Content="Weekly" />
-                    <ComboBoxItem Content="Monthly" />
-                </ComboBox>
+            <Grid x:Name="gridBarChart" Height="270">
+
                 <Image x:Name="barChart" Source="../../Resources/avatar.png" Height="250" Width="600" VerticalAlignment="Bottom" />
             </Grid>
         </StackPanel>

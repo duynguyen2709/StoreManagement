@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using StoreManagement.UserControls;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace StoreManagement
@@ -41,10 +42,11 @@ namespace StoreManagement
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            /*int index = ListViewMenu.SelectedIndex;
+            int index = ListViewMenu.SelectedIndex;
 
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
+            chart.Visibility = Visibility.Hidden;
             selling.Visibility = Visibility.Hidden;
             editProduct.Visibility = Visibility.Hidden;
             editInformationAdmin.Visibility = Visibility.Hidden;
@@ -54,6 +56,7 @@ namespace StoreManagement
             switch (index)
             {
                 case 0:
+                    chart.Visibility = Visibility.Visible;
                     break;
 
                 case 1:
@@ -84,7 +87,7 @@ namespace StoreManagement
                     break;
 
                 default: break;
-            }*/
+            }
         }
     }
 }
