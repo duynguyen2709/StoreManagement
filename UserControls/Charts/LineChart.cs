@@ -57,7 +57,7 @@ namespace StoreManagement.UserControls.Charts
             List<BillEntity> ListBillData = ChartsLayout.ListBillData.GetRange(0, ChartsLayout.ListBillData.Count);
             ListBillData.RemoveAll(entity => (DateTime.Today - entity.BillDate).Days >= day);
 
-            for (int i = 0; i < day; i++)
+            for (int i = day - 1; i >= 0; i--)
             {
                 Revenue.Add(DateTime.Today.AddDays(-i), 0);
             }

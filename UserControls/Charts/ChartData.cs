@@ -8,7 +8,6 @@
 
         public enum TimeSpan
         {
-            _3Days,
             Weekly,
             _15Days,
             Monthly
@@ -20,11 +19,6 @@
 
             switch (time)
             {
-                case TimeSpan._3Days:
-                    day = 3;
-
-                    break;
-
                 case TimeSpan.Weekly:
                     day = 7;
 

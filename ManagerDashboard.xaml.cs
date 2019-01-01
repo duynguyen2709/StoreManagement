@@ -1,5 +1,4 @@
-﻿using StoreManagement.UserControls;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace StoreManagement
@@ -42,52 +41,52 @@ namespace StoreManagement
 
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int index = ListViewMenu.SelectedIndex;
+            /*   int index = ListViewMenu.SelectedIndex;
 
-            GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
+               GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
-            chart.Visibility = Visibility.Hidden;
-            selling.Visibility = Visibility.Hidden;
-            editProduct.Visibility = Visibility.Hidden;
-            editInformationAdmin.Visibility = Visibility.Hidden;
-            updatebill.Visibility = Visibility.Hidden;
-            manageShift.Visibility = Visibility.Hidden;
+               chart.Visibility = Visibility.Hidden;
+               selling.Visibility = Visibility.Hidden;
+               editProduct.Visibility = Visibility.Hidden;
+               editInformationAdmin.Visibility = Visibility.Hidden;
+               updatebill.Visibility = Visibility.Hidden;
+               manageShift.Visibility = Visibility.Hidden;
 
-            switch (index)
-            {
-                case 0:
-                    chart.Visibility = Visibility.Visible;
-                    break;
+               switch (index)
+               {
+                   case 0:
+                       chart.Visibility = Visibility.Visible;
+                       break;
 
-                case 1:
-                    selling.Visibility = Visibility.Visible;
-                    break;
+                   case 1:
+                       selling.Visibility = Visibility.Visible;
+                       break;
 
-                case 2:
-                    editProduct.Visibility = Visibility.Visible;
-                    break;
+                   case 2:
+                       editProduct.Visibility = Visibility.Visible;
+                       break;
 
-                case 3:
-                    editInformationAdmin.Visibility = Visibility.Visible;
-                    break;
+                   case 3:
+                       editInformationAdmin.Visibility = Visibility.Visible;
+                       break;
 
-                case 4:
-                    updatebill.Visibility = Visibility.Visible;
-                    break;
+                   case 4:
+                       updatebill.Visibility = Visibility.Visible;
+                       break;
 
-                case 5:
-                    manageShift.Visibility = Visibility.Visible;
-                    break;
+                   case 5:
+                       manageShift.Visibility = Visibility.Visible;
+                       break;
 
-                case 6:
-                    sale.baskets.Clear();
-                    LoginForm loginForm = new LoginForm();
-                    loginForm.Show();
-                    Close();
-                    break;
+                   case 6:
+                       sale.baskets.Clear();
+                       LoginForm loginForm = new LoginForm();
+                       loginForm.Show();
+                       Close();
+                       break;
 
-                default: break;
-            }
+                   default: break;
+               }*/
         }
     }
 }
