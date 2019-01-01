@@ -110,6 +110,8 @@ namespace StoreManagement.UserControls
 
         private void search_text_box_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string txtOrig = search_text_box.Text;
+            string lower = txtOrig.ToLower();
             CollectionViewSource.GetDefaultView(listUser.ItemsSource).Refresh();
         }
     }

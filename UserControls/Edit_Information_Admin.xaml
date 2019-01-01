@@ -61,8 +61,8 @@
             <StackPanel>
                 <WrapPanel Margin="30 0">
 
-                    <Button x:Name="btn_Delete" Content="Xóa" Command="{Binding DeleteComand}" Margin="5" Width="100" Click="btn_Delete_Click" Background="#FFD93647" BorderBrush="#FFD93647" />
-                    <Button x:Name="btn_Update" Content="Sửa" Command="{Binding EditComand}" Margin="5" Width="100" Click="btn_Update_Click" Background="#FF4F6BFF" BorderBrush="#FF4F6BFF" />
+                    <Button x:Name="btn_Delete" Content="Xóa" Command="{Binding DeleteComand}" Margin="5" Width="100" Click="btn_Delete_Click" Background="#FFD93647"></Button>
+                    <Button x:Name="btn_Update" Content="Sửa" Command="{Binding EditComand}" Margin="5" Width="100" Click="btn_Update_Click" Background="#FF4F6BFF"></Button>
                 </WrapPanel>
                 <StackPanel Margin="30 25 15 5">
                     <StackPanel Orientation="Horizontal">
