@@ -107,6 +107,12 @@ namespace StoreManagement.UserControls
                     tmp.ProductID, tmp.ProductName, tmp.Quantity, 1));
                 }
                 listbill.Items.Refresh();
+                long sum = baskets.Sum(t => t.Sum);
+
+                decimal value = 0.00M;
+                value = Convert.ToDecimal(sum);
+                total.Text = value.ToString("C");
+
                 listitem.SelectedItems.Clear();
             }
             catch
@@ -138,6 +144,12 @@ namespace StoreManagement.UserControls
                 {
                     baskets.RemoveAt(flag);
                 }
+                long sum = baskets.Sum(t => t.Sum);
+
+                decimal value = 0.00M;
+                value = Convert.ToDecimal(sum);
+                total.Text = value.ToString("C");
+
                 listbill.Items.Refresh();
                 listitem.SelectedItems.Clear();
             }

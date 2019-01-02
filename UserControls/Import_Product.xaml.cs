@@ -19,6 +19,9 @@ namespace StoreManagement.UserControls
         public Import_Product()
         {
             InitializeComponent();
+
+            loadingGif.Visibility = Visibility.Visible;
+            main.Visibility = Visibility.Hidden;
         }
 
         private BaseDAO dao = new ProductDAO();
@@ -105,6 +108,9 @@ namespace StoreManagement.UserControls
                                                    CollectionView;
 
                                            view.Filter = CustomFilter;
+
+                                           loadingGif.Visibility = Visibility.Collapsed;
+                                           main.Visibility = Visibility.Visible;
                                        });
             });
         }

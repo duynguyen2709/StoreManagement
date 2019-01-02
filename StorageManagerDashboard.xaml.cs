@@ -44,29 +44,27 @@ namespace StoreManagement
 
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
+            importProduct.Visibility = Visibility.Hidden;
+            editInformation.Visibility = Visibility.Hidden;
+
             switch (index)
             {
                 case 0:
+                    importProduct.Visibility = Visibility.Visible;
                     break;
 
                 case 1:
                     break;
 
                 case 2:
+                    editInformation.Visibility = Visibility.Visible;
                     break;
 
                 case 3:
-
-                case 4:
-                    break;
-
-                case 5:
                     LoginForm loginForm = new LoginForm();
                     loginForm.Show();
                     Close();
                     break;
-
-                default: break;
             }
         }
     }
