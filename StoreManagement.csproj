@@ -171,6 +171,9 @@
     <Compile Include="UserControls\Edit_Product_Page.xaml.cs">
       <DependentUpon>Edit_Product_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ImportHistory.xaml.cs">
+      <DependentUpon>ImportHistory.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Import_Product.xaml.cs">
       <DependentUpon>Import_Product.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Edit_Product_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ImportHistory.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

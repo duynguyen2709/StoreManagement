@@ -37,9 +37,9 @@
         </StackPanel>
 
         <Grid Margin="260 55 10 10">
-            <usercontrol:Import_Product x:Name="importProduct" Visibility="Hidden" />
-
-            <usercontrol:Edit_Information x:Name="editInformation" Visibility="Hidden" />
+            <usercontrol:Import_Product x:Name="importProduct" Visibility="Collapsed" />
+            <usercontrol:ImportHistory x:Name="importHistory" Visibility="Collapsed" />
+            <usercontrol:Edit_Information x:Name="editInformation" Visibility="Collapsed" />
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">

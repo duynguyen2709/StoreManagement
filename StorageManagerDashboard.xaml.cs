@@ -45,15 +45,19 @@ namespace StoreManagement
             GridCursor.Margin = new Thickness(0, 50 + 60 * index, 0, 0);
 
             importProduct.Visibility = Visibility.Hidden;
+            importHistory.Visibility = Visibility.Hidden;
             editInformation.Visibility = Visibility.Hidden;
 
             switch (index)
             {
                 case 0:
                     importProduct.Visibility = Visibility.Visible;
+
                     break;
 
                 case 1:
+
+                    importHistory.Visibility = Visibility.Visible;
                     break;
 
                 case 2:

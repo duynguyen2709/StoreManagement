@@ -17,13 +17,13 @@ namespace StoreManagement.DAO
                 using (StoreManagementEntities context = new StoreManagementEntities())
                 {
                     GoodsImportHistory delete = (from u in context.GoodsImportHistories
-                                                 where entity.ImportDate == u.ImportDate
+                                                 where entity.ImportDate == u.ImportDate && entity.ProductID == u.ProductID
                                                  select u).Single();
 
                     context.GoodsImportHistories.Remove(delete);
 
                     Product product = context.Products.Find(entity.ProductID);
-                    product.Quantity += entity.Quantity;
+                    product.Quantity -= entity.Quantity;
 
                     context.SaveChanges();
                 }

@@ -19,23 +19,43 @@ namespace StoreManagement.UserControls
         public Import_Product()
         {
             InitializeComponent();
-
-            loadingGif.Visibility = Visibility.Visible;
-            main.Visibility = Visibility.Hidden;
+            instance = this;
         }
 
-        private BaseDAO dao = new ProductDAO();
-        private List<ProductEntity> products;
+        public static void LoadMain()
+        {
+            instance.loadingGif.Visibility = Visibility.Visible;
+            instance.main.Visibility = Visibility.Hidden;
+
+            Task.Run(() =>
+                     {
+                         instance.Dispatcher.Invoke(() =>
+                                                    {
+                                                        products =
+                                                            dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
+
+                                                        products.RemoveAll(entity => entity.Quantity > 5);
+                                                        instance.listBox.ItemsSource = products;
+                                                        instance.listBox.SelectedIndex = 0;
+
+                                                        CollectionView view =
+                                                            CollectionViewSource.GetDefaultView(instance.listBox.ItemsSource) as
+                                                                CollectionView;
+
+                                                        view.Filter = instance.CustomFilter;
+
+                                                        instance.loadingGif.Visibility = Visibility.Collapsed;
+                                                        instance.main.Visibility = Visibility.Visible;
+                                                    });
+                     });
+        }
+
+        private static readonly BaseDAO dao = new ProductDAO();
+        private static Import_Product instance;
+        private static List<ProductEntity> products;
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
         {
-            // ProductEntity entity = new ProductEntity { Brand = txt_Brand.Text, Type =
-            // txt_Type.Text, ProductName = txt_Name.Text, ProductID = int.Parse(txt_Id.Text),
-            // Quantity = int.Parse(txt_Quantity.Text), Price = int.Parse(txt_Price.Text), ImageURL =
-            // txt_URL.Text, Description = txt_Description.Text }; dao.update(entity);
-            //
-            // int index = products.IndexOf(products.Find(obj => obj.ProductID == entity.ProductID));
-            // products[index] = entity;
             int oldQuantity = int.Parse(txt_Quantity.Text);
             int importQuantity = int.Parse(txt_ImportQuantity.Text);
 
@@ -51,7 +71,7 @@ namespace StoreManagement.UserControls
 
             GoodsImportEntity entity = new GoodsImportEntity()
             {
-                ImportDate = DateTime.Today.Date,
+                ImportDate = DateTime.Now,
                 ProductID = int.Parse(txt_Id.Text),
                 Quantity = int.Parse(txt_ImportQuantity.Text)
             };
@@ -68,6 +88,8 @@ namespace StoreManagement.UserControls
                             MessageBoxImage.Information);
 
             txt_ImportQuantity.Clear();
+
+            ImportHistory.RefreshImportHistory();
         }
 
         private bool CustomFilter(object obj)
@@ -92,27 +114,7 @@ namespace StoreManagement.UserControls
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            Task.Run(() =>
-            {
-                Dispatcher.Invoke(() =>
-                                       {
-                                           products =
-                                               dao.getAll(typeof(ProductEntity)) as List<ProductEntity>;
-
-                                           products.RemoveAll(entity => entity.Quantity > 5);
-                                           listBox.ItemsSource = products;
-                                           listBox.SelectedIndex = 0;
-
-                                           CollectionView view =
-                                               CollectionViewSource.GetDefaultView(listBox.ItemsSource) as
-                                                   CollectionView;
-
-                                           view.Filter = CustomFilter;
-
-                                           loadingGif.Visibility = Visibility.Collapsed;
-                                           main.Visibility = Visibility.Visible;
-                                       });
-            });
+            LoadMain();
         }
 
         private void search_text_box_TextChanged(object sender, TextChangedEventArgs e)

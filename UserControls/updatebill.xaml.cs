@@ -114,18 +114,6 @@ namespace StoreManagement.UserControls
             }
         }
 
-        private void UserControl_GotFocus(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void UserControl_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-        }
-
-        private void UserControl_ToolTipClosing(object sender, ToolTipEventArgs e)
-        {
-        }
-
         private void Xoa_Click(object sender, RoutedEventArgs e)
         {
             try
