@@ -171,6 +171,9 @@
     <Compile Include="UserControls\Edit_Product_Page.xaml.cs">
       <DependentUpon>Edit_Product_Page.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Import_Product.xaml.cs">
+      <DependentUpon>Import_Product.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\infobasket.cs" />
     <Compile Include="UserControls\Manage_Shift.xaml.cs">
       <DependentUpon>Manage_Shift.xaml</DependentUpon>
@@ -225,6 +228,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Edit_Product_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Import_Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

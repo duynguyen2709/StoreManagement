@@ -73,7 +73,7 @@
                 <Button x:Name="btn_Update" Content="Update" Height="40" Canvas.Left="190" Canvas.Top="604" Width="150" Click="btn_Update_Click" IsEnabled="True" />
                 <Label Foreground="#FF686868" x:Name="lbl_URL" Content="Image URL:" FontSize="18"  Canvas.Left="16" Canvas.Top="368" />
                 <Border BorderBrush="Black" BorderThickness="1" Height="38" Canvas.Left="117" Canvas.Top="362" Width="227" Background="White" VerticalAlignment="Center">
-                    <TextBox x:Name="txt_URL" Height="38" Width="184" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding SelectedItem.ImageURL, ElementName=listBox, Mode=OneWay}" FontSize="16" Margin="7,-2,-2,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" PreviewTextInput="NumberValidationTextBox" />
+                    <TextBox x:Name="txt_URL" Height="38" Width="184" HorizontalAlignment="Left"  VerticalAlignment="Center"  Text="{Binding SelectedItem.ImageURL, ElementName=listBox, Mode=OneWay}" FontSize="16" Margin="7,-2,-2,0" CaretBrush="{x:Null}" BorderBrush="Black" Background="{x:Null}" />
                 </Border>
             </Canvas>
         </StackPanel>
