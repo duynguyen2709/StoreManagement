@@ -39,12 +39,12 @@
 
         <Grid Margin="260 55 10 10">
 
-            <chart:ChartsLayout x:Name="chart" />
-            <!--<usercontrol:sale x:Name="selling" Visibility="Collapsed" />
+            <usercontrol:sale x:Name="selling" />
+            <chart:ChartsLayout x:Name="chart" Visibility="Collapsed" />
             <usercontrol:Edit_Product_Page x:Name="editProduct" Visibility="Collapsed" />
             <usercontrol:Edit_Information_Admin x:Name="editInformationAdmin" Visibility="Collapsed" />
             <usercontrol:updatebill x:Name="updatebill" Visibility="Collapsed" />
-            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Collapsed" />-->
+            <usercontrol:Manage_Shift_Admin x:Name="manageShift" Visibility="Collapsed" />
         </Grid>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">
@@ -58,44 +58,44 @@
                     <ListView x:Name="ListViewMenu" Margin="0 50" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18" SelectionChanged="ListViewMenu_SelectionChanged" SelectedIndex="0">
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Dashboard" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
-                            </StackPanel>
-                        </ListViewItem>
-                        <ListViewItem Height="60">
-                            <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ViewList" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Product Detail" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <materialDesign:PackIcon Kind="Shopify" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
+                                <TextBlock Text="Bán Hàng" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="AddShoppingCart" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Edit Product" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Quản Lý Hàng" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="ChartBar" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
+                                <TextBlock Text="Thống Kê" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="UserSupervisor" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="User Management" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Quản Lý Nhân Viên" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Receipt" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Bill History" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Xem Hóa Đơn" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Timetable" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Shift Management" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Xếp Ca Làm Việc" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Logout" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Log Out" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Đăng Xuất" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                     </ListView>

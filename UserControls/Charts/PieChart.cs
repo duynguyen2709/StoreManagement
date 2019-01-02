@@ -10,7 +10,8 @@ namespace StoreManagement.UserControls.Charts
         #region ChartConstant
 
         private static readonly string ChartColor = "&chco=f73838|11d864|3891f7|FFFF00|31b786";
-        private static readonly string ChartSize = "&chs=400x200";
+        private static readonly string ChartColorFill = "&chf=bg,s,e8fff3";
+        private static readonly string ChartSize = "&chs=450x250";
         private static readonly string ChartType = "cht=p";
 
         #endregion ChartConstant
@@ -47,6 +48,7 @@ namespace StoreManagement.UserControls.Charts
 
             return BaseChartURL
                  + ChartType
+                 + ChartColorFill
                  + ChartColor
                  + ChartSize
                  + ChartData

@@ -12,9 +12,10 @@ namespace StoreManagement.UserControls.Charts
         private static readonly string ChartAxis = "&chxt=x,y";
         private static readonly string ChartAxisColor = "&chxs=0N,000000|1N*cUSD*Mil,FF0000";
         private static readonly string ChartColor = "&chco=00FF00";
+        private static readonly string ChartColorFill = "&chf=bg,s,e8fff3";
         private static readonly string ChartDot = "&chm=o,FF9900,0,-1,8";
         private static readonly string ChartGrid = "&chg=10,10";
-        private static readonly string ChartSize = "&chs=600x300";
+        private static readonly string ChartSize = "&chs=550x350";
 
         //private static readonly string ChartTitle = "&chtt=Th%E1%BB%91ng+K%C3%AA+Doanh+Thu";
         //private static readonly string ChartTitleSize = "&chts=13ad81,25,c";
@@ -61,15 +62,13 @@ namespace StoreManagement.UserControls.Charts
             return BaseChartURL
                  + ChartType
                  + ChartAutoScale
+                 + ChartColorFill
                  + ChartAxis
                  + ChartAxisColor
                  + ChartColor
                  + ChartDot
                  + ChartGrid
                  + ChartSize
-
-                 //+ ChartTitle
-                 //+ ChartTitleSize
                  + ChartDot
                  + ChartValue
                  + ChartXLabel;

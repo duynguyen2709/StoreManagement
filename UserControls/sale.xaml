@@ -5,123 +5,127 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:StoreManagement.UserControls"
+             xmlns:gif = "https://github.com/XamlAnimatedGif/XamlAnimatedGif"
              mc:Ignorable="d"
              d:DesignHeight="3075" d:DesignWidth="2725"
              FontFamily="Lato"
              Loaded="UserControl_Loaded">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.1*"></ColumnDefinition>
-            <ColumnDefinition Width="5"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+        <Image x:Name="loadingGif" Margin="0,50,0,0" Width="150" Height="150" gif:AnimationBehavior.SourceUri="../../Resources/Loading.gif" />
+        <Grid x:Name="main">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.1*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"></RowDefinition>
-                <RowDefinition ></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBox Margin="0,10,0,0" x:Name="search" Grid.Row="0"
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition ></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBox Margin="0,10,0,0" x:Name="search" Grid.Row="0"
                     materialDesign:HintAssist.Hint="Search"
                   materialDesign:HintAssist.HintOpacity=".26"
                   Width="2700" Background="{x:Null}" TextChanged="Search_TextChanged" />
-            <ListView x:Name="listitem" Grid.Row="1" HorizontalAlignment="Stretch" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" IsSynchronizedWithCurrentItem="False"
+                <ListView x:Name="listitem" Grid.Row="1" HorizontalAlignment="Stretch" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" IsSynchronizedWithCurrentItem="False"
                    PreviewMouseLeftButtonUp="Listitem_PreviewMouseLeftButtonUp" SelectionChanged="Listitem_SelectionChanged"
                       PreviewMouseRightButtonUp="Listitem_PreviewMouseRightButtonUp">
 
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="3" />
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3" />
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
 
-                        <Canvas Margin="10" Width="100" Height="100">
-                            <Border Panel.ZIndex="2"  BorderBrush="Black" BorderThickness="0.5">
-                                <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Background="#FF4D69FF" Foreground="#FFF9F8F8" FontFamily="Lato" FontSize="14" />
-                            </Border>
-                            <Border Panel.ZIndex="1"  BorderBrush="Black" BorderThickness="0.5">
-                                <Image Margin="0.5"  Panel.ZIndex="1" Width="100" Height="90" Source="{Binding ImageURL}" Stretch="Fill" ></Image>
-                            </Border>
-                            <TextBlock Panel.ZIndex="2" Text="{Binding ProductName}" Canvas.Top="90" />
-                        </Canvas>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.GroupStyle>
-                    <GroupStyle>
-                        <GroupStyle.ContainerStyle>
-                            <Style TargetType="{x:Type GroupItem}">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate>
-                                            <Expander IsExpanded="true" Collapsed="Expander_Collapsed">
-                                                <Expander.Header>
-                                                    <StackPanel Orientation="Horizontal" IsEnabled="True">
-                                                        <Label Content="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Center" />
-                                                        <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" />
-                                                        <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Center" />
-                                                    </StackPanel>
-                                                </Expander.Header>
-                                                <ItemsPresenter />
-                                            </Expander>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </GroupStyle.ContainerStyle>
-                    </GroupStyle>
-                </ListView.GroupStyle>
-            </ListView>
-        </Grid>
+                            <Canvas Margin="10" Width="100" Height="100">
+                                <Border Panel.ZIndex="2"  BorderBrush="Black" BorderThickness="0.5">
+                                    <TextBlock Panel.ZIndex="2" Text="{Binding Quantity}" Background="#FF4D69FF" Foreground="#FFF9F8F8" FontFamily="Lato" FontSize="14" />
+                                </Border>
+                                <Border Panel.ZIndex="1"  BorderBrush="Black" BorderThickness="0.5">
+                                    <Image Margin="0.5"  Panel.ZIndex="1" Width="100" Height="90" Source="{Binding ImageURL}" Stretch="Fill" ></Image>
+                                </Border>
+                                <TextBlock Panel.ZIndex="2" Text="{Binding ProductName}" Canvas.Top="90" />
+                            </Canvas>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.GroupStyle>
+                        <GroupStyle>
+                            <GroupStyle.ContainerStyle>
+                                <Style TargetType="{x:Type GroupItem}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate>
+                                                <Expander IsExpanded="true" Collapsed="Expander_Collapsed">
+                                                    <Expander.Header>
+                                                        <StackPanel Orientation="Horizontal" IsEnabled="True">
+                                                            <Label Content="{Binding Name}" FontWeight="Bold" Foreground="Gray" FontSize="22" VerticalAlignment="Center" />
+                                                            <TextBlock Text="{Binding ItemCount}" FontSize="22" Foreground="Green" FontWeight="Bold" FontStyle="Italic" VerticalAlignment="Center" />
+                                                            <TextBlock Text=" item(s)" FontSize="22" Foreground="Silver" FontStyle="Italic" VerticalAlignment="Center" />
+                                                        </StackPanel>
+                                                    </Expander.Header>
+                                                    <ItemsPresenter />
+                                                </Expander>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GroupStyle.ContainerStyle>
+                        </GroupStyle>
+                    </ListView.GroupStyle>
+                </ListView>
+            </Grid>
 
-        <Grid Grid.Column="2">
+            <Grid Grid.Column="2">
 
-            <StackPanel Margin="0,10,0,0" Orientation="Vertical">
-                <TextBlock Text="BILL DETAIL" TextAlignment="Center" FontSize="24" Foreground="#FF686868" />
-                <Grid Height="400">
-                    <ListView x:Name="listbill"  Margin="10" SourceUpdated="Listbill_SourceUpdated" DataContextChanged="Listbill_DataContextChanged">
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="{x:Type ListViewItem}">
-                                <Setter Property="BorderBrush" Value="#FFC2C2C2" />
-                                <Setter Property="BorderThickness" Value="1" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding ProductID}" />
-                                <GridViewColumn Header="Name" Width="180" DisplayMemberBinding="{Binding ProductName}" />
-                                <GridViewColumn Header="Count" Width="70">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBox Name="tbcount" Text="{Binding Size,Mode=TwoWay}" LostFocus="TextBox_LostFocus" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                                <GridViewColumn Header="Total" Width="80"  DisplayMemberBinding="{Binding Sum, Mode=TwoWay}" />
-                                <GridViewColumn Width="95">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Button Content="Delete" Click="Button_Click" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </Grid>
-                <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
-                    <Label Name="lblTotal" Content="TOTAL :" FontSize="24" FontWeight="Bold" Foreground="Red" />
-                    <TextBlock Name="total" Text="$0.00" VerticalAlignment="Center"  TextAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="Red" />
+                <StackPanel Margin="0,10,0,0" Orientation="Vertical">
+                    <TextBlock Text="BILL DETAIL" TextAlignment="Center" FontSize="24" Foreground="#FF686868" />
+                    <Grid Height="400">
+                        <ListView x:Name="listbill"  Margin="10" SourceUpdated="Listbill_SourceUpdated" DataContextChanged="Listbill_DataContextChanged">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="{x:Type ListViewItem}">
+                                    <Setter Property="BorderBrush" Value="#FFC2C2C2" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="ID" Width="45" DisplayMemberBinding="{Binding ProductID}" />
+                                    <GridViewColumn Header="Name" Width="180" DisplayMemberBinding="{Binding ProductName}" />
+                                    <GridViewColumn Header="Count" Width="70">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBox Name="tbcount" Text="{Binding Size,Mode=TwoWay}" LostFocus="TextBox_LostFocus" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                    <GridViewColumn Header="Total" Width="80"  DisplayMemberBinding="{Binding Sum, Mode=TwoWay}" />
+                                    <GridViewColumn Width="95">
+                                        <GridViewColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Content="Delete" Click="Button_Click" />
+                                            </DataTemplate>
+                                        </GridViewColumn.CellTemplate>
+                                    </GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                    </Grid>
+                    <StackPanel Orientation="Horizontal" Margin="10,10,10,10">
+                        <Label Name="lblTotal" Content="TOTAL :" FontSize="24" FontWeight="Bold" Foreground="Red" />
+                        <TextBlock Name="total" Text="$0.00" VerticalAlignment="Center"  TextAlignment="Center" FontSize="24" FontWeight="Bold" Foreground="Red" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="clear" Content="Clear" Margin="10,10,10,10" Click="Clear_Click" Width="220" Height="40" Background="#FFFF4545" FontSize="22" />
+                        <Button Name="pay" Content="Pay" Margin="10,10,10,10" IsDefault="True" Click="Pay_Click" Width="220" Height="40" FontSize="22" />
+                    </StackPanel>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Name="clear" Content="Clear" Margin="10,10,10,10" Click="Clear_Click" Width="220" Height="40" Background="#FFFF4545" FontSize="22" />
-                    <Button Name="pay" Content="Pay" Margin="10,10,10,10" IsDefault="True" Click="Pay_Click" Width="220" Height="40" FontSize="22" />
-                </StackPanel>
-            </StackPanel>
-        </Grid>
-        <GridSplitter  Grid.Column="1"
+            </Grid>
+            <GridSplitter  Grid.Column="1"
    Width="3" HorizontalAlignment="Center"
    ShowsPreview="False"></GridSplitter>
+        </Grid>
     </Grid>
 </UserControl>

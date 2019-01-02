@@ -12,22 +12,29 @@
         <Image x:Name="loadingGif" Margin="0,50,0,0" Width="150" Height="150" gif:AnimationBehavior.SourceUri="../../Resources/Loading.gif" Visibility="Hidden" />
 
         <StackPanel x:Name="mainPanel" Orientation="Vertical">
-            <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center"
-                      Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"
-                      Margin="0,0,10,0" FontSize="18" Background="#FFE4E4E4" SelectionChanged="CbbTime_OnSelectionChanged">
-                <ComboBoxItem Content="7 Days" />
-                <ComboBoxItem Content="15 Days" />
-                <ComboBoxItem Content="4 Weeks" />
-                <ComboBoxItem Content="6 Months" />
-            </ComboBox>
-            <StackPanel Orientation="Horizontal">
-                <Grid x:Name="gridLineChart" Height="350" Width="600">
-                    <Grid Height="50" VerticalAlignment="Top" Background="#FF27BF8B" />
-                    <Image x:Name="lineChart" Height="300" Width="600" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
-                </Grid>
-                <Grid x:Name="gridPieChart">
 
-                    <Image x:Name="pieChart"  Height="300" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+            <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
+                <Grid x:Name="gridLineChart" Height="450" Width="550">
+                    <Grid Margin="0 50 0 0" Height="50" VerticalAlignment="Top" Background="#FF27BF8B">
+                        <Label x:Name="label" Content="THỐNG KÊ DOANH THU" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DD121374" FontSize="24" />
+                    </Grid>
+                    <Image x:Name="lineChart" Height="350" Width="550" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                </Grid>
+                <Grid x:Name="gridPieChart" Width="450">
+
+                    <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center"
+                              Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"
+                              Margin="0,50,150,0" FontSize="18" Background="#FFE4E4E4" SelectionChanged="CbbTime_OnSelectionChanged">
+                        <ComboBoxItem Content="7 Days" />
+                        <ComboBoxItem Content="15 Days" />
+                        <ComboBoxItem Content="4 Weeks" />
+                        <ComboBoxItem Content="6 Months" />
+                    </ComboBox>
+
+                    <Grid  Height="50" VerticalAlignment="Top" Background="#FF69C3E4" Margin="50,175,0,0">
+                        <Label  Content="TOP 5 SẢN PHẨM BÁN CHẠY" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DDF62424" FontSize="24" />
+                    </Grid>
+                    <Image x:Name="pieChart"  Height="250" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
                 </Grid>
             </StackPanel>
             <!--<Grid x:Name="gridBarChart" Height="270">

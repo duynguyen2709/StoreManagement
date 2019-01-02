@@ -24,6 +24,9 @@ namespace StoreManagement.UserControls
         {
             InitializeComponent();
 
+            main.Visibility = Visibility.Hidden;
+            loadingGif.Visibility = Visibility.Visible;
+
             Task.Run(() =>
             {
                 Dispatcher.Invoke(() =>
@@ -39,6 +42,9 @@ namespace StoreManagement.UserControls
                     listbill.ItemsSource = baskets;
 
                     baskets.CollectionChanged += OnCollectionChanged;
+
+                    main.Visibility = Visibility.Visible;
+                    loadingGif.Visibility = Visibility.Collapsed;
                 });
             });
         }
