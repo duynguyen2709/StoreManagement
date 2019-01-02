@@ -70,33 +70,27 @@ namespace StoreManagement
             switch (index)
             {
                 case 0:
-
-                    break;
-
-                case 1:
                     selling.Visibility = Visibility.Visible;
                     break;
 
-                case 2:
+                case 1:
                     updatebill.Visibility = Visibility.Visible;
                     break;
 
-                case 3:
+                case 2:
                     editInformation.Visibility = Visibility.Visible;
                     break;
 
-                case 4:
+                case 3:
                     manageShift.Visibility = Visibility.Visible;
                     break;
 
-                case 5:
+                case 4:
                     sale.baskets.Clear();
                     LoginForm loginForm = new LoginForm();
                     loginForm.Show();
                     Close();
                     break;
-
-                default: break;
             }
         }
     }

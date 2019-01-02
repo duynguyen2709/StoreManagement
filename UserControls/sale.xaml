@@ -8,9 +8,7 @@
              mc:Ignorable="d"
              d:DesignHeight="3075" d:DesignWidth="2725"
              FontFamily="Lato"
-             Loaded="UserControl_Loaded"
-             IsVisibleChanged="UserControl_IsVisibleChanged"
-             GotFocus="UserControl_GotFocus" IsEnabledChanged="UserControl_IsEnabledChanged">
+             Loaded="UserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.1*"></ColumnDefinition>
