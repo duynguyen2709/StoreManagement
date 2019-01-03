@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreManagement.UserControls"
-        mc:Ignorable="d"
+        mc:Ignorable="d" FontFamily="Lato"
         Title="Edit Bill Detail" Height="320" Width="350">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,17 +13,22 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock Text="IDProduct" Width="150" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
-            <TextBlock  Text="Count" Width="150" TextAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock Text="Product Name" Width="200" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FF4E4E4E" FontSize="14"></TextBlock>
+            <TextBlock  Text="Quantity" Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="0,7,0,7.4" FontSize="14" Foreground="#FF4E4E4E" />
         </StackPanel>
         <Grid  Grid.Row="1">
             <ListView  x:Name="listdetailbill" Height="auto">
-
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="BorderBrush" Value="#FFC2C2C2" />
+                        <Setter Property="BorderThickness" Value="1" />
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding Key}" TextAlignment="Center" VerticalAlignment="Center" Width="150" Panel.ZIndex="2" />
-                            <TextBox Text="{Binding Value}" TextAlignment="Center" VerticalAlignment="Center" Width="150" Panel.ZIndex="2" />
+                            <TextBlock Margin="10 0 0 0" Text="{Binding Name}" TextAlignment="Left" VerticalAlignment="Center" Width="200" Panel.ZIndex="2" />
+                            <TextBox Text="{Binding Value}" TextAlignment="Right" VerticalAlignment="Center" Margin="0 50 0 0" Width="50" Panel.ZIndex="2" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

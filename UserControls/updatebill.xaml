@@ -46,7 +46,7 @@
                         <GridViewColumn x:Name="deleteColumn" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Name="xoa" Margin="10,10,10,10" Content="Delete" Click="Xoa_Click" />
+                                    <Button Name="xoa" Margin="10,10,10,10" Content="Delete" Click="Xoa_Click" BorderBrush="#FFFF4545" Background="#FFFF4545" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

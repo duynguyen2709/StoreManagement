@@ -57,6 +57,8 @@ namespace StoreManagement.UserControls
             listBox.ItemsSource = products;
             CollectionView view = CollectionViewSource.GetDefaultView(listBox.ItemsSource) as CollectionView;
             view.Filter = CustomFilter;
+
+            listBox.SelectedIndex = 0;
         }
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
@@ -82,6 +84,8 @@ namespace StoreManagement.UserControls
                             "Info",
                             MessageBoxButton.OK,
                             MessageBoxImage.Information);
+
+            listBox.SelectedIndex = 0;
         }
 
         private bool CustomFilter(object obj)
@@ -96,7 +100,7 @@ namespace StoreManagement.UserControls
                 return (temp.ProductName.IndexOf(search_text_box.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0
                         || temp.ProductID.ToString().IndexOf(search_text_box.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0
                         || temp.Brand.IndexOf(search_text_box.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0
-                        || temp.Type.ToString().IndexOf(search_text_box.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0);
+                        || temp.Type.IndexOf(search_text_box.Text.Trim(), StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 

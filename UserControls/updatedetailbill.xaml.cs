@@ -28,8 +28,8 @@ namespace StoreManagement.UserControls
             List<int> array2 = new List<int>(listproductbill.Values.ToList());
             for (int i = 0; i < array1.Count; i++)
             {
-                ProductEntity user = dao.get(array1[i], typeof(ProductEntity)) as ProductEntity;
-                array.Add(new info(array1[i], array2[i], user.Quantity));
+                ProductEntity product = dao.get(array1[i], typeof(ProductEntity)) as ProductEntity;
+                array.Add(new info(array1[i], array2[i], product.Quantity, product.ProductName));
             }
 
             listdetailbill.ItemsSource = array;
@@ -45,15 +45,18 @@ namespace StoreManagement.UserControls
             public bool flag = false;
             public int value;
 
-            public info(int a, int b, int c)
+            public info(int a, int b, int c, string _name)
             {
                 Key = a;
                 Value = b;
                 Quantity = c;
+                Name = _name;
                 flag = true;
             }
 
             public int Key { set; get; }
+
+            public string Name { get; set; }
 
             public int Quantity { set; get; }
 

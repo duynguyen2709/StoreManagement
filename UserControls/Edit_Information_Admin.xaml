@@ -42,7 +42,7 @@
                         </StackPanel>
                         <StackPanel Margin="30 5 15 5">
                             <TextBlock Margin="5 5 15 5" Foreground="#DD3A3A3A" FontSize="16">Birthdate</TextBlock>
-                            <!--<DatePicker x:Name="txt_Birthdate" Width="100" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Text="{Binding ElementName=listUser,Path=SelectedItem.Birthdate}" TextChanged="txt_Birthdate_TextChanged" />-->
+                            <!--<DatePicker x:Name="txt_Birthdate" Width="150" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Text="{Binding ElementName=listUser,Path=SelectedItem.Birthdate}" />-->
                             <TextBox Name="txt_Birthdate" Foreground="#DD3A3A3A" Width="150" Margin="5 0 15 5" FontSize="16" Text="{Binding ElementName=listUser,Path=SelectedItem.Birthdate}" />
                         </StackPanel>
                         <StackPanel Margin="30 5 15 5">

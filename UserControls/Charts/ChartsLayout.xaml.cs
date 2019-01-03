@@ -19,10 +19,10 @@ namespace StoreManagement.UserControls.Charts
         public ChartsLayout()
         {
             InitializeComponent();
+            instance = this;
 
             LoadData = Task.Run(() =>
                                 {
-                                    BaseDAO dao = new BillDAO();
                                     ListBillData = dao.getAll() as List<BillEntity>;
                                 });
 
@@ -31,8 +31,18 @@ namespace StoreManagement.UserControls.Charts
             InitChart();
         }
 
-        protected static DateTime Today = DateTime.Today;
+        public static void ReloadChart()
+        {
+            ListBillData = dao.getAll() as List<BillEntity>;
 
+            instance.DrawLineChart();
+
+            instance.DrawPieChart();
+        }
+
+        protected static DateTime Today = DateTime.Today;
+        private static BaseDAO dao = new BillDAO();
+        private static ChartsLayout instance;
         private static Task LoadData;
 
         private void CbbTime_OnSelectionChanged(object sender, SelectionChangedEventArgs e)

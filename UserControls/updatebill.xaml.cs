@@ -1,5 +1,6 @@
 ﻿using StoreManagement.DAO;
 using StoreManagement.Entities;
+using StoreManagement.UserControls.Charts;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -103,6 +104,8 @@ namespace StoreManagement.UserControls
 
                     GetBill();
                     updatedetailbill.isUpdate = false;
+
+                    Task.Run(() => { Dispatcher.Invoke(ChartsLayout.ReloadChart); });
                 }
             }
             catch
@@ -129,7 +132,11 @@ namespace StoreManagement.UserControls
                             try
                             {
                                 BillEntity tmp = (sender as Button).DataContext as BillEntity;
-                                Task.Run(() => dao.delete(tmp));
+                                Task.Run(() =>
+                                         {
+                                             dao.delete(tmp);
+                                             Dispatcher.Invoke(ChartsLayout.ReloadChart);
+                                         });
                                 Infobill.flag = true;
 
                                 BillEntity delObject = ListBill.Find(entity => tmp.BillID == entity.BillID);

@@ -89,6 +89,8 @@ namespace StoreManagement.UserControls
 
             txt_ImportQuantity.Clear();
 
+            listBox.SelectedIndex = 0;
+
             ImportHistory.RefreshImportHistory();
         }
 
