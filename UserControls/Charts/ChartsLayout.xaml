@@ -14,16 +14,16 @@
         <StackPanel x:Name="mainPanel" Orientation="Vertical">
 
             <StackPanel Margin="0 0 0 0" Orientation="Horizontal">
-                <Grid x:Name="gridLineChart" Height="450" Width="550">
+                <Grid x:Name="gridLineChart" Height="450" Width="580">
                     <Grid Margin="0 50 0 0" Height="50" VerticalAlignment="Top" Background="#FF27BF8B">
                         <Label x:Name="label" Content="THỐNG KÊ DOANH THU" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DD121374" FontSize="24" />
                     </Grid>
                     <Border BorderBrush="#FF328B53" BorderThickness="2" Margin="0,100,0,0">
-                        <Image x:Name="lineChart" Height="350" Width="550" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
+                        <Image x:Name="lineChart" Height="350" Width="580" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                     </Border>
                 </Grid>
-                <Grid x:Name="gridPieChart" Width="450">
-                    <Border BorderBrush="#FF252052" BorderThickness="2" Margin="187,47,148,368" />
+                <Grid x:Name="gridPieChart" Width="430">
+                    <Border BorderBrush="#FF252052" BorderThickness="2" Margin="168,47,148,367.6" />
                     <ComboBox x:Name="cbbTime" VerticalAlignment="Top" HorizontalContentAlignment="Center"
                               Height="30" Width="110" HorizontalAlignment="Right" VerticalContentAlignment="Bottom"
                               Margin="0,50,150,0" FontSize="18" Background="#FFE4E4E4" SelectionChanged="CbbTime_OnSelectionChanged">
@@ -33,11 +33,11 @@
                         <ComboBoxItem Content="6 Months" />
                     </ComboBox>
 
-                    <Grid  Height="50" VerticalAlignment="Top" Background="#FF69C3E4" Margin="50,175,0,0">
+                    <Grid  Height="50" VerticalAlignment="Top" Background="#FF69C3E4" Margin="30,175,0,0">
                         <Label  Content="TOP 5 SẢN PHẨM BÁN CHẠY" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#DDF62424" FontSize="24" />
                     </Grid>
-                    <Border BorderBrush="#FF3F74B7" BorderThickness="2" Margin="50,175,0,-0.4">
-                        <Image x:Name="pieChart"  Height="250" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Right" />
+                    <Border BorderBrush="#FF3F74B7" BorderThickness="2" Margin="30,175,00,0">
+                        <Image x:Name="pieChart"  Height="250" Width="400" VerticalAlignment="Bottom" HorizontalAlignment="Left" />
                     </Border>
                 </Grid>
             </StackPanel>

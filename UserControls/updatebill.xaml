@@ -26,7 +26,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
             <Label x:Name="lblIDCashier" Content="IDCashier:    " HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" />
             <TextBox Width="100" x:Name="IDCashier" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"></TextBox>
-            <Button Margin="10 0 0 0" Content="Find" Click="Button_Click"></Button>
+            <Button Margin="20 0 0 0" Content="Find" Click="Button_Click"></Button>
         </StackPanel>
 
         <Image x:Name="loadingGif" Width="150" Height="150" Grid.Row="1" gif:AnimationBehavior.SourceUri="../Resources/Loading.gif" Visibility="Hidden" />
@@ -53,7 +53,7 @@
                         <GridViewColumn x:Name="editColumn" Width="150">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Name="edit" Margin="10,10,10,10" Content="Edit" Click="Edit_Click" />
+                                    <Button Name="edit" Margin="10,10,10,10" Content="View" Click="Edit_Click" Background="#FF4F6BFF" BorderBrush="#FF4F6BFF" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

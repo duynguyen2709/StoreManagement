@@ -49,7 +49,8 @@ namespace StoreManagement
             updatebill.IDCashierColumn.Width = 0;
 
             updatebill.deleteColumn.CellTemplate = new DataTemplate(typeof(Button));
-            updatebill.editColumn.CellTemplate = new DataTemplate(typeof(Button));
+
+            //updatebill.editColumn.CellTemplate = new DataTemplate(typeof(Button));
 
             updatebill.lblIDCashier.Visibility = Visibility.Collapsed;
             updatebill.IDCashier.Visibility = Visibility.Collapsed;

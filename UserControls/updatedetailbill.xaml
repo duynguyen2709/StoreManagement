@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:StoreManagement.UserControls"
         mc:Ignorable="d" FontFamily="Lato"
-        Title="Edit Bill Detail" Height="320" Width="350">
+        Title="Bill Detail" Height="320" Width="350">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <TextBlock Text="Product Name" Width="200" TextAlignment="Center" VerticalAlignment="Center" Foreground="#FF4E4E4E" FontSize="14"></TextBlock>
-            <TextBlock  Text="Quantity" Width="100" TextAlignment="Right" VerticalAlignment="Center" Margin="0,7,0,7.4" FontSize="14" Foreground="#FF4E4E4E" />
+            <TextBlock  Text="Quantity" Margin="10 0 0 0" Width="100" TextAlignment="Right" VerticalAlignment="Center" FontSize="14" Foreground="#FF4E4E4E" />
         </StackPanel>
         <Grid  Grid.Row="1">
             <ListView  x:Name="listdetailbill" Height="auto">
@@ -28,15 +28,15 @@
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="10 0 0 0" Text="{Binding Name}" TextAlignment="Left" VerticalAlignment="Center" Width="200" Panel.ZIndex="2" />
-                            <TextBox Text="{Binding Value}" TextAlignment="Right" VerticalAlignment="Center" Margin="0 50 0 0" Width="50" Panel.ZIndex="2" />
+                            <TextBox Text="{Binding Value}" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="50,0,0,0" Width="50" Panel.ZIndex="2" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="2">
-            <Button x:Name="update" Margin="90,10,0,0" Content="Update" Click="Update_Click"></Button>
-            <Button x:Name="cancel" Margin="10,10,0,0" Content="Cancel" Click="Cancel_Click"></Button>
+            <Button x:Name="update" Margin="90,0,0,0" HorizontalAlignment="Center" Content="Update" Click="Update_Click" Background="#FF4F6BFF" BorderBrush="#FF4F6BFF"></Button>
+            <Button x:Name="cancel" Margin="10,0,0,0" HorizontalAlignment="Center" Content="Close" Click="Cancel_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

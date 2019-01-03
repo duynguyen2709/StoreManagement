@@ -16,6 +16,12 @@ namespace StoreManagement.UserControls
         public updatedetailbill(BillEntity tmp)
         {
             InitializeComponent();
+
+            if (LoginForm.currentUser.Role == 1)
+            {
+                update.Visibility = Visibility.Collapsed;
+            }
+
             billdetail = tmp;
 
             //Chuyen Dictionary thanh dạng list<value>

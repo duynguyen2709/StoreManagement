@@ -15,7 +15,7 @@ namespace StoreManagement.UserControls.Charts
         private static readonly string ChartColorFill = "&chf=bg,s,e8fff3";
         private static readonly string ChartDot = "&chm=o,FF9900,0,-1,8";
         private static readonly string ChartGrid = "&chg=10,10";
-        private static readonly string ChartSize = "&chs=550x350";
+        private static readonly string ChartSize = "&chs=580x350";
 
         //private static readonly string ChartTitle = "&chtt=Th%E1%BB%91ng+K%C3%AA+Doanh+Thu";
         //private static readonly string ChartTitleSize = "&chts=13ad81,25,c";

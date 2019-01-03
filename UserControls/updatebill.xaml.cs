@@ -37,8 +37,18 @@ namespace StoreManagement.UserControls
             {
                 List<BillEntity> bills = ListBill.GetRange(0, ListBill.Count);
 
-                bills.RemoveAll(entity => !(DateTime.Parse(Datefrom.Text) <= entity.BillDate
-                                         && DateTime.Parse(Dateto.Text) >= entity.BillDate));
+                if (Datefrom.Text.Length > 0)
+                {
+                    bills.RemoveAll(entity => DateTime.Parse(Datefrom.Text) > entity.BillDate);
+                }
+
+                if (Dateto.Text.Length > 0)
+                {
+                    bills.RemoveAll(entity => DateTime.Parse(Dateto.Text) < entity.BillDate);
+                }
+
+                //bills.RemoveAll(entity => !(DateTime.Parse(Datefrom.Text) <= entity.BillDate
+                //                        && DateTime.Parse(Dateto.Text) >= entity.BillDate));
 
                 if (IDCashier.Text != "")
                 {
@@ -52,7 +62,7 @@ namespace StoreManagement.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy hóa đơn",
+                    MessageBox.Show("Bills Not Found",
                                     "Result",
                                     MessageBoxButton.OK,
                                     MessageBoxImage.Information);
@@ -60,7 +70,7 @@ namespace StoreManagement.UserControls
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi khi tìm kiếm. Vui lòng thử lại",
+                MessageBox.Show("Error Occurred. Please Try Again",
                                 "Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
@@ -74,6 +84,15 @@ namespace StoreManagement.UserControls
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Datefrom.Text.Length == 0 && Dateto.Text.Length == 0)
+            {
+                MessageBox.Show("Please Fill in Date fields",
+                                "Information",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Asterisk);
+
+                return;
+            }
             if (!firstLoaded)
             {
                 loadingGif.Visibility = Visibility.Visible;
@@ -105,12 +124,12 @@ namespace StoreManagement.UserControls
                     GetBill();
                     updatedetailbill.isUpdate = false;
 
-                    Task.Run(() => { Dispatcher.Invoke(ChartsLayout.ReloadChart); });
+                    Task.Run(() => Dispatcher.Invoke(ChartsLayout.ReloadChart));
                 }
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi khi cập nhật. Vui lòng thử lại",
+                MessageBox.Show("Error Occurred. Please Try Again",
                                    "Error",
                                    MessageBoxButton.OK,
                                    MessageBoxImage.Error);
@@ -122,7 +141,7 @@ namespace StoreManagement.UserControls
             try
             {
                 MessageBoxResult result =
-                    MessageBox.Show("Are you sure?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    MessageBox.Show("Are You Sure?", "Confirm", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
                 switch (result)
                 {
@@ -141,6 +160,11 @@ namespace StoreManagement.UserControls
 
                                 BillEntity delObject = ListBill.Find(entity => tmp.BillID == entity.BillID);
                                 ListBill.Remove(delObject);
+
+                                MessageBox.Show("Delete Bill Success",
+                                                "Result",
+                                                MessageBoxButton.OK,
+                                                MessageBoxImage.Information);
                                 GetBill();
                             }
                             catch { }
@@ -155,7 +179,7 @@ namespace StoreManagement.UserControls
             }
             catch
             {
-                MessageBox.Show("Đã xảy ra lỗi khi xóa. Vui lòng thử lại",
+                MessageBox.Show("Error Occurred. Please Try Again",
                                 "Error",
                                 MessageBoxButton.OK,
                                 MessageBoxImage.Error);
