@@ -13,6 +13,8 @@ namespace StoreManagement
         {
             InitializeComponent();
 
+            lblName.Content = LoginForm.currentUser.FullName + "\nID: " + LoginForm.currentUser.UserID;
+
             HideBillElements();
 
             BASE_STATE = WindowState;

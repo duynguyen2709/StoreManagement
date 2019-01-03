@@ -14,6 +14,8 @@ namespace StoreManagement
             InitializeComponent();
 
             BASE_STATE = WindowState;
+
+            lblName.Content = LoginForm.currentUser.FullName + "\nID: " + LoginForm.currentUser.UserID;
         }
 
         private readonly WindowState BASE_STATE;

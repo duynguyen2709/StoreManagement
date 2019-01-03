@@ -45,7 +45,8 @@
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF214B2C">
 
             <StackPanel>
-                <Image Height="100" Width="100" Source="Resources/avatar.png" Margin="75,50,75,0" />
+                <Image Height="100" Width="100" Source="Resources/avatar.png" Margin="75,30,75,0" />
+                <Label x:Name="lblName" Content="ADMIN" HorizontalContentAlignment="Center" Margin="20 20 20 0" Foreground="#DDE4FFBC" FontSize="20" FontFamily="Lato" />
                 <Grid>
                     <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
                         <Grid x:Name="GridCursor" Margin="0 50 0 0" Background="#FF32AD40" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" />
@@ -60,7 +61,7 @@
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Receipt" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Kiểm tra hàng tồn" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Product Check" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <!--<ListViewItem Height="60">
@@ -72,13 +73,13 @@
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Timetable" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Lịch sử nhập hàng" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Import History" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="UserCardDetails" Width="30" Height="30" VerticalAlignment="Center" Margin="5" />
-                                <TextBlock Text="Thông tin cá nhân" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
+                                <TextBlock Text="Personal Info" FontSize="17" VerticalAlignment="Center" Margin="20 0" />
                             </StackPanel>
                         </ListViewItem>
                         <ListViewItem Height="60">

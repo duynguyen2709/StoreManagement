@@ -11,6 +11,7 @@ namespace StoreManagement
         public StorageManagerDashboard()
         {
             InitializeComponent();
+            lblName.Content = LoginForm.currentUser.FullName + "\nID: " + LoginForm.currentUser.UserID;
             BASE_STATE = WindowState;
         }
 
